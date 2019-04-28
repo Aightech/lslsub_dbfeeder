@@ -1,9 +1,7 @@
 //g++ main.cpp -lpqxx -lpq
 #include <iostream>
-#include <pqxx/pqxx> 
-
-using namespace std;
-using namespace pqxx;
+#include <pqxx/pqxx>
+#include <string>
 
 void error(std::string str)
 {
@@ -11,44 +9,56 @@ void error(std::string str)
   exit(0);
 }
 
-int main(int argc, char* argv[])
+pqxx::connection* connect_db(std::string name, std::string user, std::string password,std::string host, std::string port)
 {
+  pqxx::connection *C;
   try
     {
-      std::string conParam=
-	"dbname = lsldb "\
-	"user = postgres "\
-	"password = abcdef "\
-	"hostaddr = 127.0.0.1 "\
-	"port = 5432";
+      std::string connParam=
+	"dbname = " + name + \
+	" user = " + user + \
+	" password = " + password + \
+	" hostaddr = " + host + \
+	" port = " + port;
       std::cout << "Connecting to lsldb...\xd" << std::flush;
-      connection C(conParam);
+      C = new pqxx::connection(connParam);
+      
     
-      if (!C.is_open())
+      if (!C->is_open())
         error("Connection to lsldb failed.");
       
       std::cout << "Connected to lsldb       " << std::endl;
-
-
-      std::string sql=
-	"INSERT INTO sensors "\
-	"VALUES "\
-	"(NOW(), 'office', 30.2),"
-	"(NOW(), 'office', 30.1);";
-
-      work W(C);
-      
-      /* Execute SQL query */
-      W.exec( sql );
-      W.commit();
-	
-      std::cout << "Disconnecting from lsldb...\xd" << std::flush;
-      C.disconnect ();
-      std::cout << "Disconnected from lsldb.       " << std::endl;
+      return C;
     }
-  catch (const std::exception &e)
+  catch (const pqxx::pqxx_exception &e)
     {
-      cerr << e.what() << std::endl;
-      return 1;
+      std::cerr  << e.base().what() << std::endl;
     }
+}
+
+int main(int argc, char* argv[])
+{
+  pqxx::connection *C = connect_db("lsldb",
+				   "postgres",
+				   "azerty",
+				   "127.0.0.1",
+				   "5432");
+  
+
+  std::string sql=
+    "INSERT INTO sensors "\
+    "VALUES "\
+    "(NOW(), 'office', 30.2),"
+    "(NOW(), 'office', 30.1);";
+
+  pqxx::work W(*C);
+      
+  /* Execute SQL query */
+  W.exec( sql );
+  W.commit();
+	
+  std::cout << "Disconnecting from lsldb...\xd" << std::flush;
+  C->disconnect ();
+  std::cout << "Disconnected from lsldb.       " << std::endl;
+    
 }
