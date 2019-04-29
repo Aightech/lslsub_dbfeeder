@@ -82,6 +82,74 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose = true)
 
 }
 
+bool add_stream_metadata(pqxx::connection *C, lsl::stream_info& info)
+{
+  pqxx::nontransaction N(*C);// Create a non-transactional object.
+  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "';";  
+  pqxx::result R( N.exec( sql ));// Execute SQL query 
+  N.commit();
+
+  std::cout << "Name = " << R.size() << std::endl;
+  if(R.size()==0)
+    {
+      pqxx::work W(*C);
+  
+      sql=
+	"INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
+	"VALUES ( '" + info.name()	+ "'" +					\
+	" , '" + info.type()+ "'"		  +				\
+	" , " + std::to_string(info.channel_format())+			\
+	" , " + std::to_string(info.nominal_srate())  +			\
+	" , " + std::to_string(info.channel_count())  +			\
+	" , '" + info.hostname()+ "'"	  +				\
+	");";
+      
+      // Execute SQL query 
+      W.exec( sql );
+      W.commit();
+    }
+
+
+}
+
+void create_stream_table_db(pqxx::connection *C, std::string name)
+{
+  std::string sql=
+    "CREATE TABLE IF NOT EXISTS " + name + " ( "\
+    "time DOUBLE PRECISION       NOT NULL,"	\
+    "data DOUBLE PRECISION[]  NOT NULL,"	\
+    "uid TEXT  NULL);";
+
+  pqxx::work W(*C);
+      
+  // Execute SQL query 
+  W.exec( sql );
+  W.commit();
+}
+
+void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps )
+{
+  std::string sql="";
+  for(int j = 0; j < chunk.size(); j++)
+    {
+      std::cout << timestamps[j] << std::endl; // only showing the time stamps here
+      sql += "INSERT INTO " + name + " (time, data) "+ \
+	"VALUES ( " + std::to_string(timestamps[j]) +		\
+	" , '{" + std::to_string(chunk[j][0]);
+      for(int i =1; i < chunk[j].size(); i++)
+	sql += "," + std::to_string(chunk[j][i]);
+      sql += "}'); " ;
+    }
+	    
+  pqxx::work W(*C);
+      
+  // Execute SQL query 
+  W.exec( sql );
+  W.commit();
+}
+
+
+
 int main(int argc, char* argv[])
 {
   
@@ -94,21 +162,33 @@ int main(int argc, char* argv[])
 				   "azerty",
 				   "127.0.0.1",
 				   "5432");
+  
+  add_stream_metadata(C,strm_info[0]);
+  create_stream_table_db(C,strm_info[0].name());
+  lsl::stream_inlet inlet(strm_info[0]);
+  try {
 
-  std::string sql=
-    "INSERT INTO sensors "\
-    "VALUES "\
-    "(NOW(), 'office', 30.2),"
-    "(NOW(), 'office', 30.1);";
+    // and retrieve the chunks (note: this can of course also be done with pure std::vectors
+    // instead of stereo_samples)
+    while (true)
+      {
+	std::vector<std::vector<float>> chunk;
+	std::vector<double> timestamps;
+	if (inlet.pull_chunk(chunk, timestamps))
+	  {
+	    insert_data_db(C, strm_info[0].name(), chunk, timestamps); 
+	  }
+    }
 
-  pqxx::work W(*C);
-      
-  // Execute SQL query 
-  W.exec( sql );
-  W.commit();
+  }
+  catch (std::exception& e)
+    {
+      std::cerr << "Got an exception: " << e.what() << std::endl;
+    }
+  
 	
   std::cout << "Disconnecting from lsldb...\xd" << std::flush;
   C->disconnect ();
   std::cout << "Disconnected from lsldb.       " << std::endl;
-  */
+  
 }

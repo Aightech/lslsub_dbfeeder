@@ -1,5 +1,7 @@
 #!/bin/bash
+export PGPASSWORD=azerty
 
+<<COMMENT
 sudo apt update
 sudo apt install -y postgresql-11
 
@@ -23,3 +25,25 @@ sudo service postgresql restart
 export PGPASSWORD=azerty
 sudo runuser -l postgres -c 'createdb lsldb -O lsldb_user'
 psql -U lsldb_user -h localhost -d lsldb -c "CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;"
+
+"
+COMMENT
+
+psql -U lsldb_user -h localhost -d lsldb -c "
+CREATE TABLE IF NOT EXISTS lsl_streams_metadata (
+  name        TEXT       NOT NULL,
+  type 	      TEXT 	 NOT NULL,
+  format INTEGER  NOT NULL,
+  rate    DOUBLE PRECISION  NOT NULL,
+  nb_channels INTEGER NOT NULL,
+  host TEXT NOT NULL
+);"
+
+psql -U lsldb_user -h localhost -d lsldb -c "
+CREATE TABLE IF NOT EXISTS ESP (
+  time        TIMESTAMPTZ       NOT NULL,
+  data DOUBLE PRECISION[]  NOT NULL,
+  uid TEXT  NULL
+);"
+
+
