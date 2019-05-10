@@ -1,0 +1,610 @@
+.TH "include/lsl_cpp.h" 3 "Fri May 10 2019" "lslsub_dbfeeder" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/lsl_cpp.h
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <string>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include <stdexcept>\fP
+.br
+\fC#include 'lsl_c\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBlsl::stream_info\fP"
+.br
+.ti -1c
+.RI "class \fBlsl::stream_outlet\fP"
+.br
+.ti -1c
+.RI "class \fBlsl::stream_inlet\fP"
+.br
+.ti -1c
+.RI "class \fBlsl::xml_element\fP"
+.br
+.ti -1c
+.RI "class \fBlsl::continuous_resolver\fP"
+.br
+.ti -1c
+.RI "class \fBlsl::lost_error\fP"
+.br
+.RI "Exception class that indicates that a stream inlet's source has been irrecoverably lost\&. "
+.ti -1c
+.RI "class \fBlsl::timeout_error\fP"
+.br
+.RI "Exception class that indicates that an operation failed due to a timeout\&. "
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBlsl\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef struct lsl_streaminfo_struct_ * \fBlsl::lsl_streaminfo\fP"
+.br
+.ti -1c
+.RI "typedef struct lsl_outlet_struct_ * \fBlsl::lsl_outlet\fP"
+.br
+.ti -1c
+.RI "typedef struct lsl_inlet_struct_ * \fBlsl::lsl_inlet\fP"
+.br
+.ti -1c
+.RI "typedef struct lsl_xml_ptr_struct_ * \fBlsl::lsl_xml_ptr\fP"
+.br
+.ti -1c
+.RI "typedef struct lsl_continuous_resolver_ * \fBlsl::lsl_continuous_resolver\fP"
+.br
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBlsl::lsl_channel_format_t\fP { \fBlsl::cft_float32\fP = 1, \fBlsl::cft_double64\fP = 2, \fBlsl::cft_string\fP = 3, \fBlsl::cft_int32\fP = 4, \fBlsl::cft_int16\fP = 5, \fBlsl::cft_int8\fP = 6, \fBlsl::cft_int64\fP = 7, \fBlsl::cft_undefined\fP = 0 }"
+.br
+.ti -1c
+.RI "enum \fBlsl::lsl_processing_options_t\fP { \fBlsl::proc_none\fP = 0, \fBlsl::proc_clocksync\fP = 1, \fBlsl::proc_dejitter\fP = 2, \fBlsl::proc_monotonize\fP = 4, \fBlsl::proc_threadsafe\fP = 8, \fBlsl::proc_ALL\fP = 1|2|4|8 }"
+.br
+.ti -1c
+.RI "enum \fBlsl::lsl_error_code_t\fP { \fBlsl::lsl_no_error\fP = 0, \fBlsl::lsl_timeout_error\fP = -1, \fBlsl::lsl_lost_error\fP = -2, \fBlsl::lsl_argument_error\fP = -3, \fBlsl::lsl_internal_error\fP = -4 }"
+.br
+.ti -1c
+.RI "enum \fBlsl::channel_format_t\fP { \fBlsl::cf_float32\fP = 1, \fBlsl::cf_double64\fP = 2, \fBlsl::cf_string\fP = 3, \fBlsl::cf_int32\fP = 4, \fBlsl::cf_int16\fP = 5, \fBlsl::cf_int8\fP = 6, \fBlsl::cf_int64\fP = 7, \fBlsl::cf_undefined\fP = 0 }"
+.br
+.ti -1c
+.RI "enum \fBlsl::processing_options_t\fP { \fBlsl::post_none\fP = 0, \fBlsl::post_clocksync\fP = 1, \fBlsl::post_dejitter\fP = 2, \fBlsl::post_monotonize\fP = 4, \fBlsl::post_threadsafe\fP = 8, \fBlsl::post_ALL\fP = 1|2|4|8 }"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_protocol_version\fP ()"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_library_version\fP ()"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_library_info\fP ()"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_local_clock\fP ()"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_resolve_all\fP (\fBlsl_streaminfo\fP *buffer, uint32_t buffer_elements, double wait_time)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_resolve_byprop\fP (\fBlsl_streaminfo\fP *buffer, uint32_t buffer_elements, const char *prop, const char *value, int32_t minimum, double timeout)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_resolve_bypred\fP (\fBlsl_streaminfo\fP *buffer, uint32_t buffer_elements, const char *pred, int32_t minimum, double timeout)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_destroy_string\fP (char *s)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_streaminfo\fP \fBlsl::lsl_create_streaminfo\fP (const char *name, const char *type, int32_t channel_count, double nominal_srate, \fBlsl_channel_format_t\fP channel_format, const char *source_id)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_destroy_streaminfo\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_streaminfo\fP \fBlsl::lsl_copy_streaminfo\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_name\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_type\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_get_channel_count\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_get_nominal_srate\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_channel_format_t\fP \fBlsl::lsl_get_channel_format\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_source_id\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_get_version\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_get_created_at\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_uid\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_session_id\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_get_hostname\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_get_desc\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP char * \fBlsl::lsl_get_xml\fP (\fBlsl_streaminfo\fP info)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_get_channel_bytes\fP (\fBlsl_streaminfo\fP info)"
+.br
+.RI "Number of bytes occupied by a channel (0 for string-typed channels)\&. "
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_get_sample_bytes\fP (\fBlsl_streaminfo\fP info)"
+.br
+.RI "Number of bytes occupied by a sample (0 for string-typed channels)\&. "
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_stream_info_matches_query\fP (\fBlsl_streaminfo\fP info, const char *query)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_streaminfo\fP \fBlsl::lsl_streaminfo_from_xml\fP (const char *xml)"
+.br
+.RI "Create a streaminfo object from an XML representation\&. "
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_outlet\fP \fBlsl::lsl_create_outlet\fP (\fBlsl_streaminfo\fP info, int32_t chunk_size, int32_t max_buffered)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_destroy_outlet\fP (\fBlsl_outlet\fP out)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_f\fP (\fBlsl_outlet\fP out, const float *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_ft\fP (\fBlsl_outlet\fP out, const float *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_ftp\fP (\fBlsl_outlet\fP out, const float *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_d\fP (\fBlsl_outlet\fP out, const double *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_dt\fP (\fBlsl_outlet\fP out, const double *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_dtp\fP (\fBlsl_outlet\fP out, const double *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_l\fP (\fBlsl_outlet\fP out, const long *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_lt\fP (\fBlsl_outlet\fP out, const long *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_ltp\fP (\fBlsl_outlet\fP out, const long *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_i\fP (\fBlsl_outlet\fP out, const int32_t *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_it\fP (\fBlsl_outlet\fP out, const int32_t *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_itp\fP (\fBlsl_outlet\fP out, const int32_t *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_s\fP (\fBlsl_outlet\fP out, const int16_t *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_st\fP (\fBlsl_outlet\fP out, const int16_t *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_stp\fP (\fBlsl_outlet\fP out, const int16_t *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_c\fP (\fBlsl_outlet\fP out, const char *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_ct\fP (\fBlsl_outlet\fP out, const char *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_ctp\fP (\fBlsl_outlet\fP out, const char *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_str\fP (\fBlsl_outlet\fP out, const char **data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_strt\fP (\fBlsl_outlet\fP out, const char **data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_strtp\fP (\fBlsl_outlet\fP out, const char **data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_buf\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_buft\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_buftp\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_v\fP (\fBlsl_outlet\fP out, const void *data)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_vt\fP (\fBlsl_outlet\fP out, const void *data, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_sample_vtp\fP (\fBlsl_outlet\fP out, const void *data, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_f\fP (\fBlsl_outlet\fP out, const float *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ft\fP (\fBlsl_outlet\fP out, const float *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ftp\fP (\fBlsl_outlet\fP out, const float *data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ftn\fP (\fBlsl_outlet\fP out, const float *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ftnp\fP (\fBlsl_outlet\fP out, const float *data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_d\fP (\fBlsl_outlet\fP out, const double *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_dt\fP (\fBlsl_outlet\fP out, const double *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_dtp\fP (\fBlsl_outlet\fP out, const double *data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_dtn\fP (\fBlsl_outlet\fP out, const double *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_dtnp\fP (\fBlsl_outlet\fP out, const double *data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_push_chunk_l\fP (\fBlsl_outlet\fP out, const long *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_push_chunk_lt\fP (\fBlsl_outlet\fP out, const long *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_push_chunk_ltp\fP (\fBlsl_outlet\fP out, const long *data, unsigned long data_elements, double timestamp, int pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_push_chunk_ltn\fP (\fBlsl_outlet\fP out, const long *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int \fBlsl::lsl_push_chunk_ltnp\fP (\fBlsl_outlet\fP out, const long *data, unsigned long data_elements, const double *timestamps, int pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_i\fP (\fBlsl_outlet\fP out, const int32_t *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_it\fP (\fBlsl_outlet\fP out, const int32_t *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_itp\fP (\fBlsl_outlet\fP out, const int32_t *data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_itn\fP (\fBlsl_outlet\fP out, const int32_t *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_itnp\fP (\fBlsl_outlet\fP out, const int32_t *data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_s\fP (\fBlsl_outlet\fP out, const int16_t *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_st\fP (\fBlsl_outlet\fP out, const int16_t *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_stp\fP (\fBlsl_outlet\fP out, const int16_t *data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_stn\fP (\fBlsl_outlet\fP out, const int16_t *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_stnp\fP (\fBlsl_outlet\fP out, const int16_t *data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_c\fP (\fBlsl_outlet\fP out, const char *data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ct\fP (\fBlsl_outlet\fP out, const char *data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ctp\fP (\fBlsl_outlet\fP out, const char *data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ctn\fP (\fBlsl_outlet\fP out, const char *data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_ctnp\fP (\fBlsl_outlet\fP out, const char *data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_str\fP (\fBlsl_outlet\fP out, const char **data, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_strt\fP (\fBlsl_outlet\fP out, const char **data, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_strtp\fP (\fBlsl_outlet\fP out, const char **data, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_strtn\fP (\fBlsl_outlet\fP out, const char **data, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_strtnp\fP (\fBlsl_outlet\fP out, const char **data, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_buf\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, unsigned long data_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_buft\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, unsigned long data_elements, double timestamp)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_buftp\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, unsigned long data_elements, double timestamp, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_buftn\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, unsigned long data_elements, const double *timestamps)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_push_chunk_buftnp\fP (\fBlsl_outlet\fP out, const char **data, const uint32_t *lengths, unsigned long data_elements, const double *timestamps, int32_t pushthrough)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_have_consumers\fP (\fBlsl_outlet\fP out)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_wait_for_consumers\fP (\fBlsl_outlet\fP out, double timeout)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_streaminfo\fP \fBlsl::lsl_get_info\fP (\fBlsl_outlet\fP out)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_inlet\fP \fBlsl::lsl_create_inlet\fP (\fBlsl_streaminfo\fP info, int32_t max_buflen, int32_t max_chunklen, int32_t recover)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_destroy_inlet\fP (\fBlsl_inlet\fP in)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_streaminfo\fP \fBlsl::lsl_get_fullinfo\fP (\fBlsl_inlet\fP in, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_open_stream\fP (\fBlsl_inlet\fP in, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_close_stream\fP (\fBlsl_inlet\fP in)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_time_correction\fP (\fBlsl_inlet\fP in, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_time_correction_ex\fP (\fBlsl_inlet\fP in, double *remote_time, double *uncertainty, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_set_postprocessing\fP (\fBlsl_inlet\fP in, uint32_t flags)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_f\fP (\fBlsl_inlet\fP in, float *buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_d\fP (\fBlsl_inlet\fP in, double *buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_l\fP (\fBlsl_inlet\fP in, long *buffer, int buffer_elements, double timeout, int *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_i\fP (\fBlsl_inlet\fP in, int32_t *buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_s\fP (\fBlsl_inlet\fP in, int16_t *buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_c\fP (\fBlsl_inlet\fP in, char *buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_str\fP (\fBlsl_inlet\fP in, char **buffer, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_buf\fP (\fBlsl_inlet\fP in, char **buffer, uint32_t *buffer_lengths, int32_t buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP double \fBlsl::lsl_pull_sample_v\fP (\fBlsl_inlet\fP in, void *buffer, int32_t buffer_bytes, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_f\fP (\fBlsl_inlet\fP in, float *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_d\fP (\fBlsl_inlet\fP in, double *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_l\fP (\fBlsl_inlet\fP in, long *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_i\fP (\fBlsl_inlet\fP in, int32_t *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_s\fP (\fBlsl_inlet\fP in, int16_t *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_c\fP (\fBlsl_inlet\fP in, char *data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_str\fP (\fBlsl_inlet\fP in, char **data_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP unsigned long \fBlsl::lsl_pull_chunk_buf\fP (\fBlsl_inlet\fP in, char **data_buffer, uint32_t *lengths_buffer, double *timestamp_buffer, unsigned long data_buffer_elements, unsigned long timestamp_buffer_elements, double timeout, int32_t *ec)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP uint32_t \fBlsl::lsl_samples_available\fP (\fBlsl_inlet\fP in)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP uint32_t \fBlsl::lsl_was_clock_reset\fP (\fBlsl_inlet\fP in)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_smoothing_halftime\fP (\fBlsl_inlet\fP in, float value)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_first_child\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_last_child\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_next_sibling\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_previous_sibling\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_parent\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_child\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_next_sibling_n\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_previous_sibling_n\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_empty\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_is_text\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_name\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_value\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_child_value\fP (\fBlsl_xml_ptr\fP e)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP const char * \fBlsl::lsl_child_value_n\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_append_child_value\fP (\fBlsl_xml_ptr\fP e, const char *name, const char *value)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_prepend_child_value\fP (\fBlsl_xml_ptr\fP e, const char *name, const char *value)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_set_child_value\fP (\fBlsl_xml_ptr\fP e, const char *name, const char *value)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_set_name\fP (\fBlsl_xml_ptr\fP e, const char *rhs)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_set_value\fP (\fBlsl_xml_ptr\fP e, const char *rhs)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_append_child\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_prepend_child\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_append_copy\fP (\fBlsl_xml_ptr\fP e, \fBlsl_xml_ptr\fP e2)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_xml_ptr\fP \fBlsl::lsl_prepend_copy\fP (\fBlsl_xml_ptr\fP e, \fBlsl_xml_ptr\fP e2)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_remove_child_n\fP (\fBlsl_xml_ptr\fP e, const char *name)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_remove_child\fP (\fBlsl_xml_ptr\fP e, \fBlsl_xml_ptr\fP e2)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_continuous_resolver\fP \fBlsl::lsl_create_continuous_resolver\fP (double forget_after)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_continuous_resolver\fP \fBlsl::lsl_create_continuous_resolver_byprop\fP (const char *prop, const char *value, double forget_after)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP \fBlsl_continuous_resolver\fP \fBlsl::lsl_create_continuous_resolver_bypred\fP (const char *pred, double forget_after)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP int32_t \fBlsl::lsl_resolver_results\fP (\fBlsl_continuous_resolver\fP res, \fBlsl_streaminfo\fP *buffer, uint32_t buffer_elements)"
+.br
+.ti -1c
+.RI "\fBLIBLSL_C_API\fP void \fBlsl::lsl_destroy_continuous_resolver\fP (\fBlsl_continuous_resolver\fP res)"
+.br
+.ti -1c
+.RI "int32_t \fBlsl::protocol_version\fP ()"
+.br
+.ti -1c
+.RI "int32_t \fBlsl::library_version\fP ()"
+.br
+.ti -1c
+.RI "const char * \fBlsl::library_info\fP ()"
+.br
+.ti -1c
+.RI "double \fBlsl::local_clock\fP ()"
+.br
+.ti -1c
+.RI "std::vector< stream_info > \fBlsl::resolve_streams\fP (double wait_time=1\&.0)"
+.br
+.ti -1c
+.RI "std::vector< stream_info > \fBlsl::resolve_stream\fP (const std::string &prop, const std::string &value, int32_t minimum=1, double timeout=FOREVER)"
+.br
+.ti -1c
+.RI "std::vector< stream_info > \fBlsl::resolve_stream\fP (const std::string &pred, int32_t minimum=1, double timeout=FOREVER)"
+.br
+.ti -1c
+.RI "void \fBlsl::check_error\fP (int32_t ec)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const double \fBlsl::IRREGULAR_RATE\fP = 0\&.0"
+.br
+.ti -1c
+.RI "const double \fBlsl::DEDUCED_TIMESTAMP\fP = \-1\&.0"
+.br
+.ti -1c
+.RI "const double \fBlsl::FOREVER\fP = 32000000\&.0"
+.br
+.in -1c
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lslsub_dbfeeder from the source code\&.

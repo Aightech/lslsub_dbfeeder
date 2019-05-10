@@ -1,0 +1,115 @@
+.TH "src/main.cpp" 3 "Fri May 10 2019" "lslsub_dbfeeder" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/main.cpp \- TODO\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+\fC#include <pqxx/pqxx>\fP
+.br
+\fC#include <string>\fP
+.br
+\fC#include <lsl_cpp\&.h>\fP
+.br
+\fC#include <thread>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <sstream>\fP
+.br
+\fC#include 'psql\&.h'\fP
+.br
+\fC#include 'tools\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBscanStream\fP (std::vector< \fBlsl::stream_info\fP > &to, bool verbose=true)"
+.br
+.RI "scanstream Search for the lsl streams and add them to the lslinfo vector\&.\&. "
+.ti -1c
+.RI "void \fBstore_stream\fP (\fBlsl::stream_info\fP strm_info, bool *rec_on)"
+.br
+.RI "store_stream Connect to the database and start storing the incoming stream\&.\&. "
+.ti -1c
+.RI "int \fBget_conf\fP (std::string file, std::vector< std::string > &strm)"
+.br
+.RI "get_conf Read a configuration file and extract the name of stream to record\&. "
+.ti -1c
+.RI "int \fBmain\fP (int argc, char *argv[])"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+TODO\&. 
+
+
+.PP
+\fBAuthor:\fP
+.RS 4
+Alexis Devillard 
+.RE
+.PP
+\fBVersion:\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+08 may 2019 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "int get_conf (std::string file, std::vector< std::string > & strm)"
+
+.PP
+get_conf Read a configuration file and extract the name of stream to record\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfile\fP Configuration file\&. 
+.br
+\fIstrm\fP String vector of the stream to record's name\&. 
+.RE
+.PP
+
+.SS "int main (int argc, char * argv[])"
+
+.SS "void scanStream (std::vector< \fBlsl::stream_info\fP > & to, bool verbose = \fCtrue\fP)"
+
+.PP
+scanstream Search for the lsl streams and add them to the lslinfo vector\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIto\fP Lslinfo vector\&. 
+.br
+\fIverbose\fP To activate the display of the parameters of each streams\&. 
+.RE
+.PP
+
+.SS "void store_stream (\fBlsl::stream_info\fP strm_info, bool * rec_on)"
+
+.PP
+store_stream Connect to the database and start storing the incoming stream\&.\&. 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIstrm_info\fP the info of stream to record\&. 
+.br
+\fIrec_on\fP Boolean that stop the main loop of recording\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lslsub_dbfeeder from the source code\&.

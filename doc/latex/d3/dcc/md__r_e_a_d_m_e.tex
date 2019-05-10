@@ -1,0 +1,21 @@
+\subsection*{Requierements}
+
+\subsubsection*{Postre\+S\+QL}
+
+sudo apt install postgresql
+
+sudo -\/i -\/u postgres psql  postgres ... psql -\/h localhost -\/U postgres
+
+Time scale db sudo sh -\/c \char`\"{}echo \textquotesingle{}deb http\+://apt.\+postgresql.\+org/pub/repos/apt/ `lsb\+\_\+release -\/c -\/s`-\/pgdg main\textquotesingle{} $>$$>$ /etc/apt/sources.\+list.\+d/pgdg.\+list\char`\"{} wget --quiet -\/O -\/ \href{https://www.postgresql.org/media/keys/ACCC4CF8.asc}{\tt https\+://www.\+postgresql.\+org/media/keys/\+A\+C\+C\+C4\+C\+F8.\+asc} $\vert$ sudo apt-\/key add -\/ sudo apt-\/get update
+
+\section*{Add our P\+PA}
+
+sudo add-\/apt-\/repository ppa\+:timescale/timescaledb-\/ppa sudo apt-\/get update
+
+\section*{Now install appropriate package for PG version}
+
+sudo apt install timescaledb-\/postgresql-\/10
+
+sudo timescaledb-\/tune sudo service postgresql restart
+
+sudo apt install libpqxx-\/dev 

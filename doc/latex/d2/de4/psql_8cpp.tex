@@ -1,0 +1,102 @@
+\hypertarget{psql_8cpp}{}\section{src/psql.cpp File Reference}
+\label{psql_8cpp}\index{src/psql.\+cpp@{src/psql.\+cpp}}
+
+
+T\+O\+DO.  
+
+
+{\ttfamily \#include \char`\"{}psql.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tools.\+h\char`\"{}}\newline
+Include dependency graph for psql.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d6/d7c/psql_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+pqxx\+::connection $\ast$ \hyperlink{psql_8cpp_a796e6805cd51c908dc287eec671a5d2f}{connect\+\_\+db} (std\+::string name, std\+::string user, std\+::string password, std\+::string host, std\+::string port)
+\begin{DoxyCompactList}\small\item\em connect\+\_\+db Enable to connect to a database and return the connected object of pqxx library \end{DoxyCompactList}\item 
+bool \hyperlink{psql_8cpp_a199fa29d0ec70ab2b365c941f4da14c3}{add\+\_\+stream\+\_\+metadata} (pqxx\+::connection $\ast$C, \hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info} \&info)
+\begin{DoxyCompactList}\small\item\em add\+\_\+stream\+\_\+metadata Enable to add a table with the stream name if it does not exist. return false if it existed \end{DoxyCompactList}\item 
+void \hyperlink{psql_8cpp_ac44426dc615db5eefe524fc8e61337d8}{create\+\_\+stream\+\_\+table\+\_\+db} (pqxx\+::connection $\ast$C, std\+::string name)
+\item 
+void \hyperlink{psql_8cpp_abc1c9a41739ae9719e320e3b272fb1f9}{insert\+\_\+data\+\_\+db} (pqxx\+::connection $\ast$C, std\+::string name, std\+::vector$<$ std\+::vector$<$ float $>$$>$ \&chunk, std\+::vector$<$ double $>$ \&timestamps)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\+O\+DO. 
+
+\begin{DoxyAuthor}{Author}
+Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+08 may 2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{psql_8cpp_a199fa29d0ec70ab2b365c941f4da14c3}\label{psql_8cpp_a199fa29d0ec70ab2b365c941f4da14c3}} 
+\index{psql.\+cpp@{psql.\+cpp}!add\+\_\+stream\+\_\+metadata@{add\+\_\+stream\+\_\+metadata}}
+\index{add\+\_\+stream\+\_\+metadata@{add\+\_\+stream\+\_\+metadata}!psql.\+cpp@{psql.\+cpp}}
+\subsubsection{\texorpdfstring{add\+\_\+stream\+\_\+metadata()}{add\_stream\_metadata()}}
+{\footnotesize\ttfamily bool add\+\_\+stream\+\_\+metadata (\begin{DoxyParamCaption}\item[{pqxx\+::connection $\ast$}]{C,  }\item[{\hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info} \&}]{info }\end{DoxyParamCaption})}
+
+
+
+add\+\_\+stream\+\_\+metadata Enable to add a table with the stream name if it does not exist. return false if it existed 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the database \\
+\hline
+{\em user} & User name to connect the database \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The connected object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psql_8cpp_a796e6805cd51c908dc287eec671a5d2f}\label{psql_8cpp_a796e6805cd51c908dc287eec671a5d2f}} 
+\index{psql.\+cpp@{psql.\+cpp}!connect\+\_\+db@{connect\+\_\+db}}
+\index{connect\+\_\+db@{connect\+\_\+db}!psql.\+cpp@{psql.\+cpp}}
+\subsubsection{\texorpdfstring{connect\+\_\+db()}{connect\_db()}}
+{\footnotesize\ttfamily pqxx\+::connection$\ast$ connect\+\_\+db (\begin{DoxyParamCaption}\item[{std\+::string}]{name,  }\item[{std\+::string}]{user,  }\item[{std\+::string}]{password,  }\item[{std\+::string}]{host,  }\item[{std\+::string}]{port }\end{DoxyParamCaption})}
+
+
+
+connect\+\_\+db Enable to connect to a database and return the connected object of pqxx library 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & Name of the database \\
+\hline
+{\em user} & User name to connect the database \\
+\hline
+{\em password} & User Password \\
+\hline
+{\em host} & Host of the database \\
+\hline
+{\em port} & Port of the host \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The connected object. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{psql_8cpp_ac44426dc615db5eefe524fc8e61337d8}\label{psql_8cpp_ac44426dc615db5eefe524fc8e61337d8}} 
+\index{psql.\+cpp@{psql.\+cpp}!create\+\_\+stream\+\_\+table\+\_\+db@{create\+\_\+stream\+\_\+table\+\_\+db}}
+\index{create\+\_\+stream\+\_\+table\+\_\+db@{create\+\_\+stream\+\_\+table\+\_\+db}!psql.\+cpp@{psql.\+cpp}}
+\subsubsection{\texorpdfstring{create\+\_\+stream\+\_\+table\+\_\+db()}{create\_stream\_table\_db()}}
+{\footnotesize\ttfamily void create\+\_\+stream\+\_\+table\+\_\+db (\begin{DoxyParamCaption}\item[{pqxx\+::connection $\ast$}]{C,  }\item[{std\+::string}]{name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{psql_8cpp_abc1c9a41739ae9719e320e3b272fb1f9}\label{psql_8cpp_abc1c9a41739ae9719e320e3b272fb1f9}} 
+\index{psql.\+cpp@{psql.\+cpp}!insert\+\_\+data\+\_\+db@{insert\+\_\+data\+\_\+db}}
+\index{insert\+\_\+data\+\_\+db@{insert\+\_\+data\+\_\+db}!psql.\+cpp@{psql.\+cpp}}
+\subsubsection{\texorpdfstring{insert\+\_\+data\+\_\+db()}{insert\_data\_db()}}
+{\footnotesize\ttfamily void insert\+\_\+data\+\_\+db (\begin{DoxyParamCaption}\item[{pqxx\+::connection $\ast$}]{C,  }\item[{std\+::string}]{name,  }\item[{std\+::vector$<$ std\+::vector$<$ float $>$$>$ \&}]{chunk,  }\item[{std\+::vector$<$ double $>$ \&}]{timestamps }\end{DoxyParamCaption})}
+

@@ -1,0 +1,748 @@
+.TH "include/OTBconfig.h" 3 "Fri May 10 2019" "lslsub_dbfeeder" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/OTBconfig.h
+.SH SYNOPSIS
+.br
+.PP
+.SS "Macros"
+
+.in +1c
+.ti -1c
+.RI "#define \fBCONFIG_SIZE\fP   40"
+.br
+.ti -1c
+.RI "#define \fBACQ_SETT\fP   0b10000000"
+.br
+.ti -1c
+.RI "#define \fBDECIM\fP   0b01000000"
+.br
+.ti -1c
+.RI "#define \fBREC_ON\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBFSAMP1\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBFSAMP0\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBNCH1\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBNCH0\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBACQ_ON\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBACQ_OFF\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBFSAMP_10240\fP   \fBFSAMP0\fP | \fBFSAMP1\fP"
+.br
+.ti -1c
+.RI "#define \fBFSAMP_5120\fP   \fBFSAMP1\fP"
+.br
+.ti -1c
+.RI "#define \fBFSAMP_2048\fP   \fBFSAMP0\fP"
+.br
+.ti -1c
+.RI "#define \fBFSAMP_512\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBNCH_IN1to8_MIN1to4\fP   \fBNCH1\fP | \fBNCH0\fP"
+.br
+.ti -1c
+.RI "#define \fBNCH_IN1to6_MIN1to3\fP   \fBNCH1\fP"
+.br
+.ti -1c
+.RI "#define \fBNCH_IN1to4_MIN1to2\fP   \fBNCH0\fP"
+.br
+.ti -1c
+.RI "#define \fBNCH_IN1to2_MIN1\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBAN_OUT_IN_SET\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN1\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN0\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBINSEL3\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBINSEL2\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBINSEL1\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBINSEL0\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN_16\fP   \fBANOUT_GAIN1\fP | \fBANOUT_GAIN0\fP"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN_4\fP   \fBANOUT_GAIN1\fP"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN_2\fP   \fBANOUT_GAIN0\fP"
+.br
+.ti -1c
+.RI "#define \fBANOUT_GAIN_1\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBAN_OUT_CH_SET\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBCHSEL5\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBCHSEL4\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBCHSEL3\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBCHSEL2\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBCHSEL1\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBCHSEL0\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBINX_CONF0\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBMUS6\fP   0b01000000"
+.br
+.ti -1c
+.RI "#define \fBMUS5\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBMUS4\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBMUS3\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBMUS2\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBMUS1\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBMUS0\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBNot_defined\fP   0"
+.br
+.ti -1c
+.RI "#define \fBTemporalis_Anterior\fP   1"
+.br
+.ti -1c
+.RI "#define \fBSuperfic_Masseter\fP   2"
+.br
+.ti -1c
+.RI "#define \fBSplenius_Capitis\fP   3"
+.br
+.ti -1c
+.RI "#define \fBUpper_Trapezius\fP   4"
+.br
+.ti -1c
+.RI "#define \fBMiddle_Trapezius\fP   5"
+.br
+.ti -1c
+.RI "#define \fBLower_Trapezius\fP   6"
+.br
+.ti -1c
+.RI "#define \fBRhomboideus_Major\fP   7"
+.br
+.ti -1c
+.RI "#define \fBRhomboideus_Minor\fP   8"
+.br
+.ti -1c
+.RI "#define \fBAnterior_Deltoid\fP   9"
+.br
+.ti -1c
+.RI "#define \fBPosterior_Deltoid\fP   10"
+.br
+.ti -1c
+.RI "#define \fBLateral_Deltoid\fP   11"
+.br
+.ti -1c
+.RI "#define \fBInfraspinatus\fP   12"
+.br
+.ti -1c
+.RI "#define \fBTeres_Major\fP   13"
+.br
+.ti -1c
+.RI "#define \fBErector_Spinae\fP   14"
+.br
+.ti -1c
+.RI "#define \fBLatissimus_Dorsi\fP   15"
+.br
+.ti -1c
+.RI "#define \fBBic_Br_Long_Head\fP   16"
+.br
+.ti -1c
+.RI "#define \fBBic_Br_Short_Head\fP   17"
+.br
+.ti -1c
+.RI "#define \fBTric_Br_Lat_Head\fP   18"
+.br
+.ti -1c
+.RI "#define \fBTric_Br_Med_Head\fP   19"
+.br
+.ti -1c
+.RI "#define \fBPronator_Teres\fP   20"
+.br
+.ti -1c
+.RI "#define \fBFlex_Carpi_Radial\fP   21"
+.br
+.ti -1c
+.RI "#define \fBFlex_Carpi_Ulnaris\fP   22"
+.br
+.ti -1c
+.RI "#define \fBPalmaris_Longus\fP   23"
+.br
+.ti -1c
+.RI "#define \fBExt_Carpi_Radialis\fP   24"
+.br
+.ti -1c
+.RI "#define \fBExt_Carpi_Ulnaris\fP   25"
+.br
+.ti -1c
+.RI "#define \fBExt_Dig_Communis\fP   26"
+.br
+.ti -1c
+.RI "#define \fBBrachioradialis\fP   27"
+.br
+.ti -1c
+.RI "#define \fBAbd_Pollicis_Brev\fP   28"
+.br
+.ti -1c
+.RI "#define \fBAbd_Pollicis_Long\fP   29"
+.br
+.ti -1c
+.RI "#define \fBOpponens_Pollicis\fP   30"
+.br
+.ti -1c
+.RI "#define \fBAdductor_Pollicis\fP   31"
+.br
+.ti -1c
+.RI "#define \fBFlex_Poll_Brevis\fP   32"
+.br
+.ti -1c
+.RI "#define \fBAbd_Digiti_Minimi\fP   33"
+.br
+.ti -1c
+.RI "#define \fBFlex_Digiti_Minimi\fP   34"
+.br
+.ti -1c
+.RI "#define \fBOpp_Digiti_Minimi\fP   35"
+.br
+.ti -1c
+.RI "#define \fBDorsal_Interossei\fP   36"
+.br
+.ti -1c
+.RI "#define \fBPalmar_Interossei\fP   37"
+.br
+.ti -1c
+.RI "#define \fBLumbrical\fP   38"
+.br
+.ti -1c
+.RI "#define \fBRectus_Abdominis\fP   39"
+.br
+.ti -1c
+.RI "#define \fBExt_Abdom_Obliq\fP   40"
+.br
+.ti -1c
+.RI "#define \fBSerratus_Anterior\fP   41"
+.br
+.ti -1c
+.RI "#define \fBPectoralis_Major\fP   42"
+.br
+.ti -1c
+.RI "#define \fBSternoc_Ster_Head\fP   43"
+.br
+.ti -1c
+.RI "#define \fBSternoc_Clav_Head\fP   44"
+.br
+.ti -1c
+.RI "#define \fBAnterior_Scalenus\fP   45"
+.br
+.ti -1c
+.RI "#define \fBTensor_Fascia\fP   Latae 46"
+.br
+.ti -1c
+.RI "#define \fBGastrocn_Lateralis\fP   47"
+.br
+.ti -1c
+.RI "#define \fBGastrocn_Medialis\fP   48"
+.br
+.ti -1c
+.RI "#define \fBBiceps_Femoris\fP   49"
+.br
+.ti -1c
+.RI "#define \fBSoleus\fP   50"
+.br
+.ti -1c
+.RI "#define \fBSemitendinosus\fP   51"
+.br
+.ti -1c
+.RI "#define \fBGluteus_maximus\fP   52"
+.br
+.ti -1c
+.RI "#define \fBGluteus_medius\fP   53"
+.br
+.ti -1c
+.RI "#define \fBVastus_lateralis\fP   54"
+.br
+.ti -1c
+.RI "#define \fBVastus_medialis\fP   55"
+.br
+.ti -1c
+.RI "#define \fBRectus_femoris\fP   56"
+.br
+.ti -1c
+.RI "#define \fBTibialis_anterior\fP   57"
+.br
+.ti -1c
+.RI "#define \fBPeroneus_longus\fP   58"
+.br
+.ti -1c
+.RI "#define \fBSemimembranosus\fP   59"
+.br
+.ti -1c
+.RI "#define \fBGracilis\fP   60"
+.br
+.ti -1c
+.RI "#define \fBExt_Anal_Sphincter\fP   61"
+.br
+.ti -1c
+.RI "#define \fBPuborectalis\fP   62"
+.br
+.ti -1c
+.RI "#define \fBUrethral_Sphincter\fP   63"
+.br
+.ti -1c
+.RI "#define \fBNot_a_Muscle\fP   64"
+.br
+.ti -1c
+.RI "#define \fBINX_CONF1\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBSENS4\fP   0b10000000"
+.br
+.ti -1c
+.RI "#define \fBSENS3\fP   0b01000000"
+.br
+.ti -1c
+.RI "#define \fBSENS2\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBSENS1\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBSENS0\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBADAPT2\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBADAPT1\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBADAPT0\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBINX_CONF2\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBSIDE1\fP   0b10000000"
+.br
+.ti -1c
+.RI "#define \fBSIDE0\fP   0b01000000"
+.br
+.ti -1c
+.RI "#define \fBHPF1\fP   0b00100000"
+.br
+.ti -1c
+.RI "#define \fBHPF0\fP   0b00010000"
+.br
+.ti -1c
+.RI "#define \fBLPF1\fP   0b00001000"
+.br
+.ti -1c
+.RI "#define \fBLPF0\fP   0b00000100"
+.br
+.ti -1c
+.RI "#define \fBMODE1\fP   0b00000010"
+.br
+.ti -1c
+.RI "#define \fBMODE0\fP   0b00000001"
+.br
+.ti -1c
+.RI "#define \fBSIDE_NONE\fP   \fBSIDE1\fP | \fBSIDE0\fP"
+.br
+.ti -1c
+.RI "#define \fBSIDE_RIGHT\fP   \fBSIDE1\fP"
+.br
+.ti -1c
+.RI "#define \fBSIDE_LEFT\fP   \fBSIDE0\fP"
+.br
+.ti -1c
+.RI "#define \fBSIDE_UNDEFINED\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBHIGH_PASS_FILTER_200\fP   \fBHPF1\fP | \fBHPF0\fP"
+.br
+.ti -1c
+.RI "#define \fBHIGH_PASS_FILTER_100\fP   \fBHPF1\fP"
+.br
+.ti -1c
+.RI "#define \fBHIGH_PASS_FILTER_10\fP   \fBHPF0\fP"
+.br
+.ti -1c
+.RI "#define \fBHIGH_PASS_FILTER_03\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBLOW_PASS_FILTER_4400\fP   \fBLPF1\fP | \fBLPF0\fP"
+.br
+.ti -1c
+.RI "#define \fBLOW_PASS_FILTER_900\fP   \fBLPF1\fP"
+.br
+.ti -1c
+.RI "#define \fBLOW_PASS_FILTER_500\fP   \fBLPF0\fP"
+.br
+.ti -1c
+.RI "#define \fBLOW_PASS_FILTER_130\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBDETECTION_MODE_BIPOLAR\fP   \fBMODE1\fP"
+.br
+.ti -1c
+.RI "#define \fBDETECTION_MODE_DIFFERENCIAL\fP   \fBMODE0\fP"
+.br
+.ti -1c
+.RI "#define \fBDETECTION_MODE_MONOPOLAR\fP   0b00000000"
+.br
+.ti -1c
+.RI "#define \fBCRC_CODE\fP   0b10001100"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "unsigned char \fBcrc\fP (unsigned char config[])"
+.br
+.ti -1c
+.RI "void \fBprintBIN\fP (char)"
+.br
+.in -1c
+.SH "Macro Definition Documentation"
+.PP 
+.SS "#define Abd_Digiti_Minimi   33"
+
+.SS "#define Abd_Pollicis_Brev   28"
+
+.SS "#define Abd_Pollicis_Long   29"
+
+.SS "#define ACQ_OFF   0b00000000"
+
+.SS "#define ACQ_ON   0b00000001"
+
+.SS "#define ACQ_SETT   0b10000000"
+
+.SS "#define ADAPT0   0b00000001"
+
+.SS "#define ADAPT1   0b00000010"
+
+.SS "#define ADAPT2   0b00000100"
+
+.SS "#define Adductor_Pollicis   31"
+
+.SS "#define AN_OUT_CH_SET   0b00000000"
+
+.SS "#define AN_OUT_IN_SET   0b00000000"
+
+.SS "#define ANOUT_GAIN0   0b00010000"
+
+.SS "#define ANOUT_GAIN1   0b00100000"
+
+.SS "#define ANOUT_GAIN_1   0b00000000"
+
+.SS "#define ANOUT_GAIN_16   \fBANOUT_GAIN1\fP | \fBANOUT_GAIN0\fP"
+
+.SS "#define ANOUT_GAIN_2   \fBANOUT_GAIN0\fP"
+
+.SS "#define ANOUT_GAIN_4   \fBANOUT_GAIN1\fP"
+
+.SS "#define Anterior_Deltoid   9"
+
+.SS "#define Anterior_Scalenus   45"
+
+.SS "#define Bic_Br_Long_Head   16"
+
+.SS "#define Bic_Br_Short_Head   17"
+
+.SS "#define Biceps_Femoris   49"
+
+.SS "#define Brachioradialis   27"
+
+.SS "#define CHSEL0   0b00000001"
+
+.SS "#define CHSEL1   0b00000010"
+
+.SS "#define CHSEL2   0b00000100"
+
+.SS "#define CHSEL3   0b00001000"
+
+.SS "#define CHSEL4   0b00010000"
+
+.SS "#define CHSEL5   0b00100000"
+
+.SS "#define CONFIG_SIZE   40"
+
+.SS "#define CRC_CODE   0b10001100"
+
+.SS "#define DECIM   0b01000000"
+
+.SS "#define DETECTION_MODE_BIPOLAR   \fBMODE1\fP"
+
+.SS "#define DETECTION_MODE_DIFFERENCIAL   \fBMODE0\fP"
+
+.SS "#define DETECTION_MODE_MONOPOLAR   0b00000000"
+
+.SS "#define Dorsal_Interossei   36"
+
+.SS "#define Erector_Spinae   14"
+
+.SS "#define Ext_Abdom_Obliq   40"
+
+.SS "#define Ext_Anal_Sphincter   61"
+
+.SS "#define Ext_Carpi_Radialis   24"
+
+.SS "#define Ext_Carpi_Ulnaris   25"
+
+.SS "#define Ext_Dig_Communis   26"
+
+.SS "#define Flex_Carpi_Radial   21"
+
+.SS "#define Flex_Carpi_Ulnaris   22"
+
+.SS "#define Flex_Digiti_Minimi   34"
+
+.SS "#define Flex_Poll_Brevis   32"
+
+.SS "#define FSAMP0   0b00001000"
+
+.SS "#define FSAMP1   0b00010000"
+
+.SS "#define FSAMP_10240   \fBFSAMP0\fP | \fBFSAMP1\fP"
+
+.SS "#define FSAMP_2048   \fBFSAMP0\fP"
+
+.SS "#define FSAMP_512   0b00000000"
+
+.SS "#define FSAMP_5120   \fBFSAMP1\fP"
+
+.SS "#define Gastrocn_Lateralis   47"
+
+.SS "#define Gastrocn_Medialis   48"
+
+.SS "#define Gluteus_maximus   52"
+
+.SS "#define Gluteus_medius   53"
+
+.SS "#define Gracilis   60"
+
+.SS "#define HIGH_PASS_FILTER_03   0b00000000"
+
+.SS "#define HIGH_PASS_FILTER_10   \fBHPF0\fP"
+
+.SS "#define HIGH_PASS_FILTER_100   \fBHPF1\fP"
+
+.SS "#define HIGH_PASS_FILTER_200   \fBHPF1\fP | \fBHPF0\fP"
+
+.SS "#define HPF0   0b00010000"
+
+.SS "#define HPF1   0b00100000"
+
+.SS "#define Infraspinatus   12"
+
+.SS "#define INSEL0   0b00000001"
+
+.SS "#define INSEL1   0b00000010"
+
+.SS "#define INSEL2   0b00000100"
+
+.SS "#define INSEL3   0b00001000"
+
+.SS "#define INX_CONF0   0b00000000"
+
+.SS "#define INX_CONF1   0b00000000"
+
+.SS "#define INX_CONF2   0b00000000"
+
+.SS "#define Lateral_Deltoid   11"
+
+.SS "#define Latissimus_Dorsi   15"
+
+.SS "#define LOW_PASS_FILTER_130   0b00000000"
+
+.SS "#define LOW_PASS_FILTER_4400   \fBLPF1\fP | \fBLPF0\fP"
+
+.SS "#define LOW_PASS_FILTER_500   \fBLPF0\fP"
+
+.SS "#define LOW_PASS_FILTER_900   \fBLPF1\fP"
+
+.SS "#define Lower_Trapezius   6"
+
+.SS "#define LPF0   0b00000100"
+
+.SS "#define LPF1   0b00001000"
+
+.SS "#define Lumbrical   38"
+
+.SS "#define Middle_Trapezius   5"
+
+.SS "#define MODE0   0b00000001"
+
+.SS "#define MODE1   0b00000010"
+
+.SS "#define MUS0   0b00000001"
+
+.SS "#define MUS1   0b00000010"
+
+.SS "#define MUS2   0b00000100"
+
+.SS "#define MUS3   0b00001000"
+
+.SS "#define MUS4   0b00010000"
+
+.SS "#define MUS5   0b00100000"
+
+.SS "#define MUS6   0b01000000"
+
+.SS "#define NCH0   0b00000010"
+
+.SS "#define NCH1   0b00000100"
+
+.SS "#define NCH_IN1to2_MIN1   0b00000000"
+
+.SS "#define NCH_IN1to4_MIN1to2   \fBNCH0\fP"
+
+.SS "#define NCH_IN1to6_MIN1to3   \fBNCH1\fP"
+
+.SS "#define NCH_IN1to8_MIN1to4   \fBNCH1\fP | \fBNCH0\fP"
+
+.SS "#define Not_a_Muscle   64"
+
+.SS "#define Not_defined   0"
+
+.SS "#define Opp_Digiti_Minimi   35"
+
+.SS "#define Opponens_Pollicis   30"
+
+.SS "#define Palmar_Interossei   37"
+
+.SS "#define Palmaris_Longus   23"
+
+.SS "#define Pectoralis_Major   42"
+
+.SS "#define Peroneus_longus   58"
+
+.SS "#define Posterior_Deltoid   10"
+
+.SS "#define Pronator_Teres   20"
+
+.SS "#define Puborectalis   62"
+
+.SS "#define REC_ON   0b00100000"
+
+.SS "#define Rectus_Abdominis   39"
+
+.SS "#define Rectus_femoris   56"
+
+.SS "#define Rhomboideus_Major   7"
+
+.SS "#define Rhomboideus_Minor   8"
+
+.SS "#define Semimembranosus   59"
+
+.SS "#define Semitendinosus   51"
+
+.SS "#define SENS0   0b00001000"
+
+.SS "#define SENS1   0b00010000"
+
+.SS "#define SENS2   0b00100000"
+
+.SS "#define SENS3   0b01000000"
+
+.SS "#define SENS4   0b10000000"
+
+.SS "#define Serratus_Anterior   41"
+
+.SS "#define SIDE0   0b01000000"
+
+.SS "#define SIDE1   0b10000000"
+
+.SS "#define SIDE_LEFT   \fBSIDE0\fP"
+
+.SS "#define SIDE_NONE   \fBSIDE1\fP | \fBSIDE0\fP"
+
+.SS "#define SIDE_RIGHT   \fBSIDE1\fP"
+
+.SS "#define SIDE_UNDEFINED   0b00000000"
+
+.SS "#define Soleus   50"
+
+.SS "#define Splenius_Capitis   3"
+
+.SS "#define Sternoc_Clav_Head   44"
+
+.SS "#define Sternoc_Ster_Head   43"
+
+.SS "#define Superfic_Masseter   2"
+
+.SS "#define Temporalis_Anterior   1"
+
+.SS "#define Tensor_Fascia   Latae 46"
+
+.SS "#define Teres_Major   13"
+
+.SS "#define Tibialis_anterior   57"
+
+.SS "#define Tric_Br_Lat_Head   18"
+
+.SS "#define Tric_Br_Med_Head   19"
+
+.SS "#define Upper_Trapezius   4"
+
+.SS "#define Urethral_Sphincter   63"
+
+.SS "#define Vastus_lateralis   54"
+
+.SS "#define Vastus_medialis   55"
+
+.SH "Function Documentation"
+.PP 
+.SS "unsigned char crc (unsigned char config[])"
+
+.SS "void printBIN (char)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lslsub_dbfeeder from the source code\&.

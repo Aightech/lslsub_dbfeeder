@@ -1,43 +1,29 @@
-//g++ main.cpp -lpqxx -lpq
-#include <iostream>
-#include <pqxx/pqxx>
-#include <string>
-#include <lsl_cpp.h>
+/**
+ * \file main.cpp
+ * \brief TODO.
+ * \author Alexis Devillard
+ * \version 1.0
+ * \date 08 may 2019
+ */
 
-void error(std::string str)
-{
-  std::cout << str << std::endl;
-  exit(0);
-}
+#include <iostream> //cout,cin
+#include <pqxx/pqxx> //psql wrapper
+#include <string> 
+#include <lsl_cpp.h> //lsl library
+#include <thread> // std::thread
+#include <fstream> // open file
+#include <sstream> //stream in file
 
-pqxx::connection* connect_db(std::string name, std::string user, std::string password,std::string host, std::string port)
-{
-  pqxx::connection *C;
-  try
-    {
-      std::string connParam=
-	"dbname = " + name + \
-	" user = " + user + \
-	" password = " + password + \
-	" hostaddr = " + host + \
-	" port = " + port;
-      std::cout << "Connecting to lsldb...\xd" << std::flush;
-      C = new pqxx::connection(connParam);
-      
-    
-      if (!C->is_open())
-        error("Connection to lsldb failed.");
-      
-      std::cout << "Connected to lsldb       " << std::endl;
-      return C;
-    }
-  catch (const pqxx::pqxx_exception &e)
-    {
-      std::cerr  << e.base().what() << std::endl;
-    }
-}
+#include "psql.h" // function to streamore stream in postgres database
+#include "tools.h" // args, usage, error
 
-void scanStream(std::vector<lsl::stream_info>& to, bool verbose = true)
+
+/**
+ * @brief scanstream Search for the lsl streams and add them to the lslinfo vector..
+ * @param to Lslinfo vector.
+ * @param verbose To activate the display of the parameters of each streams.
+ */
+void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
 {
   std::vector<lsl::stream_info> strm_info = lsl::resolve_streams();
   if(strm_info.size()>0)
@@ -53,12 +39,13 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose = true)
             "cf_undefined"     // Can not be transmitted.
            };
       
-      std::cout << "Available Streams:" << std::endl;
+      std::cout << "[INFO] Available Streams:" << std::endl;
       for (int i = 0; i<strm_info.size(); i++)
-	{  
+	{
+	  std::cout <<"-  " <<  strm_info[i].name()  << " [ "<< strm_info[i].uid() << " ]" << std::endl;
 	  if(verbose)
 	    {
-	      std::cout <<"- " <<  strm_info[i].name()  << " [ "<< strm_info[i].uid() << " ]" << std::endl;
+	      
 	      std::cout <<"   > Type:         " <<  strm_info[i].type() << std::endl;
 	      std::cout <<"   > Nb. Channels: " <<  strm_info[i].channel_count() << std::endl;
 	      std::cout <<"   > Format:       " <<  channel_format_str[strm_info[i].channel_format()] << std::endl;
@@ -82,113 +69,125 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose = true)
 
 }
 
-bool add_stream_metadata(pqxx::connection *C, lsl::stream_info& info)
+/**
+ * @brief store_stream Connect to the database and start storing the incoming stream..
+ * @param strm_info the info of stream to record.
+ * @param rec_on Boolean that stop the main loop of recording.
+ */
+void store_stream(lsl::stream_info strm_info, bool *rec_on)
 {
-  pqxx::nontransaction N(*C);// Create a non-transactional object.
-  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "';";  
-  pqxx::result R( N.exec( sql ));// Execute SQL query 
-  N.commit();
-
-  std::cout << "Name = " << R.size() << std::endl;
-  if(R.size()==0)
-    {
-      pqxx::work W(*C);
-  
-      sql=
-	"INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
-	"VALUES ( '" + info.name()	+ "'" +					\
-	" , '" + info.type()+ "'"		  +				\
-	" , " + std::to_string(info.channel_format())+			\
-	" , " + std::to_string(info.nominal_srate())  +			\
-	" , " + std::to_string(info.channel_count())  +			\
-	" , '" + info.hostname()+ "'"	  +				\
-	");";
-      
-      // Execute SQL query 
-      W.exec( sql );
-      W.commit();
-    }
-
-
-}
-
-void create_stream_table_db(pqxx::connection *C, std::string name)
-{
-  std::string sql=
-    "CREATE TABLE IF NOT EXISTS " + name + " ( "\
-    "time DOUBLE PRECISION       NOT NULL,"	\
-    "data DOUBLE PRECISION[]  NOT NULL,"	\
-    "uid TEXT  NULL);";
-
-  pqxx::work W(*C);
-      
-  // Execute SQL query 
-  W.exec( sql );
-  W.commit();
-}
-
-void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps )
-{
-  std::string sql="";
-  for(int j = 0; j < chunk.size(); j++)
-    {
-      std::cout << timestamps[j] << std::endl; // only showing the time stamps here
-      sql += "INSERT INTO " + name + " (time, data) "+ \
-	"VALUES ( " + std::to_string(timestamps[j]) +		\
-	" , '{" + std::to_string(chunk[j][0]);
-      for(int i =1; i < chunk[j].size(); i++)
-	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}'); " ;
-    }
-	    
-  pqxx::work W(*C);
-      
-  // Execute SQL query 
-  W.exec( sql );
-  W.commit();
-}
-
-
-
-int main(int argc, char* argv[])
-{
-  
-  std::vector<lsl::stream_info> strm_info;
-  scanStream(strm_info);
-
-  
   pqxx::connection *C = connect_db("lsldb",
 				   "lsldb_user",
 				   "azerty",
 				   "127.0.0.1",
 				   "5432");
   
-  add_stream_metadata(C,strm_info[0]);
-  create_stream_table_db(C,strm_info[0].name());
-  lsl::stream_inlet inlet(strm_info[0]);
+  add_stream_metadata(C,strm_info);
+  create_stream_table_db(C,strm_info.name());
+  lsl::stream_inlet inlet(strm_info);
   try {
 
     // and retrieve the chunks (note: this can of course also be done with pure std::vectors
     // instead of stereo_samples)
-    while (true)
+    while (*rec_on)
       {
 	std::vector<std::vector<float>> chunk;
 	std::vector<double> timestamps;
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    insert_data_db(C, strm_info[0].name(), chunk, timestamps); 
+	    insert_data_db(C, strm_info.name(), chunk, timestamps); 
 	  }
     }
 
   }
   catch (std::exception& e)
     {
-      std::cerr << "Got an exception: " << e.what() << std::endl;
+      std::cerr << "[EXEPTION] Got an exception: " << e.what() << std::endl;
     }
   
 	
-  std::cout << "Disconnecting from lsldb...\xd" << std::flush;
+  std::cout << "[INFO] Disconnecting from lsldb...\xd" << std::flush;
   C->disconnect ();
-  std::cout << "Disconnected from lsldb.       " << std::endl;
+  std::cout << "[INFO] Disconnected from lsldb.       " << std::endl;
+  
+}
+
+/**
+ * @brief get_conf Read a configuration file and extract the name of stream to record.
+ * @param file Configuration file.
+ * @param strm String vector of the stream to record's name.
+ */
+int get_conf(std::string file, std::vector<std::string>& strm)
+{
+  std::ifstream source;
+  
+  source.open(file, std::ios_base::in);  // open data
+  if (source)
+    {
+      std::cout << "[INFO] " << "Streams to be recorded:" << std::endl;
+      for(std::string line; std::getline(source, line); )
+	{
+	  std::istringstream in(line);
+	  std::string name;
+	  in>>name;
+	  strm.push_back(name);
+	  std::cout << "\t- " << name<< std::endl;
+	}
+    }
+  else
+    std::cout << "No configuration file [" << file << "found. No stream will be recorded" << std::endl;
+}
+
+
+
+
+int main(int argc, char* argv[])
+{
+  std::vector<std::string> opt_flag(
+				    {"-c"});
+  std::vector<std::string> opt_label(
+				     {"Configuration file"});
+  std::vector<std::string> opt_value(
+				     {"conf.cfg"});
+  
+  get_arg(argc, argv, opt_flag, opt_label, opt_value);
+
+  //get the streams to record.
+  std::vector<std::string> streams_to_get;
+  std::string cfg_file = opt_value[0];
+  get_conf(cfg_file, streams_to_get);
+  
+  //scan the available streams.
+  std::vector<lsl::stream_info> strm_info;
+  scanStream(strm_info, false);
+
+  //start to record the wanted streams that were available.
+  std::vector<std::thread> strm_thread;
+  bool rec_on = false;
+  for(int i =0; i < strm_info.size(); i++)
+      for(int j =0; j < streams_to_get.size(); j++)
+  	  if(strm_info[i].name().compare( streams_to_get[j] ) == 0 )
+	    {//launch a thread
+	      rec_on = true;
+	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on));
+	      std::cout << "[INFO] Start to record: " <<  streams_to_get[j] << std::endl;
+	    }
+
+  //if at least one stream recording thread was launch 
+  if(rec_on)
+    {//wait for the user to stop the recording.
+      std::cout << "[INFO] Press any key then <ENTER> to stop recording and quit."<< std::endl;
+      int a;
+      std::cin >> a;
+      //stop the main loop of recording of each thread.
+      rec_on=false;
+      for (auto& th : strm_thread) th.join();
+    }
+  else
+    std::cout << "[INFO] None of the listed streams has been found."<< std::endl;
+
+  return 0;
+  
+  
   
 }

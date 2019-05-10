@@ -1,0 +1,105 @@
+.TH "src/psql.cpp" 3 "Fri May 10 2019" "lslsub_dbfeeder" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/psql.cpp \- TODO\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'psql\&.h'\fP
+.br
+\fC#include 'tools\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "pqxx::connection * \fBconnect_db\fP (std::string name, std::string user, std::string password, std::string host, std::string port)"
+.br
+.RI "connect_db Enable to connect to a database and return the connected object of pqxx library "
+.ti -1c
+.RI "bool \fBadd_stream_metadata\fP (pqxx::connection *C, \fBlsl::stream_info\fP &info)"
+.br
+.RI "add_stream_metadata Enable to add a table with the stream name if it does not exist\&. return false if it existed "
+.ti -1c
+.RI "void \fBcreate_stream_table_db\fP (pqxx::connection *C, std::string name)"
+.br
+.ti -1c
+.RI "void \fBinsert_data_db\fP (pqxx::connection *C, std::string name, std::vector< std::vector< float >> &chunk, std::vector< double > &timestamps)"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+TODO\&. 
+
+
+.PP
+\fBAuthor:\fP
+.RS 4
+Alexis Devillard 
+.RE
+.PP
+\fBVersion:\fP
+.RS 4
+1\&.0 
+.RE
+.PP
+\fBDate:\fP
+.RS 4
+08 may 2019 
+.RE
+.PP
+
+.SH "Function Documentation"
+.PP 
+.SS "bool add_stream_metadata (pqxx::connection * C, \fBlsl::stream_info\fP & info)"
+
+.PP
+add_stream_metadata Enable to add a table with the stream name if it does not exist\&. return false if it existed 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of the database 
+.br
+\fIuser\fP User name to connect the database 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The connected object\&. 
+.RE
+.PP
+
+.SS "pqxx::connection* connect_db (std::string name, std::string user, std::string password, std::string host, std::string port)"
+
+.PP
+connect_db Enable to connect to a database and return the connected object of pqxx library 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIname\fP Name of the database 
+.br
+\fIuser\fP User name to connect the database 
+.br
+\fIpassword\fP User Password 
+.br
+\fIhost\fP Host of the database 
+.br
+\fIport\fP Port of the host 
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The connected object\&. 
+.RE
+.PP
+
+.SS "void create_stream_table_db (pqxx::connection * C, std::string name)"
+
+.SS "void insert_data_db (pqxx::connection * C, std::string name, std::vector< std::vector< float >> & chunk, std::vector< double > & timestamps)"
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for lslsub_dbfeeder from the source code\&.

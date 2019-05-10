@@ -1,0 +1,321 @@
+\hypertarget{classlsl_1_1xml__element}{}\section{lsl\+:\+:xml\+\_\+element Class Reference}
+\label{classlsl_1_1xml__element}\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+
+
+{\ttfamily \#include $<$lsl\+\_\+cpp.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classlsl_1_1xml__element_a9a2c940a06714662f3cef5e9847e8cae}{xml\+\_\+element} (\hyperlink{namespacelsl_a5edc7a49a1a1be1634fe6dce3d59c59b}{lsl\+\_\+xml\+\_\+ptr} obj=0)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_ab68b7a1c63c2cb0eb4ce6361b94469b7}{first\+\_\+child} () const
+\begin{DoxyCompactList}\small\item\em Get the first child of the element. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a12254f735a79a11b75718fe7c28186d0}{last\+\_\+child} () const
+\begin{DoxyCompactList}\small\item\em Get the last child of the element. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a9637215f616b660789696e452b0e0591}{next\+\_\+sibling} () const
+\begin{DoxyCompactList}\small\item\em Get the next sibling in the children list of the parent node. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a78c2e0b3d7bda2b5a2d478e3c0cdc87a}{previous\+\_\+sibling} () const
+\begin{DoxyCompactList}\small\item\em Get the previous sibling in the children list of the parent node. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_ae3211be3c10164f366220b638a9dd200}{parent} () const
+\begin{DoxyCompactList}\small\item\em Get the parent node. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a111ef129dce406af43948d8c9b915148}{child} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}) const
+\begin{DoxyCompactList}\small\item\em Get a child with a specified name. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a100590d2a9822261a3f0b0ed7810134d}{next\+\_\+sibling} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}) const
+\begin{DoxyCompactList}\small\item\em Get the next sibling with the specified name. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a70b90853b7edfaebfe69bc1103ed6b8b}{previous\+\_\+sibling} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}) const
+\begin{DoxyCompactList}\small\item\em Get the previous sibling with the specified name. \end{DoxyCompactList}\item 
+bool \hyperlink{classlsl_1_1xml__element_a787dcaf85abcc5cd4d5f93fc80c82eb5}{empty} () const
+\begin{DoxyCompactList}\small\item\em Whether this node is empty. \end{DoxyCompactList}\item 
+bool \hyperlink{classlsl_1_1xml__element_a965cfff9a29ebe6d8274f5256ff0017c}{is\+\_\+text} () const
+\begin{DoxyCompactList}\small\item\em Whether this is a text body (instead of an X\+ML element). True both for plain char data and C\+Data. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name} () const
+\begin{DoxyCompactList}\small\item\em Name of the element. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}{value} () const
+\begin{DoxyCompactList}\small\item\em Value of the element. \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classlsl_1_1xml__element_ac99677d44f66ba850afd9b669e26452f}{child\+\_\+value} () const
+\begin{DoxyCompactList}\small\item\em Get child value (value of the first child that is text). \end{DoxyCompactList}\item 
+const char $\ast$ \hyperlink{classlsl_1_1xml__element_a893102d2d84a444a89099f9c90cb6c31}{child\+\_\+value} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}) const
+\begin{DoxyCompactList}\small\item\em Get child value of a child with a specified name. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a6a162d1b57049f5ecab6b68207a71d53}{append\+\_\+child\+\_\+value} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}, const std\+::string \&\hyperlink{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}{value})
+\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a3e7fde09def517574df99c71a0a05d23}{prepend\+\_\+child\+\_\+value} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}, const std\+::string \&\hyperlink{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}{value})
+\item 
+bool \hyperlink{classlsl_1_1xml__element_a6fe187e03b36cf8fd5f9d3892e99453f}{set\+\_\+child\+\_\+value} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name}, const std\+::string \&\hyperlink{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}{value})
+\item 
+bool \hyperlink{classlsl_1_1xml__element_a8ddf2b35719b273dbb5700f16a2da4e5}{set\+\_\+name} (const std\+::string \&rhs)
+\item 
+bool \hyperlink{classlsl_1_1xml__element_a3a3bbf2468ba3abd9309764faa61a7a4}{set\+\_\+value} (const std\+::string \&rhs)
+\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_af56c7976bb62cabc9c0ca69502063fea}{append\+\_\+child} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name})
+\begin{DoxyCompactList}\small\item\em Append a child element with the specified name. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_abd881c6c5d0d381f9efff2fc25975e7e}{prepend\+\_\+child} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name})
+\begin{DoxyCompactList}\small\item\em Prepend a child element with the specified name. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a73fc3bfe22e1117907a2d80ba33d2208}{append\+\_\+copy} (const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&e)
+\begin{DoxyCompactList}\small\item\em Append a copy of the specified element as a child. \end{DoxyCompactList}\item 
+\hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \hyperlink{classlsl_1_1xml__element_a1bea6df95134f909611b1c40218828d7}{prepend\+\_\+copy} (const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&e)
+\begin{DoxyCompactList}\small\item\em Prepend a child element with the specified name. \end{DoxyCompactList}\item 
+void \hyperlink{classlsl_1_1xml__element_ad23da57ac3a6a7f3dd849be0a8b44a47}{remove\+\_\+child} (const std\+::string \&\hyperlink{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}{name})
+\begin{DoxyCompactList}\small\item\em Remove a child element with the specified name. \end{DoxyCompactList}\item 
+void \hyperlink{classlsl_1_1xml__element_a0c07b18ef39b7f6d683b9612e2a9104e}{remove\+\_\+child} (const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&e)
+\begin{DoxyCompactList}\small\item\em Remove a specified child element. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A lightweight X\+ML element tree; models the .desc() field of \hyperlink{classlsl_1_1stream__info}{stream\+\_\+info}. Has a name and can have multiple named children or have text content as value; attributes are omitted. Insider note\+: The interface is modeled after a subset of pugixml\textquotesingle{}s node type and is compatible with it. See also \href{http://pugixml.googlecode.com/svn/tags/latest/docs/manual/access.html}{\tt http\+://pugixml.\+googlecode.\+com/svn/tags/latest/docs/manual/access.\+html} for additional documentation. 
+
+\subsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classlsl_1_1xml__element_a9a2c940a06714662f3cef5e9847e8cae}\label{classlsl_1_1xml__element_a9a2c940a06714662f3cef5e9847e8cae}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!xml\+\_\+element@{xml\+\_\+element}}
+\index{xml\+\_\+element@{xml\+\_\+element}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{xml\+\_\+element()}{xml\_element()}}
+{\footnotesize\ttfamily lsl\+::xml\+\_\+element\+::xml\+\_\+element (\begin{DoxyParamCaption}\item[{\hyperlink{namespacelsl_a5edc7a49a1a1be1634fe6dce3d59c59b}{lsl\+\_\+xml\+\_\+ptr}}]{obj = {\ttfamily 0} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructor. 
+
+
+
+\subsection{Member Function Documentation}
+\mbox{\Hypertarget{classlsl_1_1xml__element_af56c7976bb62cabc9c0ca69502063fea}\label{classlsl_1_1xml__element_af56c7976bb62cabc9c0ca69502063fea}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!append\+\_\+child@{append\+\_\+child}}
+\index{append\+\_\+child@{append\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{append\+\_\+child()}{append\_child()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::append\+\_\+child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Append a child element with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a6a162d1b57049f5ecab6b68207a71d53}\label{classlsl_1_1xml__element_a6a162d1b57049f5ecab6b68207a71d53}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!append\+\_\+child\+\_\+value@{append\+\_\+child\+\_\+value}}
+\index{append\+\_\+child\+\_\+value@{append\+\_\+child\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{append\+\_\+child\+\_\+value()}{append\_child\_value()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::append\+\_\+child\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Append a child node with a given name, which has a (nameless) plain-\/text child with the given text value. \mbox{\Hypertarget{classlsl_1_1xml__element_a73fc3bfe22e1117907a2d80ba33d2208}\label{classlsl_1_1xml__element_a73fc3bfe22e1117907a2d80ba33d2208}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!append\+\_\+copy@{append\+\_\+copy}}
+\index{append\+\_\+copy@{append\+\_\+copy}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{append\+\_\+copy()}{append\_copy()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::append\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Append a copy of the specified element as a child. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a111ef129dce406af43948d8c9b915148}\label{classlsl_1_1xml__element_a111ef129dce406af43948d8c9b915148}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!child@{child}}
+\index{child@{child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{child()}{child()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get a child with a specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_ac99677d44f66ba850afd9b669e26452f}\label{classlsl_1_1xml__element_ac99677d44f66ba850afd9b669e26452f}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!child\+\_\+value@{child\+\_\+value}}
+\index{child\+\_\+value@{child\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{child\+\_\+value()}{child\_value()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily const char$\ast$ lsl\+::xml\+\_\+element\+::child\+\_\+value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get child value (value of the first child that is text). 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a893102d2d84a444a89099f9c90cb6c31}\label{classlsl_1_1xml__element_a893102d2d84a444a89099f9c90cb6c31}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!child\+\_\+value@{child\+\_\+value}}
+\index{child\+\_\+value@{child\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{child\+\_\+value()}{child\_value()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily const char$\ast$ lsl\+::xml\+\_\+element\+::child\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get child value of a child with a specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a787dcaf85abcc5cd4d5f93fc80c82eb5}\label{classlsl_1_1xml__element_a787dcaf85abcc5cd4d5f93fc80c82eb5}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!empty@{empty}}
+\index{empty@{empty}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{empty()}{empty()}}
+{\footnotesize\ttfamily bool lsl\+::xml\+\_\+element\+::empty (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Whether this node is empty. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_ab68b7a1c63c2cb0eb4ce6361b94469b7}\label{classlsl_1_1xml__element_ab68b7a1c63c2cb0eb4ce6361b94469b7}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!first\+\_\+child@{first\+\_\+child}}
+\index{first\+\_\+child@{first\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{first\+\_\+child()}{first\_child()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::first\+\_\+child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the first child of the element. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a965cfff9a29ebe6d8274f5256ff0017c}\label{classlsl_1_1xml__element_a965cfff9a29ebe6d8274f5256ff0017c}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!is\+\_\+text@{is\+\_\+text}}
+\index{is\+\_\+text@{is\+\_\+text}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{is\+\_\+text()}{is\_text()}}
+{\footnotesize\ttfamily bool lsl\+::xml\+\_\+element\+::is\+\_\+text (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Whether this is a text body (instead of an X\+ML element). True both for plain char data and C\+Data. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a12254f735a79a11b75718fe7c28186d0}\label{classlsl_1_1xml__element_a12254f735a79a11b75718fe7c28186d0}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!last\+\_\+child@{last\+\_\+child}}
+\index{last\+\_\+child@{last\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{last\+\_\+child()}{last\_child()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::last\+\_\+child (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the last child of the element. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}\label{classlsl_1_1xml__element_a2e449e85b7e763b1d0db4bb19d2eb7c2}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!name@{name}}
+\index{name@{name}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{name()}{name()}}
+{\footnotesize\ttfamily const char$\ast$ lsl\+::xml\+\_\+element\+::name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Name of the element. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a9637215f616b660789696e452b0e0591}\label{classlsl_1_1xml__element_a9637215f616b660789696e452b0e0591}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!next\+\_\+sibling@{next\+\_\+sibling}}
+\index{next\+\_\+sibling@{next\+\_\+sibling}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{next\+\_\+sibling()}{next\_sibling()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::next\+\_\+sibling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the next sibling in the children list of the parent node. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a100590d2a9822261a3f0b0ed7810134d}\label{classlsl_1_1xml__element_a100590d2a9822261a3f0b0ed7810134d}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!next\+\_\+sibling@{next\+\_\+sibling}}
+\index{next\+\_\+sibling@{next\+\_\+sibling}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{next\+\_\+sibling()}{next\_sibling()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::next\+\_\+sibling (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the next sibling with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_ae3211be3c10164f366220b638a9dd200}\label{classlsl_1_1xml__element_ae3211be3c10164f366220b638a9dd200}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!parent@{parent}}
+\index{parent@{parent}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{parent()}{parent()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::parent (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the parent node. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_abd881c6c5d0d381f9efff2fc25975e7e}\label{classlsl_1_1xml__element_abd881c6c5d0d381f9efff2fc25975e7e}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!prepend\+\_\+child@{prepend\+\_\+child}}
+\index{prepend\+\_\+child@{prepend\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{prepend\+\_\+child()}{prepend\_child()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::prepend\+\_\+child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prepend a child element with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a3e7fde09def517574df99c71a0a05d23}\label{classlsl_1_1xml__element_a3e7fde09def517574df99c71a0a05d23}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!prepend\+\_\+child\+\_\+value@{prepend\+\_\+child\+\_\+value}}
+\index{prepend\+\_\+child\+\_\+value@{prepend\+\_\+child\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{prepend\+\_\+child\+\_\+value()}{prepend\_child\_value()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::prepend\+\_\+child\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Prepend a child node with a given name, which has a (nameless) plain-\/text child with the given text value. \mbox{\Hypertarget{classlsl_1_1xml__element_a1bea6df95134f909611b1c40218828d7}\label{classlsl_1_1xml__element_a1bea6df95134f909611b1c40218828d7}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!prepend\+\_\+copy@{prepend\+\_\+copy}}
+\index{prepend\+\_\+copy@{prepend\+\_\+copy}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{prepend\+\_\+copy()}{prepend\_copy()}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::prepend\+\_\+copy (\begin{DoxyParamCaption}\item[{const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Prepend a child element with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a78c2e0b3d7bda2b5a2d478e3c0cdc87a}\label{classlsl_1_1xml__element_a78c2e0b3d7bda2b5a2d478e3c0cdc87a}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!previous\+\_\+sibling@{previous\+\_\+sibling}}
+\index{previous\+\_\+sibling@{previous\+\_\+sibling}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{previous\+\_\+sibling()}{previous\_sibling()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::previous\+\_\+sibling (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the previous sibling in the children list of the parent node. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a70b90853b7edfaebfe69bc1103ed6b8b}\label{classlsl_1_1xml__element_a70b90853b7edfaebfe69bc1103ed6b8b}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!previous\+\_\+sibling@{previous\+\_\+sibling}}
+\index{previous\+\_\+sibling@{previous\+\_\+sibling}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{previous\+\_\+sibling()}{previous\_sibling()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} lsl\+::xml\+\_\+element\+::previous\+\_\+sibling (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Get the previous sibling with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_ad23da57ac3a6a7f3dd849be0a8b44a47}\label{classlsl_1_1xml__element_ad23da57ac3a6a7f3dd849be0a8b44a47}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!remove\+\_\+child@{remove\+\_\+child}}
+\index{remove\+\_\+child@{remove\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{remove\+\_\+child()}{remove\_child()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void lsl\+::xml\+\_\+element\+::remove\+\_\+child (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a child element with the specified name. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a0c07b18ef39b7f6d683b9612e2a9104e}\label{classlsl_1_1xml__element_a0c07b18ef39b7f6d683b9612e2a9104e}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!remove\+\_\+child@{remove\+\_\+child}}
+\index{remove\+\_\+child@{remove\+\_\+child}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{remove\+\_\+child()}{remove\_child()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily void lsl\+::xml\+\_\+element\+::remove\+\_\+child (\begin{DoxyParamCaption}\item[{const \hyperlink{classlsl_1_1xml__element}{xml\+\_\+element} \&}]{e }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Remove a specified child element. 
+
+\mbox{\Hypertarget{classlsl_1_1xml__element_a6fe187e03b36cf8fd5f9d3892e99453f}\label{classlsl_1_1xml__element_a6fe187e03b36cf8fd5f9d3892e99453f}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!set\+\_\+child\+\_\+value@{set\+\_\+child\+\_\+value}}
+\index{set\+\_\+child\+\_\+value@{set\+\_\+child\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{set\+\_\+child\+\_\+value()}{set\_child\_value()}}
+{\footnotesize\ttfamily bool lsl\+::xml\+\_\+element\+::set\+\_\+child\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name,  }\item[{const std\+::string \&}]{value }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the text value of the (nameless) plain-\/text child of a named child node. \mbox{\Hypertarget{classlsl_1_1xml__element_a8ddf2b35719b273dbb5700f16a2da4e5}\label{classlsl_1_1xml__element_a8ddf2b35719b273dbb5700f16a2da4e5}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!set\+\_\+name@{set\+\_\+name}}
+\index{set\+\_\+name@{set\+\_\+name}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{set\+\_\+name()}{set\_name()}}
+{\footnotesize\ttfamily bool lsl\+::xml\+\_\+element\+::set\+\_\+name (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the element\textquotesingle{}s name. \begin{DoxyReturn}{Returns}
+False if the node is empty (or if out of memory). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlsl_1_1xml__element_a3a3bbf2468ba3abd9309764faa61a7a4}\label{classlsl_1_1xml__element_a3a3bbf2468ba3abd9309764faa61a7a4}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!set\+\_\+value@{set\+\_\+value}}
+\index{set\+\_\+value@{set\+\_\+value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{set\+\_\+value()}{set\_value()}}
+{\footnotesize\ttfamily bool lsl\+::xml\+\_\+element\+::set\+\_\+value (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{rhs }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Set the element\textquotesingle{}s value. \begin{DoxyReturn}{Returns}
+False if the node is empty (or if out of memory). 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}\label{classlsl_1_1xml__element_a1a5e666b35c5d7262e4ffbda86b57f73}} 
+\index{lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}!value@{value}}
+\index{value@{value}!lsl\+::xml\+\_\+element@{lsl\+::xml\+\_\+element}}
+\subsubsection{\texorpdfstring{value()}{value()}}
+{\footnotesize\ttfamily const char$\ast$ lsl\+::xml\+\_\+element\+::value (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Value of the element. 
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{lsl__cpp_8h}{lsl\+\_\+cpp.\+h}\end{DoxyCompactItemize}

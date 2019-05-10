@@ -1,0 +1,88 @@
+\hypertarget{tools_8h}{}\section{include/tools.h File Reference}
+\label{tools_8h}\index{include/tools.\+h@{include/tools.\+h}}
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$pqxx/pqxx$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Include dependency graph for tools.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{d5/dcd/tools_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=333pt]{d6/ddf/tools_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{tools_8h_a61c5db3de2e3870f15756d0ad8440990}{error} (std\+::string str)
+\begin{DoxyCompactList}\small\item\em error Display the passed string thne exit the program. \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_a91602e2ffffd88f2b5f4280ef0d9e3be}{usage} (std\+::vector$<$ std\+::string $>$ \&optf, std\+::vector$<$ std\+::string $>$ \&optl, std\+::vector$<$ std\+::string $>$ \&optv)
+\begin{DoxyCompactList}\small\item\em usage Display the usage, then exit the program. \end{DoxyCompactList}\item 
+void \hyperlink{tools_8h_afc65291b27e568d76cf11518d7c2123e}{get\+\_\+arg} (int argc, char $\ast$$\ast$argv, std\+::vector$<$ std\+::string $>$ \&optf, std\+::vector$<$ std\+::string $>$ \&optl, std\+::vector$<$ std\+::string $>$ \&optv)
+\begin{DoxyCompactList}\small\item\em get\+\_\+arg Search for the potential argument in the argument passed to the program. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{tools_8h_a61c5db3de2e3870f15756d0ad8440990}\label{tools_8h_a61c5db3de2e3870f15756d0ad8440990}} 
+\index{tools.\+h@{tools.\+h}!error@{error}}
+\index{error@{error}!tools.\+h@{tools.\+h}}
+\subsubsection{\texorpdfstring{error()}{error()}}
+{\footnotesize\ttfamily void error (\begin{DoxyParamCaption}\item[{std\+::string}]{str }\end{DoxyParamCaption})}
+
+
+
+error Display the passed string thne exit the program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to display. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tools_8h_afc65291b27e568d76cf11518d7c2123e}\label{tools_8h_afc65291b27e568d76cf11518d7c2123e}} 
+\index{tools.\+h@{tools.\+h}!get\+\_\+arg@{get\+\_\+arg}}
+\index{get\+\_\+arg@{get\+\_\+arg}!tools.\+h@{tools.\+h}}
+\subsubsection{\texorpdfstring{get\+\_\+arg()}{get\_arg()}}
+{\footnotesize\ttfamily void get\+\_\+arg (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{optf,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{optl,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{optv }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+arg Search for the potential argument in the argument passed to the program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & Argument counter \\
+\hline
+{\em argv} & Argument array \\
+\hline
+{\em optf} & List of option flags \\
+\hline
+{\em optf} & List of option labels \\
+\hline
+{\em optf} & List of option values \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{tools_8h_a91602e2ffffd88f2b5f4280ef0d9e3be}\label{tools_8h_a91602e2ffffd88f2b5f4280ef0d9e3be}} 
+\index{tools.\+h@{tools.\+h}!usage@{usage}}
+\index{usage@{usage}!tools.\+h@{tools.\+h}}
+\subsubsection{\texorpdfstring{usage()}{usage()}}
+{\footnotesize\ttfamily void usage (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::string $>$ \&}]{optf,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{optl,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{optv }\end{DoxyParamCaption})}
+
+
+
+usage Display the usage, then exit the program. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em optf} & List of option flags \\
+\hline
+{\em optf} & List of option labels \\
+\hline
+{\em optf} & List of option values \\
+\hline
+\end{DoxyParams}

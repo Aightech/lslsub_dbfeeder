@@ -1,0 +1,108 @@
+\hypertarget{main_8cpp}{}\section{src/main.cpp File Reference}
+\label{main_8cpp}\index{src/main.\+cpp@{src/main.\+cpp}}
+
+
+T\+O\+DO.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$pqxx/pqxx$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$lsl\+\_\+cpp.\+h$>$}\newline
+{\ttfamily \#include $<$thread$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include \char`\"{}psql.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}tools.\+h\char`\"{}}\newline
+Include dependency graph for main.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{da/dce/main_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{main_8cpp_a6c2114e5b7e9d888f52e14f2d438ea03}{scan\+Stream} (std\+::vector$<$ \hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info} $>$ \&to, bool verbose=true)
+\begin{DoxyCompactList}\small\item\em scanstream Search for the lsl streams and add them to the lslinfo vector.. \end{DoxyCompactList}\item 
+void \hyperlink{main_8cpp_a98590a921461bb09e690b736d3fd1ed2}{store\+\_\+stream} (\hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info} strm\+\_\+info, bool $\ast$rec\+\_\+on)
+\begin{DoxyCompactList}\small\item\em store\+\_\+stream Connect to the database and start storing the incoming stream.. \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a21650f8ab85c732130fa818c8f72e036}{get\+\_\+conf} (std\+::string file, std\+::vector$<$ std\+::string $>$ \&strm)
+\begin{DoxyCompactList}\small\item\em get\+\_\+conf Read a configuration file and extract the name of stream to record. \end{DoxyCompactList}\item 
+int \hyperlink{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}{main} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+T\+O\+DO. 
+
+\begin{DoxyAuthor}{Author}
+Alexis Devillard 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+0 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+08 may 2019 
+\end{DoxyDate}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_a21650f8ab85c732130fa818c8f72e036}\label{main_8cpp_a21650f8ab85c732130fa818c8f72e036}} 
+\index{main.\+cpp@{main.\+cpp}!get\+\_\+conf@{get\+\_\+conf}}
+\index{get\+\_\+conf@{get\+\_\+conf}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{get\+\_\+conf()}{get\_conf()}}
+{\footnotesize\ttfamily int get\+\_\+conf (\begin{DoxyParamCaption}\item[{std\+::string}]{file,  }\item[{std\+::vector$<$ std\+::string $>$ \&}]{strm }\end{DoxyParamCaption})}
+
+
+
+get\+\_\+conf Read a configuration file and extract the name of stream to record. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file} & Configuration file. \\
+\hline
+{\em strm} & String vector of the stream to record\textquotesingle{}s name. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}\label{main_8cpp_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{main.\+cpp@{main.\+cpp}!main@{main}}
+\index{main@{main}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{main_8cpp_a6c2114e5b7e9d888f52e14f2d438ea03}\label{main_8cpp_a6c2114e5b7e9d888f52e14f2d438ea03}} 
+\index{main.\+cpp@{main.\+cpp}!scan\+Stream@{scan\+Stream}}
+\index{scan\+Stream@{scan\+Stream}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{scan\+Stream()}{scanStream()}}
+{\footnotesize\ttfamily void scan\+Stream (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info} $>$ \&}]{to,  }\item[{bool}]{verbose = {\ttfamily true} }\end{DoxyParamCaption})}
+
+
+
+scanstream Search for the lsl streams and add them to the lslinfo vector.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em to} & Lslinfo vector. \\
+\hline
+{\em verbose} & To activate the display of the parameters of each streams. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{main_8cpp_a98590a921461bb09e690b736d3fd1ed2}\label{main_8cpp_a98590a921461bb09e690b736d3fd1ed2}} 
+\index{main.\+cpp@{main.\+cpp}!store\+\_\+stream@{store\+\_\+stream}}
+\index{store\+\_\+stream@{store\+\_\+stream}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{store\+\_\+stream()}{store\_stream()}}
+{\footnotesize\ttfamily void store\+\_\+stream (\begin{DoxyParamCaption}\item[{\hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info}}]{strm\+\_\+info,  }\item[{bool $\ast$}]{rec\+\_\+on }\end{DoxyParamCaption})}
+
+
+
+store\+\_\+stream Connect to the database and start storing the incoming stream.. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em strm\+\_\+info} & the info of stream to record. \\
+\hline
+{\em rec\+\_\+on} & Boolean that stop the main loop of recording. \\
+\hline
+\end{DoxyParams}

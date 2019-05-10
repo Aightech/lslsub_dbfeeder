@@ -1,0 +1,29 @@
+.TH "md__r_e_a_d_m_e" 3 "Fri May 10 2019" "lslsub_dbfeeder" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+md__r_e_a_d_m_elslsub_dbfeeder 
+ \- 
+.SS "Requierements"
+.PP
+.SS "PostreSQL"
+.PP
+sudo apt install postgresql
+.PP
+sudo -i -u postgres psql  postgres \&.\&.\&. psql -h localhost -U postgres
+.PP
+Time scale db sudo sh -c 'echo 'deb http://apt\&.postgresql\&.org/pub/repos/apt/ `lsb_release -c -s`-pgdg main' >> /etc/apt/sources\&.list\&.d/pgdg\&.list' wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add - sudo apt-get update
+.PP
+.SH "Add our PPA"
+.PP
+.PP
+sudo add-apt-repository ppa:timescale/timescaledb-ppa sudo apt-get update
+.PP
+.SH "Now install appropriate package for PG version"
+.PP
+.PP
+sudo apt install timescaledb-postgresql-10
+.PP
+sudo timescaledb-tune sudo service postgresql restart
+.PP
+sudo apt install libpqxx-dev 

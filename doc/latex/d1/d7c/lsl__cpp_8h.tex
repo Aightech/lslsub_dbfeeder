@@ -1,0 +1,455 @@
+\hypertarget{lsl__cpp_8h}{}\section{include/lsl\+\_\+cpp.h File Reference}
+\label{lsl__cpp_8h}\index{include/lsl\+\_\+cpp.\+h@{include/lsl\+\_\+cpp.\+h}}
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include \char`\"{}lsl\+\_\+c.\+h\char`\"{}}\newline
+Include dependency graph for lsl\+\_\+cpp.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=326pt]{dd/d85/lsl__cpp_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{dd/d00/lsl__cpp_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classlsl_1_1stream__info}{lsl\+::stream\+\_\+info}
+\item 
+class \hyperlink{classlsl_1_1stream__outlet}{lsl\+::stream\+\_\+outlet}
+\item 
+class \hyperlink{classlsl_1_1stream__inlet}{lsl\+::stream\+\_\+inlet}
+\item 
+class \hyperlink{classlsl_1_1xml__element}{lsl\+::xml\+\_\+element}
+\item 
+class \hyperlink{classlsl_1_1continuous__resolver}{lsl\+::continuous\+\_\+resolver}
+\item 
+class \hyperlink{classlsl_1_1lost__error}{lsl\+::lost\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Exception class that indicates that a stream inlet\textquotesingle{}s source has been irrecoverably lost. \end{DoxyCompactList}\item 
+class \hyperlink{classlsl_1_1timeout__error}{lsl\+::timeout\+\_\+error}
+\begin{DoxyCompactList}\small\item\em Exception class that indicates that an operation failed due to a timeout. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacelsl}{lsl}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct lsl\+\_\+streaminfo\+\_\+struct\+\_\+ $\ast$ \hyperlink{namespacelsl_aa0a9ce9956061679949daa2e35aae2e8}{lsl\+::lsl\+\_\+streaminfo}
+\item 
+typedef struct lsl\+\_\+outlet\+\_\+struct\+\_\+ $\ast$ \hyperlink{namespacelsl_abcf512b0f66dacf86c10b165995fd50b}{lsl\+::lsl\+\_\+outlet}
+\item 
+typedef struct lsl\+\_\+inlet\+\_\+struct\+\_\+ $\ast$ \hyperlink{namespacelsl_a884a3363cfcba75d7ce8f00c1c4c54f1}{lsl\+::lsl\+\_\+inlet}
+\item 
+typedef struct lsl\+\_\+xml\+\_\+ptr\+\_\+struct\+\_\+ $\ast$ \hyperlink{namespacelsl_a5edc7a49a1a1be1634fe6dce3d59c59b}{lsl\+::lsl\+\_\+xml\+\_\+ptr}
+\item 
+typedef struct lsl\+\_\+continuous\+\_\+resolver\+\_\+ $\ast$ \hyperlink{namespacelsl_ab09ea0488f986f056322c3c866dc0a0f}{lsl\+::lsl\+\_\+continuous\+\_\+resolver}
+\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66}{lsl\+::lsl\+\_\+channel\+\_\+format\+\_\+t} \{ \newline
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66aa95674227416b8ac1738687b32238d2f}{lsl\+::cft\+\_\+float32} = 1, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a5774bc95ff1f184ac12aff46fb7b68bc}{lsl\+::cft\+\_\+double64} = 2, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a6c5dce46d2515d637a2d25fb6bec4c00}{lsl\+::cft\+\_\+string} = 3, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a0953ae3a0b24ddcf260e0d21efede185}{lsl\+::cft\+\_\+int32} = 4, 
+\newline
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a6476b2e6f58fdcb5e4614724fb9ab47c}{lsl\+::cft\+\_\+int16} = 5, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66afe29bb90886dc301279506a17dad1c64}{lsl\+::cft\+\_\+int8} = 6, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a1c41c8b332c529710af7b3669256e24d}{lsl\+::cft\+\_\+int64} = 7, 
+\hyperlink{namespacelsl_af188e978739868560b53dbf0ddd58e66a86446aa37b10c9094f36113fd2ff91a8}{lsl\+::cft\+\_\+undefined} = 0
+ \}
+\item 
+enum \hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736b}{lsl\+::lsl\+\_\+processing\+\_\+options\+\_\+t} \{ \newline
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736bab96deb7b18bc02826a6cfec6007bcea2}{lsl\+::proc\+\_\+none} = 0, 
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736baec0e5bf31072a78138faa6601786fd59}{lsl\+::proc\+\_\+clocksync} = 1, 
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736baa29c9fe911f4bd26adc8d3b2c0b63d7e}{lsl\+::proc\+\_\+dejitter} = 2, 
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736ba88bf55224b0d66a340e1715667e39844}{lsl\+::proc\+\_\+monotonize} = 4, 
+\newline
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736ba67d7ca683f860c6c2768d428e5aa9997}{lsl\+::proc\+\_\+threadsafe} = 8, 
+\hyperlink{namespacelsl_a71fa5faeecfdd863828bdcd4117e736ba969800e5a22f6a2e0972e41c5d5f1069}{lsl\+::proc\+\_\+\+A\+LL} = 1$\vert$2$\vert$4$\vert$8
+ \}
+\item 
+enum \hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9}{lsl\+::lsl\+\_\+error\+\_\+code\+\_\+t} \{ \newline
+\hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9a989effee9a9144bef995cb444fbde661}{lsl\+::lsl\+\_\+no\+\_\+error} = 0, 
+\hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9ac063592a9084fc6f2880de7172e78953}{lsl\+::lsl\+\_\+timeout\+\_\+error} = -\/1, 
+\hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9a348c8927eaa743c43d6efce38ec685c6}{lsl\+::lsl\+\_\+lost\+\_\+error} = -\/2, 
+\hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9af33e23dbe65f80c38e7d130903586001}{lsl\+::lsl\+\_\+argument\+\_\+error} = -\/3, 
+\newline
+\hyperlink{namespacelsl_a7e674c7665887951b952c463258451a9ae8db9e5ef7617a71bf95505c0e77fe75}{lsl\+::lsl\+\_\+internal\+\_\+error} = -\/4
+ \}
+\item 
+enum \hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46c}{lsl\+::channel\+\_\+format\+\_\+t} \{ \newline
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46ca46efa3307b337f7de592753642584616}{lsl\+::cf\+\_\+float32} = 1, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46cab11213c3d307faf6ef734633ac732eb7}{lsl\+::cf\+\_\+double64} = 2, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46caedadbd6437a22628678edaf287c87048}{lsl\+::cf\+\_\+string} = 3, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46ca526ce3ccb97e3bb75d913c60ad56c26d}{lsl\+::cf\+\_\+int32} = 4, 
+\newline
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46ca5c625662462c8a30454f6f7f0520e79c}{lsl\+::cf\+\_\+int16} = 5, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46ca829ae156932f587fbbc70aed1d46e388}{lsl\+::cf\+\_\+int8} = 6, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46ca6795e1df0db0b05744fd1fe9623567a0}{lsl\+::cf\+\_\+int64} = 7, 
+\hyperlink{namespacelsl_a28d50dae6fd82eea8893ce3d63ccd46cadc8092d1092568f7d36d89fa7e813d76}{lsl\+::cf\+\_\+undefined} = 0
+ \}
+\item 
+enum \hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310}{lsl\+::processing\+\_\+options\+\_\+t} \{ \newline
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310ac01170c28c82b28d721da1971e16424b}{lsl\+::post\+\_\+none} = 0, 
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310accf7cbfa478e679b53255d46fd62f888}{lsl\+::post\+\_\+clocksync} = 1, 
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310a83b67e37c1bbcfb4ee7479098386499f}{lsl\+::post\+\_\+dejitter} = 2, 
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310af7cdac323760b9cb6587733a24f5aecb}{lsl\+::post\+\_\+monotonize} = 4, 
+\newline
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310a8ebef2c4c98e1a9246e9927e6b0b87c9}{lsl\+::post\+\_\+threadsafe} = 8, 
+\hyperlink{namespacelsl_aaa1cffa7d29bb2756522bc2bb069e310a198f16659e71b850e4674ed31d10e914}{lsl\+::post\+\_\+\+A\+LL} = 1$\vert$2$\vert$4$\vert$8
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9695264d0e763474d352767702b38222}{lsl\+::lsl\+\_\+protocol\+\_\+version} ()
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aa706e1332352902a9b531a88af671896}{lsl\+::lsl\+\_\+library\+\_\+version} ()
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_a4e35f8426ffee9dbe7139dbe404e0442}{lsl\+::lsl\+\_\+library\+\_\+info} ()
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a475274f88a060924c9bd1b38879ec63a}{lsl\+::lsl\+\_\+local\+\_\+clock} ()
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a075ab08464c90d97b8f081d89ea889f2}{lsl\+::lsl\+\_\+resolve\+\_\+all} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} $\ast$buffer, uint32\+\_\+t buffer\+\_\+elements, double wait\+\_\+time)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a66563e2290de3b056a5480ced8596ec7}{lsl\+::lsl\+\_\+resolve\+\_\+byprop} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} $\ast$buffer, uint32\+\_\+t buffer\+\_\+elements, const char $\ast$prop, const char $\ast$value, int32\+\_\+t minimum, double timeout)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a11a5ef91d32961e0ad1d44dbef948399}{lsl\+::lsl\+\_\+resolve\+\_\+bypred} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} $\ast$buffer, uint32\+\_\+t buffer\+\_\+elements, const char $\ast$pred, int32\+\_\+t minimum, double timeout)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_ac517533eaabb224fd2f893e1f4274d82}{lsl\+::lsl\+\_\+destroy\+\_\+string} (char $\ast$s)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} \hyperlink{namespacelsl_abf20c6316cd58a713a674ef2213914d2}{lsl\+::lsl\+\_\+create\+\_\+streaminfo} (const char $\ast$name, const char $\ast$type, int32\+\_\+t channel\+\_\+count, double nominal\+\_\+srate, \hyperlink{lsl__c_8h_ad346feb32bddd136c3f7797e45047754}{lsl\+\_\+channel\+\_\+format\+\_\+t} channel\+\_\+format, const char $\ast$source\+\_\+id)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_afc7ae71903a0c20763937739fa62df32}{lsl\+::lsl\+\_\+destroy\+\_\+streaminfo} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} \hyperlink{namespacelsl_a354a91fa3a4c87cdf179443650425390}{lsl\+::lsl\+\_\+copy\+\_\+streaminfo} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_ad356f55776a73d03998837c5c32fc95e}{lsl\+::lsl\+\_\+get\+\_\+name} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_a417e01d26d64718513bc0ef2c58acf89}{lsl\+::lsl\+\_\+get\+\_\+type} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a40acd87a21d3c91a524bd72012dc3328}{lsl\+::lsl\+\_\+get\+\_\+channel\+\_\+count} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a17e4e6d432dc0b7280df4b5365c7da46}{lsl\+::lsl\+\_\+get\+\_\+nominal\+\_\+srate} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ad346feb32bddd136c3f7797e45047754}{lsl\+\_\+channel\+\_\+format\+\_\+t} \hyperlink{namespacelsl_a70c26257a8f3042084140a85a867a300}{lsl\+::lsl\+\_\+get\+\_\+channel\+\_\+format} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_ad2987f3c32e0edae147498a8870a3215}{lsl\+::lsl\+\_\+get\+\_\+source\+\_\+id} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ab889dd6f9a5fc6d6cd01a0b3dc153387}{lsl\+::lsl\+\_\+get\+\_\+version} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_aded8755dc0f65d8219449ef37ba7f6c5}{lsl\+::lsl\+\_\+get\+\_\+created\+\_\+at} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_a6e18a9b1c544932e96179a44bb1f31ec}{lsl\+::lsl\+\_\+get\+\_\+uid} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_ae28332bda70380cfd546fc158cd6f009}{lsl\+::lsl\+\_\+get\+\_\+session\+\_\+id} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_ab74235be779da7e0cdcfd59b498bdf3f}{lsl\+::lsl\+\_\+get\+\_\+hostname} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_aeb428e46e46db8bd534e45ed8a76a120}{lsl\+::lsl\+\_\+get\+\_\+desc} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} char $\ast$ \hyperlink{namespacelsl_ad1a9b14dccf565e5ecb79c093fe0fd39}{lsl\+::lsl\+\_\+get\+\_\+xml} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aa11d6865aa57caf51f5d13c66a785b30}{lsl\+::lsl\+\_\+get\+\_\+channel\+\_\+bytes} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\begin{DoxyCompactList}\small\item\em Number of bytes occupied by a channel (0 for string-\/typed channels). \end{DoxyCompactList}\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a26e8a9f4b8c7ee128362aadbc688dab0}{lsl\+::lsl\+\_\+get\+\_\+sample\+\_\+bytes} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info)
+\begin{DoxyCompactList}\small\item\em Number of bytes occupied by a sample (0 for string-\/typed channels). \end{DoxyCompactList}\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_a5c10ba1783b34bd0b3f048ac4cb5fe5e}{lsl\+::lsl\+\_\+stream\+\_\+info\+\_\+matches\+\_\+query} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info, const char $\ast$query)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} \hyperlink{namespacelsl_a2cf7fb16bf4029ca632fa5dab930de47}{lsl\+::lsl\+\_\+streaminfo\+\_\+from\+\_\+xml} (const char $\ast$xml)
+\begin{DoxyCompactList}\small\item\em Create a streaminfo object from an X\+ML representation. \end{DoxyCompactList}\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} \hyperlink{namespacelsl_a4c92219e56eec896266a36ae58426d4b}{lsl\+::lsl\+\_\+create\+\_\+outlet} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info, int32\+\_\+t chunk\+\_\+size, int32\+\_\+t max\+\_\+buffered)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_aa39980eac53711feece8bfc3b50d2b24}{lsl\+::lsl\+\_\+destroy\+\_\+outlet} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a001aa3637915875c44c379c07c55fb3a}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+f} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ade95641430ee28ac2bbcf888f572d34f}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+ft} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a6434485fd96e3260939bfe6fea2b317e}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+ftp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ac7d63bbdbdd3b0ec26d49b22b5858d8e}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+d} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a6877d8a4ebbe802a123a09505a106f3f}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+dt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aa6064248da7a261b46185ec9ffd12ba3}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+dtp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a44dd3e59bb5d7e95b9ffa60032207457}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+l} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ad257a8fe8aee5d302292dd40d93fe335}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+lt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a4839e55343dd8c3aea6c8e2a65d706ed}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+ltp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a5e6e682a09b4c90732e4fc631d643384}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+i} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a87f61ecb0058ef8cd14a84693770b51d}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+it} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aa0f3b0ccc233ebed00178e189c4678af}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+itp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a8d80592d7fd643d64533ef83f6808743}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+s} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9a22e090bfa2e61ec19d70dc9bb5908d}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+st} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a916ebe3afa6e7b83d670211c7320df51}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+stp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aff896f8925d3453857deabc1f9cfd24a}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+c} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a321429ed29e2b8b944f7724361628ba9}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+ct} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a7127acf0d2106d5ae673489510845f58}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+ctp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a3da2b3303768776977e0d621e2990c0e}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+str} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a634f8191b28e9cb9b6edcf01aaead377}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+strt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aeb9537e1d060020c99c47371b07bcb24}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+strtp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a77dbefbfa9fc565f9ead1db3574ef001}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+buf} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ace903fc8ac868a1afedf98090f5c5b4c}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+buft} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a62d7f7be3db90336d61e89633c4b1a5e}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+buftp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a25ee57785d5ab7143605ee9f59c1a0cf}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+v} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const void $\ast$data)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a8032f4283b186f0f8b8e657f6642e062}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+vt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const void $\ast$data, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a750c5759d30e4e0a47223c7048bfa4ca}{lsl\+::lsl\+\_\+push\+\_\+sample\+\_\+vtp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const void $\ast$data, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_abaf77814f92eec3728670d14195b460b}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+f} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a115ed5e462c162787436cd9800dbcb7e}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ft} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_adf8f3e407c2b25a0e68aaf4e27df742d}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ftp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aee7313f1b6a8c88e7bdfc5f133986aaa}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ftn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a5bb763124a2b2e74423b5c382a600b30}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ftnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const float $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aba0e49750a9d56a0058b4287652043b1}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+d} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ae0c9d5ce50a5e9c7cd612063b82c7e6b}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+dt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_afdd8325060d14312cb340bc2edcac10a}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+dtp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ae0a8ffad75240ca3d702944ebf7d7d53}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+dtn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a8a0e5cfc6b88e4dae3d4abd97ac47c38}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+dtnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const double $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_a68403934d1fdace37348c95f54367bc2}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+l} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_a55622b4fc53149f986414f7642baf00a}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+lt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_a1a6be2ac3bc8a1df1f4c08d0b3a79445}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ltp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, unsigned long data\+\_\+elements, double timestamp, int pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_a93cfea6f1ecc01606e6e4f37bba7103f}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ltn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int \hyperlink{namespacelsl_aa172a29d0976aee8d41306d7b8b53231}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ltnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const long $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a096b23637c04d20bcaea1a92bc438845}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+i} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aede257c8d3911fbc26329bd4af8bcc9a}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+it} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a38439e357a8d6c984ffcfd9e22596ec1}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+itp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a0ea52f33684ceab15ad7244636291ddd}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+itn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9102a7929e172f9a42e51211139d691f}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+itnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int32\+\_\+t $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ac2e4e87bd196fe5469934eaf87ecdaa2}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+s} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a6d02c87538ca2e49831fefc79a4ef751}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+st} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a8de67854b1d0c9de42e3e69997f68d0c}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+stp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a66784045ca9dec23b491f56474009de4}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+stn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aee4448b6c1239e14f9212700c828ca5b}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+stnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const int16\+\_\+t $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a3dd3622f5a0fcdedbc7bf4223a08ba01}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+c} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9bad246099db9f07ccc795d14709eed7}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ct} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ad8287dab0124b1f1d8a682e914116550}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ctp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a2a72461381a3cfa39a33dc07312a72a6}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ctn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a1ce559595e2b4ac431bda67fc49ec102}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+ctnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_af3a72a206c0eac2ac180b31e5fbaf28f}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+str} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a3327c2e5a83c90e02270743916c302e3}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+strt} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9317d0fe8f576fb80e58e362a39e12e1}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+strtp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_abbdff3e2051e7707fe9d3f2631fd5d18}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+strtn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_afcc56fcb63fe7c9f29f658c40f8e62f2}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+strtnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a1754aad36f1585fee58312ee678ae43b}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+buf} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, unsigned long data\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a9689fe506da978719b80fe5ee61d355b}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+buft} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, unsigned long data\+\_\+elements, double timestamp)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ab45337e9fc47d0517a6250e2e6931d38}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+buftp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, unsigned long data\+\_\+elements, double timestamp, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_af90cd85058ec6f055bd1f59f8271c5c4}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+buftn} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, unsigned long data\+\_\+elements, const double $\ast$timestamps)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a231f423627ce9752d7877dfacf096b0f}{lsl\+::lsl\+\_\+push\+\_\+chunk\+\_\+buftnp} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, const char $\ast$$\ast$data, const uint32\+\_\+t $\ast$lengths, unsigned long data\+\_\+elements, const double $\ast$timestamps, int32\+\_\+t pushthrough)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a675de9cdbbd01dee30ce59e49f4bdf3a}{lsl\+::lsl\+\_\+have\+\_\+consumers} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a0d69686f148209d1750e284a93942f19}{lsl\+::lsl\+\_\+wait\+\_\+for\+\_\+consumers} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out, double timeout)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} \hyperlink{namespacelsl_add36e044b2c854296d26dbe429ef0445}{lsl\+::lsl\+\_\+get\+\_\+info} (\hyperlink{lsl__c_8h_aef1212b6b2cd3e3747fd6e433c30e395}{lsl\+\_\+outlet} out)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} \hyperlink{namespacelsl_a260c98cb095aefdb3232cbc38472abde}{lsl\+::lsl\+\_\+create\+\_\+inlet} (\hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} info, int32\+\_\+t max\+\_\+buflen, int32\+\_\+t max\+\_\+chunklen, int32\+\_\+t recover)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_a079daffcce73f1ed31bd52d681019029}{lsl\+::lsl\+\_\+destroy\+\_\+inlet} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} \hyperlink{namespacelsl_a6a303d699340f95ed7b68d7bf129fd45}{lsl\+::lsl\+\_\+get\+\_\+fullinfo} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_ad72aa9d01ea937b413adf615322ce9a7}{lsl\+::lsl\+\_\+open\+\_\+stream} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_a3adefb15364dacbfa8f46b5f554ed4ac}{lsl\+::lsl\+\_\+close\+\_\+stream} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a4a017b7c6d6fbe056b5394b1edff0994}{lsl\+::lsl\+\_\+time\+\_\+correction} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_aaa10a13a7b2aced436ba8a14c21af2bb}{lsl\+::lsl\+\_\+time\+\_\+correction\+\_\+ex} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double $\ast$remote\+\_\+time, double $\ast$uncertainty, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a36fe6c26cb8c696b658c87490d4c1059}{lsl\+::lsl\+\_\+set\+\_\+postprocessing} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, uint32\+\_\+t flags)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a56fc49301c94b76f1c89ab041d26bef1}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+f} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, float $\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a958abfca3463aaf5703230b472e8e988}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+d} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double $\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a7572c63f7c2569ddffb3ac2d8c16bd1e}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+l} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, long $\ast$buffer, int buffer\+\_\+elements, double timeout, int $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a201e5c7d48e0b815c30bb155f116eb42}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+i} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, int32\+\_\+t $\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a9c1676b5e509980eeb5065a2c84144c4}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+s} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, int16\+\_\+t $\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_aaa7da3f1fd36b31afafbfaf5eac09fbb}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+c} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a3fd4085148eab55ea6a918dc151869a3}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+str} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$$\ast$buffer, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_aeb6a1e871e465e4859292bc46a2e5bbd}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+buf} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$$\ast$buffer, uint32\+\_\+t $\ast$buffer\+\_\+lengths, int32\+\_\+t buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} double \hyperlink{namespacelsl_a4b9141b42af68f2224c1f72044bf6018}{lsl\+::lsl\+\_\+pull\+\_\+sample\+\_\+v} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, void $\ast$buffer, int32\+\_\+t buffer\+\_\+bytes, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_a59b21970f29b294c8d4d43be06335cba}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+f} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, float $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_ad8e4cbb24fb74cd532abf50fe3a8d571}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+d} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, double $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_a1f78178ddd5cb824e36d4322677bbfe9}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+l} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, long $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_a5f10ff6b4a4ff08c0e9f78d41c495c60}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+i} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, int32\+\_\+t $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_a577a886ca87effb6b93a295466b9c933}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+s} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, int16\+\_\+t $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_ad160ae0261a0b604b5ebae8a7cf30f00}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+c} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_aeac6202687776ae5d0155226869237d0}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+str} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$$\ast$data\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} unsigned long \hyperlink{namespacelsl_a90d24057f9ba37f33d3539666af27082}{lsl\+::lsl\+\_\+pull\+\_\+chunk\+\_\+buf} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, char $\ast$$\ast$data\+\_\+buffer, uint32\+\_\+t $\ast$lengths\+\_\+buffer, double $\ast$timestamp\+\_\+buffer, unsigned long data\+\_\+buffer\+\_\+elements, unsigned long timestamp\+\_\+buffer\+\_\+elements, double timeout, int32\+\_\+t $\ast$ec)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} uint32\+\_\+t \hyperlink{namespacelsl_ab5511189be4bb2c887fd5e0bd0ab9b00}{lsl\+::lsl\+\_\+samples\+\_\+available} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} uint32\+\_\+t \hyperlink{namespacelsl_a3b98f7920895623517758ed1500bcad3}{lsl\+::lsl\+\_\+was\+\_\+clock\+\_\+reset} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a71b6f856d04b6519ab6b249499ad4e91}{lsl\+::lsl\+\_\+smoothing\+\_\+halftime} (\hyperlink{lsl__c_8h_aff5474907fddf8b14300c79c9fda38e6}{lsl\+\_\+inlet} in, float value)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a00b272ef8da2c1f1a6ea440219728c32}{lsl\+::lsl\+\_\+first\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_aeb717da468fa8bfc541af78b59052e6d}{lsl\+::lsl\+\_\+last\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_ad719cddda958c613ff328245dc5b4277}{lsl\+::lsl\+\_\+next\+\_\+sibling} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a61acf3af105e47f718bbc312766caf44}{lsl\+::lsl\+\_\+previous\+\_\+sibling} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_aa8decbe6cf9d9f1c6358af2d6a475bd5}{lsl\+::lsl\+\_\+parent} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a023258f274202055146894d26e3cf2ad}{lsl\+::lsl\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_ac898e643d9e43785030c3e1a7524ea70}{lsl\+::lsl\+\_\+next\+\_\+sibling\+\_\+n} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a1b42f95654ea48c92a15bd077e6c73ac}{lsl\+::lsl\+\_\+previous\+\_\+sibling\+\_\+n} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_aa8e3affdd320f70d77b87262d508ba58}{lsl\+::lsl\+\_\+empty} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a423fa21a73fa370762fe168081f12a41}{lsl\+::lsl\+\_\+is\+\_\+text} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_a55761eae47f0963850f6077b4c61701e}{lsl\+::lsl\+\_\+name} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_a06b7b1f52525d931c57be7eb1216f50a}{lsl\+::lsl\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_aa6a774c3c6e431610a98be1b83bc8a3b}{lsl\+::lsl\+\_\+child\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} const char $\ast$ \hyperlink{namespacelsl_ac70e2fc6f64715cead7b4b8e776cc6e7}{lsl\+::lsl\+\_\+child\+\_\+value\+\_\+n} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a3d9fb84fd68c84dd8692e25f1461a894}{lsl\+::lsl\+\_\+append\+\_\+child\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name, const char $\ast$value)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a40369db591e0a19927d76b6d5c811a94}{lsl\+::lsl\+\_\+prepend\+\_\+child\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name, const char $\ast$value)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_a637223b4077e6cfa0392d02f9f274ba7}{lsl\+::lsl\+\_\+set\+\_\+child\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name, const char $\ast$value)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_af13c49d3abab79ae9dd6d94ca7cdc877}{lsl\+::lsl\+\_\+set\+\_\+name} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$rhs)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ab072800f46e425c22568529419a3301b}{lsl\+::lsl\+\_\+set\+\_\+value} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$rhs)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a4e7b789b1a631d207683ba6fd821571f}{lsl\+::lsl\+\_\+append\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_ad5354d401fb5eb531d7b96ee9747f76a}{lsl\+::lsl\+\_\+prepend\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a52061cbc108b95b34aa7d806d6115f91}{lsl\+::lsl\+\_\+append\+\_\+copy} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e2)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} \hyperlink{namespacelsl_a6f0ee82a8282d19f01ddb2654f367e6c}{lsl\+::lsl\+\_\+prepend\+\_\+copy} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e2)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_a1a946a99964cbd500165fbd5f3d33766}{lsl\+::lsl\+\_\+remove\+\_\+child\+\_\+n} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, const char $\ast$name)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_ad367e1e282a1fa614f44caaf113cf39c}{lsl\+::lsl\+\_\+remove\+\_\+child} (\hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e, \hyperlink{lsl__c_8h_ab174601268a7f0a9b60223510ba7d3b8}{lsl\+\_\+xml\+\_\+ptr} e2)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a78b224e996f3a73b35f4c5d73d721366}{lsl\+\_\+continuous\+\_\+resolver} \hyperlink{namespacelsl_a8da66ce60f1720e808771e14337e4bdb}{lsl\+::lsl\+\_\+create\+\_\+continuous\+\_\+resolver} (double forget\+\_\+after)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a78b224e996f3a73b35f4c5d73d721366}{lsl\+\_\+continuous\+\_\+resolver} \hyperlink{namespacelsl_a673d636b9a52467485a9ff6114bcafd6}{lsl\+::lsl\+\_\+create\+\_\+continuous\+\_\+resolver\+\_\+byprop} (const char $\ast$prop, const char $\ast$value, double forget\+\_\+after)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} \hyperlink{lsl__c_8h_a78b224e996f3a73b35f4c5d73d721366}{lsl\+\_\+continuous\+\_\+resolver} \hyperlink{namespacelsl_a632a18d8a150be1ae72efac7074c476d}{lsl\+::lsl\+\_\+create\+\_\+continuous\+\_\+resolver\+\_\+bypred} (const char $\ast$pred, double forget\+\_\+after)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} int32\+\_\+t \hyperlink{namespacelsl_ab8f71fa0b8c09cb21a78aa86d03ad8fc}{lsl\+::lsl\+\_\+resolver\+\_\+results} (\hyperlink{lsl__c_8h_a78b224e996f3a73b35f4c5d73d721366}{lsl\+\_\+continuous\+\_\+resolver} res, \hyperlink{lsl__c_8h_a6fd635c662a9c80840b53bd7c202499c}{lsl\+\_\+streaminfo} $\ast$buffer, uint32\+\_\+t buffer\+\_\+elements)
+\item 
+\hyperlink{lsl__cpp_8h_aafd0ef1813e8be84a1420c4f1df64615}{L\+I\+B\+L\+S\+L\+\_\+\+C\+\_\+\+A\+PI} void \hyperlink{namespacelsl_ab93a61a86bf3e5da34f91255897f6b03}{lsl\+::lsl\+\_\+destroy\+\_\+continuous\+\_\+resolver} (\hyperlink{lsl__c_8h_a78b224e996f3a73b35f4c5d73d721366}{lsl\+\_\+continuous\+\_\+resolver} res)
+\item 
+int32\+\_\+t \hyperlink{namespacelsl_a59009e83a8f0e33643474b373ad2f7f2}{lsl\+::protocol\+\_\+version} ()
+\item 
+int32\+\_\+t \hyperlink{namespacelsl_a25fc4deea3c2fb0df0744e3a24c56844}{lsl\+::library\+\_\+version} ()
+\item 
+const char $\ast$ \hyperlink{namespacelsl_a2a348cf022e9862396e4a10f60af42e9}{lsl\+::library\+\_\+info} ()
+\item 
+double \hyperlink{namespacelsl_ae1766ae2ab66141cb927612e57a0c8c6}{lsl\+::local\+\_\+clock} ()
+\item 
+std\+::vector$<$ stream\+\_\+info $>$ \hyperlink{namespacelsl_a2935ff3db04cd640f69943ad14a61915}{lsl\+::resolve\+\_\+streams} (double wait\+\_\+time=1.\+0)
+\item 
+std\+::vector$<$ stream\+\_\+info $>$ \hyperlink{namespacelsl_a4edfbcc31f48f27e8f7c2a36b69cd4b9}{lsl\+::resolve\+\_\+stream} (const std\+::string \&prop, const std\+::string \&value, int32\+\_\+t minimum=1, double timeout=F\+O\+R\+E\+V\+ER)
+\item 
+std\+::vector$<$ stream\+\_\+info $>$ \hyperlink{namespacelsl_a824e14275a55df97d0552a91fc2c4097}{lsl\+::resolve\+\_\+stream} (const std\+::string \&pred, int32\+\_\+t minimum=1, double timeout=F\+O\+R\+E\+V\+ER)
+\item 
+void \hyperlink{namespacelsl_acce0545ac0a7831acde1a759b778393c}{lsl\+::check\+\_\+error} (int32\+\_\+t ec)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const double \hyperlink{namespacelsl_ac7ebddefe1091ef2d9459b6f9d79f7ab}{lsl\+::\+I\+R\+R\+E\+G\+U\+L\+A\+R\+\_\+\+R\+A\+TE} = 0.\+0
+\item 
+const double \hyperlink{namespacelsl_a57df17d8a2563a18b8b759a0cec696cc}{lsl\+::\+D\+E\+D\+U\+C\+E\+D\+\_\+\+T\+I\+M\+E\+S\+T\+A\+MP} = -\/1.\+0
+\item 
+const double \hyperlink{namespacelsl_a74cfbc9077aca21295117217249721ed}{lsl\+::\+F\+O\+R\+E\+V\+ER} = 32000000.\+0
+\end{DoxyCompactItemize}
