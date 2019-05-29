@@ -89,18 +89,23 @@ void create_stream_table_db(PGconn *C, std::string name)
 {
   std::string sql=
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
-    "time DOUBLE PRECISION       NOT NULL,"	\
+    "time timestamp NOT NULL,"			\
     "data DOUBLE PRECISION[]  NOT NULL,"	\
     "uid TEXT  NULL)";
 
-  
+  // Execute SQL query  
   PGresult *res = PQexec(C, sql.c_str());
-    
   if (PQresultStatus(res) != PGRES_COMMAND_OK) 
     error(PQerrorMessage(C));
-  
-  // Execute SQL query  
   PQclear(res);
+
+  
+  sql= "SELECT create_hypertable('"+name+"', 'time', if_not_exists => true)";
+
+  //Execute SQL query  
+  res = PQexec(C, sql.c_str());
+  PQclear(res);
+  std::cout <<"daza" << std::endl;
   
 }
 
@@ -109,13 +114,14 @@ void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)
     {
-      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here
+      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + 
       sql += "INSERT INTO " + name + " (time, data) "+ \
-	"VALUES ( " + std::to_string(timestamps[j]) +		\
+	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]) +"'" + \
 	" , '{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}') " ;
+      sql += "}'); " ;
+      std::cout << sql << std::endl;
     }
 	    
   // Execute SQL query

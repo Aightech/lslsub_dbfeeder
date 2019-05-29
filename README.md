@@ -1,29 +1,31 @@
 # lslsub_dbfeeder
 
 ## Requierements
-###PostreSQL
-sudo apt install postgresql
+### Linux
+- [PostreSQL 10](https://www.postgresql.org/download)
+- [Timescaledb](https://docs.timescale.com/v0.9/getting-started/installation/linux/installation-apt-ubuntu)
 
-sudo -i -u postgres
-psql
-\password postgres
-...
-psql -h localhost -U postgres
+You can also run :
+```bash
+./setup.sh
+```
 
-Time scale db
-sudo sh -c "echo 'deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -c -s`-pgdg main' >> /etc/apt/sources.list.d/pgdg.list"
-wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-sudo apt-get update
+### Windows
+- [PostreSQL 10](https://www.postgresql.org/download/windows/)
+- [Timescaledb](https://docs.timescale.com/v0.9/getting-started/installation/windows/installation-windows)
+- Run to configure the database
+```bash
+setup.bat
+```
 
-# Add our PPA
-sudo add-apt-repository ppa:timescale/timescaledb-ppa
-sudo apt-get update
+## Information
+- **Brief**: Search for available LSL stream, for each of them create a thread doing the following: open the database, create a table and store the samples.
+- **Documentation & Git**: [Doc link](https://aightech.github.io/lslsub_dbfeeder/html/index.html) & [Git link](https://github.com/Aightech/lslsub_dbfeeder)
+- **Languages**: C++
+- **Libraries**: LSL / pqxx
+- **Note**: /
+- **Compatibility**:
 
-# Now install appropriate package for PG version
-sudo apt install timescaledb-postgresql-10
-
-sudo timescaledb-tune
-sudo service postgresql restart
-
-sudo apt install libpqxx-dev
-
+| Ubuntu           | Window10         | MacOS            |
+|:----------------:|:----------------:|:----------------:|
+|:heavy_check_mark:|:heavy_check_mark:|:grey_question:   |
