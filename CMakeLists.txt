@@ -27,8 +27,17 @@ endif(UNIX)
 
 
 if(WIN32)
-  target_link_libraries (${EXEC_NAME} liblsl64)
-  target_link_libraries (${EXEC_NAME} wsock32 ws2_32)
+
+  find_package(PostgreSQL REQUIRED)
+  include_directories(${PostgreSQL_INCLUDE_DIRS})
+  link_directories(${PostgreSQL_LIBRARY_DIRS})
+  target_link_libraries(${EXEC_NAME} ${PostgreSQL_LIBRARIES})
+  
+  ADD_CUSTOM_COMMAND (	TARGET ${EXEC_NAME} PRE_BUILD 
+						COMMENT "Saving exec in bin/ directory... ${PostgreSQL_LIBRARY_DIRS}" VERBATIM
+						)
+  
+  target_link_libraries (${EXEC_NAME} liblsl64 wsock32 ws2_32)
   if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
   # using Clang
   ADD_CUSTOM_COMMAND (	TARGET ${EXEC_NAME} POST_BUILD

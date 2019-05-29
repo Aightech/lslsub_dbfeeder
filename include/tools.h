@@ -10,8 +10,8 @@
 #ifndef TOOLS_H
 #define TOOLS_H
 #include <iostream>
-#include <pqxx/pqxx>
 #include <string>
+#include <vector>
 
 /**
  * @brief error Display the passed string thne exit the program.
