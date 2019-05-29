@@ -76,15 +76,16 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
  */
 void store_stream(lsl::stream_info strm_info, bool *rec_on)
 {
-  PGconn *C = connect_db("lsldb",
-			 "lsldb_user",
-			 "azerty",
-			 "127.0.0.1",
-			 "5432");
+  PGconn *C= connect_db("lsldb",
+  			 "lsldb_user",
+  			 "azerty",
+  			 "127.0.0.1",
+  			 "5432");
   
   add_stream_metadata(C,strm_info);
   create_stream_table_db(C,strm_info.name());
-  lsl::stream_inlet inlet(strm_info);
+  lsl::stream_inlet inlet(strm_info, 360, 0, false);
+
   try {
 
     // and retrieve the chunks (note: this can of course also be done with pure std::vectors
@@ -95,7 +96,8 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on)
 	std::vector<double> timestamps;
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    insert_data_db(C, strm_info.name(), chunk, timestamps); 
+	    insert_data_db(C, strm_info.name(), chunk, timestamps);
+	    //std::cout << timestamps[0] << std::endl;
 	  }
     }
 

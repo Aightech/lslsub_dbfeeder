@@ -8,6 +8,7 @@
 #include "psql.h"
 #include "tools.h"
 
+
 /**
  * @brief connect_db Enable to connect to a database and return the connected object of pqxx library
  * @param name Name of the database
@@ -19,23 +20,27 @@
  */
 PGconn* connect_db(std::string name, std::string user, std::string password,std::string host, std::string port)
 {
-  PGconn *C;
-  
   std::string connParam=
     "dbname = " + name +    \
-    " user = " + user +		    \
+    " user = " + user +		  \
     " password = " + password +	    \
     " hostaddr = " + host +	    \
     " port = " + port;
-  //std::cout << "Connecting to lsldb...\xd" << std::flush;
-  C = PQconnectdb(connParam.c_str());
-  
-  if (PQstatus(C) == CONNECTION_BAD)
+  //std::cout << "Connecting to lsldb..." << "\xd" << std::flush;
+  PGconn *conn = PQconnectdb(connParam.c_str());
+  if (PQstatus(conn) == CONNECTION_BAD)
     {
-      std::cerr << "Connection to database failed: " << PQerrorMessage(C) << std::endl;
-      PQfinish(C);
-      exit(1);
-    }
+      std::cout <<  "[" << name << "] Connection to database failed: " <<  PQerrorMessage(conn) << std::endl;
+      PQfinish(conn);
+      error("");
+  }
+    
+  //char *userr = PQuser(conn);
+  //char *db_name = PQdb(conn);
+  //char *pswd = PQpass(conn);
+  
+  return conn;  
+ 
 }
 
 
@@ -47,30 +52,34 @@ PGconn* connect_db(std::string name, std::string user, std::string password,std:
  */
 bool add_stream_metadata(PGconn *C, lsl::stream_info& info)
 {
-  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "';";  
-  PGresult *res = PQexec(C, sql.c_str());    
-    
-  if (PQresultStatus(res) != PGRES_TUPLES_OK)
+  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "'";
+  PGresult *res = PQexec(C, sql.c_str());
+  
+  if (PQntuples(res)==0)
     {
       PQclear(res);
-  
-      sql=
-	"INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
-	"VALUES ( '" + info.name()	+ "'" +					\
-	" , '" + info.type()+ "'"		  +				\
+      sql="INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
+	"VALUES( '" + info.name()	+ "'" +				\
+	" , '" + info.type()+ "'"		  +			\
 	" , " + std::to_string(info.channel_format())+			\
 	" , " + std::to_string(info.nominal_srate())  +			\
 	" , " + std::to_string(info.channel_count())  +			\
-	" , '" + info.hostname()+ "'"	  +				\
-	");";
-      
-      // Execute SQL query 
-      res = PQexec(C, sql.c_str());
-      if (PQresultStatus(res) != PGRES_COMMAND_OK) 
-	error(PQerrorMessage(C));
+    " , '" + info.hostname()+ "'"	  +				\
+	")";
+      res = PQexec(C,sql.c_str());
+      if (PQresultStatus(res) != PGRES_COMMAND_OK)
+	  error(PQerrorMessage(C));
       PQclear(res);
+      std::cout << "[" <<  info.name() << "]" << "Added to lsl_streams_metadata." << std::endl;
       return true;
     }
+  else
+    {
+      PQclear(res);
+      std::cout << "[" <<  info.name() << "]" << "Already present in lsl_streams_metadata." << std::endl;
+      return false;
+    }
+    
   return false;
 
 
@@ -82,7 +91,7 @@ void create_stream_table_db(PGconn *C, std::string name)
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
     "time DOUBLE PRECISION       NOT NULL,"	\
     "data DOUBLE PRECISION[]  NOT NULL,"	\
-    "uid TEXT  NULL);";
+    "uid TEXT  NULL)";
 
   
   PGresult *res = PQexec(C, sql.c_str());
@@ -106,7 +115,7 @@ void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>
 	" , '{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}'); " ;
+      sql += "}') " ;
     }
 	    
   // Execute SQL query
