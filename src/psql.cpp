@@ -114,14 +114,14 @@ void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)
     {
-      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + 
+      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + //std::to_string(timestamps[j])
       sql += "INSERT INTO " + name + " (time, data) "+ \
-	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]) +"'" + \
+	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]+100000) +"'" + \
 	" , '{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
       sql += "}'); " ;
-      std::cout << sql << std::endl;
+      //std::cout << sql << std::endl;
     }
 	    
   // Execute SQL query
