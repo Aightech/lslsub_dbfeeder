@@ -13,6 +13,9 @@ You can also run :
 ### Windows
 - [PostreSQL 10](https://www.postgresql.org/download/windows/)
 - [Timescaledb](https://docs.timescale.com/v0.9/getting-started/installation/windows/installation-windows)
+```bash 
+pg_ctl -D "C:\Program Files\PostgreSQL\9.6\data" restart
+```
 - Run to configure the database
 ```bash
 setup.bat
