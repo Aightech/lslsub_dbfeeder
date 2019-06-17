@@ -14,3 +14,5 @@
 !CMakeLists.txt
 !setup.sh
 !setup.bat
+!/config
+!/config/*

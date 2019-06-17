@@ -150,7 +150,7 @@ int main(int argc, char* argv[])
   std::vector<std::string> opt_label(
 				     {"Configuration file"});
   std::vector<std::string> opt_value(
-				     {"conf.cfg"});
+				     {"config/conf.cfg"});
   
   get_arg(argc, argv, opt_flag, opt_label, opt_value);
 
