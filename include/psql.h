@@ -12,6 +12,6 @@ bool add_stream_metadata(pqxx::connection *C, lsl::stream_info& info);
 
 void create_stream_table_db(pqxx::connection *C, std::string name);
 
-void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps );
+void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid );
 
 #endif

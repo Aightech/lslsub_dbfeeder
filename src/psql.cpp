@@ -97,7 +97,7 @@ void create_stream_table_db(pqxx::connection *C, std::string name)
   W.commit();
 }
 
-void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps )
+void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid )
 {
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)

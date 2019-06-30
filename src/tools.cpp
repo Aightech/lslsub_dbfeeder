@@ -7,7 +7,6 @@
  */
 
 #include "tools.h"
-#inc
 /**
  * @brief error Display the passed string thne exit the program.
  * @param str String to display.
