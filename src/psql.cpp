@@ -103,12 +103,12 @@ void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vect
   for(int j = 0; j < chunk.size(); j++)
     {
       //std::cout << timestamps[j] << std::endl; // only showing the time stamps here
-      sql += "INSERT INTO " + name + " (time, data) "+ \
+      sql += "INSERT INTO " + name + " (time, data, uid) "+ \
 	"VALUES ( " + std::to_string(timestamps[j]) +		\
 	" , '{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}'); " ;
+      sql += "}', " + uid + " ); " ;
     }
 	    
   pqxx::work W(*C);
