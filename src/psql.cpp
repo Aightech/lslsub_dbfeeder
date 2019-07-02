@@ -90,6 +90,7 @@ void create_stream_table_db(PGconn *C, std::string name)
   std::string sql=
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
     "time timestamp NOT NULL,"			\
+    "t DOUBLE PRECISION NOT NULL,"		\
     "data DOUBLE PRECISION[]  NOT NULL,"	\
     "uid TEXT  NULL)";
 
@@ -109,18 +110,19 @@ void create_stream_table_db(PGconn *C, std::string name)
   
 }
 
-void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps )
+void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
 {
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)
     {
       //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + //std::to_string(timestamps[j])
-      sql += "INSERT INTO " + name + " (time, data) "+ \
+      sql += "INSERT INTO " + name + " (time,t, data, uid) "+ \
 	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]+100000) +"'" + \
-	" , '{" + std::to_string(chunk[j][0]);
+	" ," +  std::to_string(timestamps[j]) +",'{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}'); " ;
+      sql += "}', " + uid + " ); " ;
+      //sql += "}'); " ;
       //std::cout << sql << std::endl;
     }
 	    

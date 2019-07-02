@@ -15,7 +15,8 @@ add_executable(${EXEC_NAME} ${SRCS} ${HEADERS})
 
 #link LSL libraries
 if(UNIX)
-  target_link_libraries (${EXEC_NAME} lsl64 pqxx pthread)
+  include_directories(/usr/include/postgresql)
+  target_link_libraries (${EXEC_NAME} lsl64 pq pthread)
   ADD_CUSTOM_COMMAND (	TARGET ${EXEC_NAME} POST_BUILD
 						#copy the dll files 
 						COMMENT "Saving exec in bin/ directory..." VERBATIM

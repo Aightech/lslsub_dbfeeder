@@ -74,7 +74,7 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
  * @param strm_info the info of stream to record.
  * @param rec_on Boolean that stop the main loop of recording.
  */
-void store_stream(lsl::stream_info strm_info, bool *rec_on)
+void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
 {
   PGconn *C= connect_db("lsldb",
   			 "lsldb_user",
@@ -96,7 +96,7 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on)
 	std::vector<double> timestamps;
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    insert_data_db(C, strm_info.name(), chunk, timestamps);
+	    insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
 	    //std::cout << timestamps[0] << std::endl;
 	  }
     }
@@ -137,7 +137,7 @@ int get_conf(std::string file, std::vector<std::string>& strm)
 	}
     }
   else
-    std::cout << "No configuration file [" << file << "found. No stream will be recorded" << std::endl;
+    std::cout << "No configuration file [" << file << "] found. No stream will be recorded" << std::endl;
 }
 
 
@@ -145,18 +145,22 @@ int get_conf(std::string file, std::vector<std::string>& strm)
 
 int main(int argc, char* argv[])
 {
-  std::vector<std::string> opt_flag(
-				    {"-c"});
+ std::vector<std::string> opt_flag(
+				    {"-c",
+					"-id"});
   std::vector<std::string> opt_label(
-				     {"Configuration file"});
+				     {"Configuration file",
+					 "ID of the recording session."});
   std::vector<std::string> opt_value(
-				     {"config/conf.cfg"});
+				     {"conf.cfg",
+					 "0"});
   
   get_arg(argc, argv, opt_flag, opt_label, opt_value);
 
   //get the streams to record.
   std::vector<std::string> streams_to_get;
   std::string cfg_file = opt_value[0];
+  std::string uid = opt_value[1];
   get_conf(cfg_file, streams_to_get);
   
   //scan the available streams.
@@ -171,7 +175,7 @@ int main(int argc, char* argv[])
   	  if(strm_info[i].name().compare( streams_to_get[j] ) == 0 )
 	    {//launch a thread
 	      rec_on = true;
-	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on));
+	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on, uid));
 	      std::cout << "[INFO] Start to record: " <<  streams_to_get[j] << std::endl;
 	    }
 
