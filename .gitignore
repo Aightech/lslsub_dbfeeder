@@ -14,5 +14,7 @@
 !CMakeLists.txt
 !setup.sh
 !setup.bat
+!extract.sh
+!gnuplot_script
 !/config
 !/config/*
