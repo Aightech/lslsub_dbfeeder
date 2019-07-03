@@ -8,6 +8,7 @@
 #include "psql.h"
 #include "tools.h"
 
+
 /**
  * @brief connect_db Enable to connect to a database and return the connected object of pqxx library
  * @param name Name of the database
@@ -17,31 +18,29 @@
  * @param port Port of the host
  * @return The connected object.
  */
-pqxx::connection* connect_db(std::string name, std::string user, std::string password,std::string host, std::string port)
+PGconn* connect_db(std::string name, std::string user, std::string password,std::string host, std::string port)
 {
-  pqxx::connection *C;
-  try
+  std::string connParam=
+    "dbname = " + name +    \
+    " user = " + user +		  \
+    " password = " + password +	    \
+    " hostaddr = " + host +	    \
+    " port = " + port;
+  //std::cout << "Connecting to lsldb..." << "\xd" << std::flush;
+  PGconn *conn = PQconnectdb(connParam.c_str());
+  if (PQstatus(conn) == CONNECTION_BAD)
     {
-      std::string connParam=
-	"dbname = " + name + \
-	" user = " + user + \
-	" password = " + password + \
-	" hostaddr = " + host + \
-	" port = " + port;
-      //std::cout << "Connecting to lsldb...\xd" << std::flush;
-      C = new pqxx::connection(connParam);
-      
+      std::cout <<  "[" << name << "] Connection to database failed: " <<  PQerrorMessage(conn) << std::endl;
+      PQfinish(conn);
+      error("");
+  }
     
-      if (!C->is_open())
-        error("Connection to lsldb failed.");
-      
-      //std::cout << "Connected to lsldb       " << std::endl;
-      return C;
-    }
-  catch (const pqxx::pqxx_exception &e)
-    {
-      std::cerr  << e.base().what() << std::endl;
-    }
+  //char *userr = PQuser(conn);
+  //char *db_name = PQdb(conn);
+  //char *pswd = PQpass(conn);
+  
+  return conn;  
+ 
 }
 
 
@@ -51,69 +50,85 @@ pqxx::connection* connect_db(std::string name, std::string user, std::string pas
  * @param user User name to connect the database
  * @return The connected object.
  */
-bool add_stream_metadata(pqxx::connection *C, lsl::stream_info& info)
+bool add_stream_metadata(PGconn *C, lsl::stream_info& info)
 {
-  pqxx::nontransaction N(*C);// Create a non-transactional object.
-  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "';";  
-  pqxx::result R( N.exec( sql ));// Execute SQL query 
-  N.commit();
-
-  if(R.size()==0)
-    {
-      pqxx::work W(*C);
+  std::string sql = "SELECT name from lsl_streams_metadata WHERE name='" + info.name() + "'";
+  PGresult *res = PQexec(C, sql.c_str());
   
-      sql=
-	"INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
-	"VALUES ( '" + info.name()	+ "'" +					\
-	" , '" + info.type()+ "'"		  +				\
+  if (PQntuples(res)==0)
+    {
+      PQclear(res);
+      sql="INSERT INTO lsl_streams_metadata (name, type, format, rate, nb_channels, host) " \
+	"VALUES( '" + info.name()	+ "'" +				\
+	" , '" + info.type()+ "'"		  +			\
 	" , " + std::to_string(info.channel_format())+			\
 	" , " + std::to_string(info.nominal_srate())  +			\
 	" , " + std::to_string(info.channel_count())  +			\
-	" , '" + info.hostname()+ "'"	  +				\
-	");";
-      
-      // Execute SQL query 
-      W.exec( sql );
-      W.commit();
+    " , '" + info.hostname()+ "'"	  +				\
+	")";
+      res = PQexec(C,sql.c_str());
+      if (PQresultStatus(res) != PGRES_COMMAND_OK)
+	  error(PQerrorMessage(C));
+      PQclear(res);
+      std::cout << "[" <<  info.name() << "]" << "Added to lsl_streams_metadata." << std::endl;
       return true;
     }
+  else
+    {
+      PQclear(res);
+      std::cout << "[" <<  info.name() << "]" << "Already present in lsl_streams_metadata." << std::endl;
+      return false;
+    }
+    
   return false;
 
 
 }
 
-void create_stream_table_db(pqxx::connection *C, std::string name)
+void create_stream_table_db(PGconn *C, std::string name)
 {
   std::string sql=
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
-    "time DOUBLE PRECISION       NOT NULL,"	\
+    "time timestamp NOT NULL,"			\
+    "t DOUBLE PRECISION NOT NULL,"		\
     "data DOUBLE PRECISION[]  NOT NULL,"	\
-    "uid TEXT  NULL);";
+    "uid TEXT  NULL)";
 
-  pqxx::work W(*C);
-      
-  // Execute SQL query 
-  W.exec( sql );
-  W.commit();
+  // Execute SQL query  
+  PGresult *res = PQexec(C, sql.c_str());
+  if (PQresultStatus(res) != PGRES_COMMAND_OK) 
+    error(PQerrorMessage(C));
+  PQclear(res);
+
+  
+  sql= "SELECT create_hypertable('"+name+"', 'time', if_not_exists => true)";
+
+  //Execute SQL query  
+  res = PQexec(C, sql.c_str());
+  PQclear(res);
+  std::cout <<"daza" << std::endl;
+  
 }
 
-void insert_data_db(pqxx::connection *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid )
+void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
 {
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)
     {
-      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here
-      sql += "INSERT INTO " + name + " (time, data, uid) "+ \
-	"VALUES ( " + std::to_string(timestamps[j]) +		\
-	" , '{" + std::to_string(chunk[j][0]);
+      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + //std::to_string(timestamps[j])
+      sql += "INSERT INTO " + name + " (time,t, data, uid) "+ \
+	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]+100000) +"'" + \
+	" ," +  std::to_string(timestamps[j]) +",'{" + std::to_string(chunk[j][0]);
       for(int i =1; i < chunk[j].size(); i++)
 	sql += "," + std::to_string(chunk[j][i]);
       sql += "}', " + uid + " ); " ;
+      //sql += "}'); " ;
+      //std::cout << sql << std::endl;
     }
 	    
-  pqxx::work W(*C);
-      
-  // Execute SQL query 
-  W.exec( sql );
-  W.commit();
+  // Execute SQL query
+  PGresult *res = PQexec(C, sql.c_str());
+  if (PQresultStatus(res) != PGRES_COMMAND_OK) 
+    error(PQerrorMessage(C));
+  PQclear(res);
 }

@@ -7,12 +7,12 @@
  */
 
 #include <iostream> //cout,cin
-#include <pqxx/pqxx> //psql wrapper
 #include <string> 
 #include <lsl_cpp.h> //lsl library
 #include <thread> // std::thread
 #include <fstream> // open file
 #include <sstream> //stream in file
+#include <vector>
 
 #include "psql.h" // function to streamore stream in postgres database
 #include "tools.h" // args, usage, error
@@ -76,15 +76,16 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
  */
 void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
 {
-  pqxx::connection *C = connect_db("lsldb",
-				   "lsldb_user",
-				   "azerty",
-				   "127.0.0.1",
-				   "5432");
+  PGconn *C= connect_db("lsldb",
+  			 "lsldb_user",
+  			 "azerty",
+  			 "127.0.0.1",
+  			 "5432");
   
   add_stream_metadata(C,strm_info);
   create_stream_table_db(C,strm_info.name());
-  lsl::stream_inlet inlet(strm_info);
+  lsl::stream_inlet inlet(strm_info, 360, 0, false);
+
   try {
 
     // and retrieve the chunks (note: this can of course also be done with pure std::vectors
@@ -95,7 +96,8 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
 	std::vector<double> timestamps;
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    insert_data_db(C, strm_info.name(), chunk, timestamps, uid); 
+	    insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
+	    //std::cout << timestamps[0] << std::endl;
 	  }
     }
 
@@ -107,7 +109,7 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
   
 	
   std::cout << "[INFO] Disconnecting from lsldb...\xd" << std::flush;
-  C->disconnect ();
+  PQfinish(C);
   std::cout << "[INFO] Disconnected from lsldb.       " << std::endl;
   
 }
@@ -135,7 +137,7 @@ int get_conf(std::string file, std::vector<std::string>& strm)
 	}
     }
   else
-    std::cout << "No configuration file [" << file << "found. No stream will be recorded" << std::endl;
+    std::cout << "No configuration file [" << file << "] found. No stream will be recorded" << std::endl;
 }
 
 
@@ -143,7 +145,7 @@ int get_conf(std::string file, std::vector<std::string>& strm)
 
 int main(int argc, char* argv[])
 {
-  std::vector<std::string> opt_flag(
+ std::vector<std::string> opt_flag(
 				    {"-c",
 					"-id"});
   std::vector<std::string> opt_label(
