@@ -4,5 +4,5 @@ set xlabel "X-AXIS"
 set ylabel "Y-AXIS"
 #set xrange [0:5]
 #set yrange [-2:2]
-plot "o" u 1:2 w l
+plot "otb_id4.csv" u 1:115 w l, "glv_id4.csv" u 1:($17*32000) w l
 pause -1 "Hit any key to continue"

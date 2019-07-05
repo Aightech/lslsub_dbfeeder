@@ -152,7 +152,7 @@ int main(int argc, char* argv[])
 				     {"Configuration file",
 					 "ID of the recording session."});
   std::vector<std::string> opt_value(
-				     {"conf.cfg",
+				     {"config/conf.cfg",
 					 "0"});
   
   get_arg(argc, argv, opt_flag, opt_label, opt_value);
