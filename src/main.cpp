@@ -13,6 +13,8 @@
 #include <fstream> // open file
 #include <sstream> //stream in file
 #include <vector>
+#include <ctime>
+#include <string.h>
 
 #include "psql.h" // function to streamore stream in postgres database
 #include "tools.h" // args, usage, error
@@ -69,12 +71,31 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
 
 }
 
+void printPGresult(PGresult *res)
+{
+  int i, j;
+  printf("printPGresult: %d tuples, %d fields\n", PQntuples(res), PQnfields(res));
+
+  /* print column name */
+  for (i = 0; i < PQnfields(res); i++)
+    printf("%s\t", PQfname(res, i));
+
+  printf("\n");
+
+  /* print column values */
+  for (i = 0; i < PQntuples(res); i++) {
+    for (j = 0; j < PQnfields(res); j++) 
+      printf("%s\t", PQgetvalue(res, i, j));
+    printf("\n");
+  }
+}
+
 /**
  * @brief store_stream Connect to the database and start storing the incoming stream..
  * @param strm_info the info of stream to record.
  * @param rec_on Boolean that stop the main loop of recording.
  */
-void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
+void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int n)
 {
   PGconn *C= connect_db("lsldb",
   			 "lsldb_user",
@@ -85,19 +106,45 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid)
   add_stream_metadata(C,strm_info);
   create_stream_table_db(C,strm_info.name());
   lsl::stream_inlet inlet(strm_info, 360, 0, false);
+  std::string spacer ="";
+  for(int i =0;i<n;i++)
+    spacer+="\t\t\t";
 
   try {
 
     // and retrieve the chunks (note: this can of course also be done with pure std::vectors
     // instead of stereo_samples)
+    std::vector<std::vector<float>> chunk;
+    std::vector<double> timestamps;
+
+    int t=0;
+    clock_t begin;
+    clock_t end;
+    double elapsed_secs;
+    double rate;
+    
+    std::cout << "[" << strm_info.name() << "] Started." << std::endl;
     while (*rec_on)
       {
-	std::vector<std::vector<float>> chunk;
-	std::vector<double> timestamps;
+	chunk.clear();
+	timestamps.clear();
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
+	    begin = clock();
 	    insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
-	    //std::cout << timestamps[0] << std::endl;
+	    end = clock();
+	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	    rate = elapsed_secs;
+	    //if(t++%100)
+	    std::cout << spacer << elapsed_secs  << " " << timestamps.size() << "\t\t";
+
+	    begin = clock();
+	    //insert_data_db_2(C, strm_info.name(), chunk, timestamps, uid);
+	    end = clock();
+	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	    rate = elapsed_secs/rate;
+	    //if(t++%100)
+	    std::cout << spacer << elapsed_secs  <<"# " << (int)'\0' << " #" <<rate  << std::endl;
 	  }
     }
 
@@ -175,7 +222,7 @@ int main(int argc, char* argv[])
   	  if(strm_info[i].name().compare( streams_to_get[j] ) == 0 )
 	    {//launch a thread
 	      rec_on = true;
-	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on, uid));
+	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on, uid, j));
 	      std::cout << "[INFO] Start to record: " <<  streams_to_get[j] << std::endl;
 	    }
 
