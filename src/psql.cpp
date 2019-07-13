@@ -139,126 +139,63 @@ char *myhton(char *src, int size) {
   return src;
 }
 
+double reverseValue(const char *data)
+{
+    double result;
+    char *dest = (char *)&result;
+    for(int i=0; i<sizeof(double); i++) 
+        dest[i] = data[sizeof(double)-i-1];
+    return result;
+}
+
 void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
 {
-  // std::string sql="";
+  std::string sql="";
    PGresult *res=NULL;
-  // for(int j = 0; j < chunk.size(); j++)
-  //   {
-  //     sql += "2000-01-01;" +  std::to_string(timestamps[j]) +";{" + std::to_string(chunk[j][0]);
-  //     for(int i =1; i < 3; i++)
-  // 	sql += "," + std::to_string(chunk[j][i]);
-  //     sql += "}; " + uid + "\n" ;
-  //   }
+  for(int j = 0; j < chunk.size(); j++)
+    {
+      sql += "2000-01-01;" +  std::to_string(timestamps[j]) +";{" + std::to_string(chunk[j][0]);
+      for(int i =1; i < chunk[j].size(); i++)
+  	sql += "," + std::to_string(chunk[j][i]);
+      sql += "}; " + uid + "\n" ;
+    }
 
-  // res = PQexec(C, ("COPY "+name+" FROM STDIN with (delimiter ';');").c_str());
-  // if (PQresultStatus(res) != PGRES_COPY_IN)
-  //   {
-  //     fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
-  // 	      __FILE__, __LINE__);
-  //     PQclear(res);
-  //   }
-  // else
-  //   {
-  //     PQclear(res);
-  //     if (PQputCopyData(C, sql.c_str(), sql.size()) == 1)
-  // 	{
-  // 	  if (PQputCopyEnd(C, NULL) == 1)
-  // 	    {
-  // 	      res = PQgetResult(C);
-  // 	      if (PQresultStatus(res) == PGRES_COMMAND_OK)
-  // 		{
-  // 		  //printf("Copy %s\n", PQcmdTuples(res));
-  // 		}
-  // 	      else
-  // 		{
-  // 		  fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n", __FILE__, __LINE__, PQresultErrorMessage(res));
-  // 		}
-  // 	      //printPGresult(res);
-  // 	      PQclear(res);
-  // 	    }
-  // 	  else
-  // 	    {
-  // 	      fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",  __FILE__, __LINE__, PQerrorMessage(C));
-  // 	    }
-  // 	}
-  //     else
-  // 	{
-  // 	  fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",	  __FILE__, __LINE__, PQerrorMessage(C));
-  // 	}
-  //   }
-   /* Binary COPY demo */
-   
-   printf(" adzazdaz\n");
-   char header[12] = "PGCOPY\n\377\r\n\0";
-   char flag[5] = "\0\0\0\0";
-   char extension[5] = "\0\0\0\0";
-   
-   char buffer[100];
-   char *b=buffer;
-
-   memcpy(b, header, 11);   b+=11;
-   memcpy(b, flag, 4);      b+=4;
-   memcpy(b, extension, 4); b+=4;
-   
-   uint16_t fieldnum = htobe16(3);
-   memcpy(b, (char*)(&fieldnum) , 2); b+=2;
-
-   uint32_t size = htobe32(4);
-   memcpy(b, (char*)(&size), 4); b+=4;
-   uint32_t id = htobe32(10);
-   memcpy(b, (char*)(&id)  , 4); b+=4;
-
-   size = htobe32(10);
-   memcpy(b, (char*)(&size), 4); b+=4;
-   memcpy(b, "bbbbbccccc", 10);          b+=10;
-
-   uint32_t ndim = htobe32(1);
-   memcpy(b, (char*)(&ndim), 4); b+=4;
-   uint32_t hasnull = htobe32(0);
-   memcpy(b, (char*)(&ndim), 4); b+=4;
-   //uint32_t ndim = htobe32(1);
-   //memcpy(b, (char*)(&ndim), 4); b+=4;
-   // uint32_t ndim = htobe32(1);
-   //memcpy(b, (char*)(&ndim), 4); b+=4;
-   
-      
-   uint16_t negative = htobe16(-1);
-   memcpy(b, (char*)(&fieldnum) , 2); b+=2;
-   
-   printf(" %d \n", sizeof(double));
-   
-
-   res = PQexec(C, "COPY test_table FROM STDIN (FORMAT binary);");
-   if (PQresultStatus(res) != PGRES_COPY_IN) {
-     fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
-	     __FILE__, __LINE__);
-     PQclear(res);
-   } else {
-     PQclear(res);
-     printf("Enter binary COPY_IN mode\n");
-     int copyRes = PQputCopyData(C, buffer,  b-buffer);
-     if (copyRes == 1) {
-       if (PQputCopyEnd(C, NULL) == 1) {
-	 res = PQgetResult(C);
-	 if (PQresultStatus(res) == PGRES_COMMAND_OK) {
-	   printf("Inserted a record successfully\n");
-	 } else {
-	   fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n",
-		   __FILE__, __LINE__, PQresultErrorMessage(res));
-	 }
-	 PQclear(res);
-       } else {
-	 fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",
-		 __FILE__, __LINE__, PQresultErrorMessage(res));
-       }
-     } else if (copyRes == 0) {
-       printf("Send no data, connection is in nonblocking mode\n");
-     } else if (copyRes == -1) {
-       fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",
-	       __FILE__, __LINE__, PQresultErrorMessage(res));
-     }
-   }
+  res = PQexec(C, ("COPY "+name+" FROM STDIN with (delimiter ';');").c_str());
+  if (PQresultStatus(res) != PGRES_COPY_IN)
+    {
+      fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
+  	      __FILE__, __LINE__);
+      PQclear(res);
+    }
+  else
+    {
+      PQclear(res);
+      if (PQputCopyData(C, sql.c_str(), sql.size()) == 1)
+  	{
+  	  if (PQputCopyEnd(C, NULL) == 1)
+  	    {
+  	      res = PQgetResult(C);
+  	      if (PQresultStatus(res) == PGRES_COMMAND_OK)
+  		{
+  		  //printf("Copy %s\n", PQcmdTuples(res));
+  		}
+  	      else
+  		{
+  		  fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n", __FILE__, __LINE__, PQresultErrorMessage(res));
+  		}
+  	      //printPGresult(res);
+  	      PQclear(res);
+  	    }
+  	  else
+  	    {
+  	      fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",  __FILE__, __LINE__, PQerrorMessage(C));
+  	    }
+  	}
+      else
+  	{
+  	  fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",	  __FILE__, __LINE__, PQerrorMessage(C));
+  	}
+    }
 
 }
 
@@ -283,4 +220,115 @@ void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float
   if (PQresultStatus(res) != PGRES_COMMAND_OK) 
     error(PQerrorMessage(C));
   PQclear(res);
+}
+
+#define PGCOPY_HEADER  "PGCOPY\n\377\r\n\0\0\0\0\0\0\0\0\0"
+void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
+{
+   PGresult *res=NULL;
+   
+   
+   char buffer[(long)100000];
+   char *b=buffer;
+
+   memcpy(b, PGCOPY_HEADER, 19);   b+=19;;
+
+   uint16_t nb_col = htobe16(4);
+   uint32_t size;
+   double timestamp;
+   uint32_t ndim = htobe32(1);
+   uint32_t hasnull = htobe32(0);
+   uint32_t elem_type = htobe32(701);
+   uint32_t dim = htobe32(chunk[0].size());
+   uint32_t lbound = htobe32(1);
+
+   for(int j = 0; j < chunk.size(); j+=1)
+     {
+       //number of columns
+       memcpy(b, (char*)(&nb_col) , 2); b+=2;
+       //std::cout <<j  << std::endl;
+
+       //date and time stamps ==> the date is annoying so we don't care of the format and use the times stamps format
+       size = htobe32(8);
+       timestamp = reverseValue((char*)&timestamps[j]);
+       memcpy(b, (char*)(&size), 4); b+=4;
+       memcpy(b, (char*)(&timestamp), 8); b+=8;
+       memcpy(b, (char*)(&size), 4); b+=4;
+       memcpy(b, (char*)(&timestamp), 8); b+=8;
+
+       //data array
+       size = htobe32(20+12*chunk[j].size());
+       memcpy(b, (char*)(&size), 4); b+=4;
+       
+       memcpy(b, (char*)(&ndim),      4); b+=4;
+       memcpy(b, (char*)(&hasnull),   4); b+=4;
+       memcpy(b, (char*)(&elem_type), 4); b+=4;
+       memcpy(b, (char*)(&dim),       4); b+=4;
+       memcpy(b, (char*)(&lbound),    4); b+=4;
+
+       size = htobe32(8);
+       for(int i =0; i < chunk[j].size(); i++)
+	 {
+	   memcpy(b, (char*)(&size), 4); b+=4;
+	   double data = reverseValue((char*)&chunk[j][i]);
+	   memcpy(b, (char*)(&data)  , 8); b+=8;
+	 }
+
+       size = htobe32(uid.size());
+       memcpy(b, (char*)(&size), 4); b+=4;
+       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();
+       //std::cout << b-buffer << std::endl;
+
+     }
+      
+   uint16_t negative = htobe16(-1);
+   memcpy(b, (char*)(&negative) , 2); b+=2;
+
+   
+
+   res = PQexec(C, ("COPY "+name+" FROM STDIN (FORMAT binary);").c_str());
+   if (PQresultStatus(res) != PGRES_COPY_IN)
+     {
+       fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
+	       __FILE__, __LINE__);
+       PQclear(res);
+     }
+   else
+     {
+       PQclear(res);
+       //printf("Enter binary COPY_IN mode\n");
+       int copyRes = PQputCopyData(C, buffer,  b-buffer);
+       if (copyRes == 1)
+	 {
+	   if (PQputCopyEnd(C, NULL) == 1)
+	     {
+	       res = PQgetResult(C);
+	       if (PQresultStatus(res) == PGRES_COMMAND_OK)
+		 {
+		   //printf("Inserted a record successfully\n");
+		 }
+	       else
+		 {
+		   fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n",
+			   __FILE__, __LINE__, PQresultErrorMessage(res));
+		 }
+	       PQclear(res);
+	     }
+	   else
+	     {
+	       fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",
+		       __FILE__, __LINE__, PQresultErrorMessage(res));
+	     }
+	 }
+       else if (copyRes == 0)
+	 {
+	   printf("Send no data, connection is in nonblocking mode\n");
+	 }
+       else if (copyRes == -1)
+	 {
+	   fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",
+		   __FILE__, __LINE__, PQresultErrorMessage(res));
+	 }
+     }
+   
 }

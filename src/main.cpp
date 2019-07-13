@@ -136,15 +136,16 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
 	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
 	    rate = elapsed_secs;
 	    //if(t++%100)
-	    std::cout << spacer << elapsed_secs  << " " << timestamps.size() << "\t\t";
-
+	    std::cout << spacer << "insert 1:" << elapsed_secs  << " " << timestamps.size() << "\t\t"<< std::flush;;
+	    
 	    begin = clock();
-	    //insert_data_db_2(C, strm_info.name(), chunk, timestamps, uid);
+	    insert_data_db_3(C, strm_info.name(), chunk, timestamps, uid);
 	    end = clock();
 	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	    rate = elapsed_secs/rate;
+	    rate = 0;//elapsed_secs/rate;
 	    //if(t++%100)
-	    std::cout << spacer << elapsed_secs  <<"# " << (int)'\0' << " #" <<rate  << std::endl;
+	    std::cout << spacer << "insert 2:"<< elapsed_secs  <<"    "<< t  << std::endl;
+	    t+=timestamps.size();
 	  }
     }
 

@@ -15,4 +15,6 @@ void create_stream_table_db(PGconn *C, std::string name);
 
 void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid );
 void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid );
+
+void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid );
 #endif
