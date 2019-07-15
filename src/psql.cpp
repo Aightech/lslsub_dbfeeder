@@ -150,8 +150,8 @@ double reverseValue(const char *data)
 
 
 #define PGCOPY_HEADER  "PGCOPY\n\377\r\n\0\0\0\0\0\0\0\0\0"
-#define SIZE_MAX_ARR 100000
-void copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
+#define SIZE_MAX_ARR 200000
+int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
 {
    PGresult *res=NULL;
    /*
@@ -190,12 +190,12 @@ void copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& 
     */
    
    char buffer[SIZE_MAX_ARR];
-   int inc;
+   float inc;
    
    if(21+(54+12*chunk[0].size()+uid.size())*chunk.size()<SIZE_MAX_ARR)
      inc =1;
    else
-     inc = chunk.size()/(int)((SIZE_MAX_ARR - 21)/(54+12*chunk[0].size()+uid.size()))+1;
+     inc = chunk.size()/(float)((SIZE_MAX_ARR - 2000)/(float)(54+12*chunk[0].size()+uid.size()));
       
    char *b=buffer;
 
@@ -220,9 +220,11 @@ void copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& 
    memcpy(array_header+16, (char*)(&dim),       4); 
    memcpy(array_header+20, (char*)(&lbound),    4); 
 
-
-   for(int j = 0; j < chunk.size(); j+=inc)
+   unsigned long int s = *index;
+   int j;
+   for(float jf = 0; (int)jf < chunk.size(); jf+=inc)
      {
+       j=(int)jf;
        //number of columns
        memcpy(b, (char*)(&nb_col) , 2); b+=2;
        //std::cout << j  << std::endl;
@@ -240,23 +242,25 @@ void copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& 
        memcpy(b, array_header, 24); b+=24;
 
        size = htobe32(8);
+       
        for(int i =0; i < chunk[j].size(); i++)
 	 {
+	   double val = chunk[j][i];
 	   memcpy(b, (char*)(&size), 4); b+=4;
-	   double data = reverseValue((char*)&chunk[j][i]);
+	   double data = reverseValue((char*)&val);//chunk[j][i]);
 	   memcpy(b, (char*)(&data)  , 8); b+=8;
 	 }
 
        size = htobe32(uid.size());
        memcpy(b, (char*)(&size), 4); b+=4;
-       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();;
+       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();
 
      }
       
    uint16_t negative = htobe16(-1);
    memcpy(b, (char*)(&negative) , 2); b+=2;
-   if(*index%100==0)
-     std::cout << "[" << name << "] " << (int)chunk.size()/inc+1 << "/" << chunk.size()+1 << "    \t";
+   if(*index%100 == 0)
+       std::cout << "[" << name << "] " << *index-s << "/" << chunk.size() <<  "  \t";
 
    
 

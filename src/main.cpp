@@ -117,10 +117,14 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
 	    end = clock();
 	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC*1000000;
 	    if(t%100==0)
-	      std::cout << spacer << "t:"<< elapsed_secs <<"   \xd" << std::flush;
+	      std::cout <<spacer <<"t:"<< elapsed_secs <<"   \xd" << std::flush;
 	  }
     }
-
+    
+    std::cout << "[" << strm_info.name() <<"] Disconnecting from lsldb...\xd" << std::flush;
+    PQfinish(C);
+    std::cout << "[" << strm_info.name() <<"] Disconnected from lsldb." <<  std::endl;
+    std::cout << "[" << strm_info.name() <<"] Nb sample: " << t << std::endl;
   }
   catch (std::exception& e)
     {
@@ -128,9 +132,6 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
     }
   
 	
-  std::cout << "[INFO] Disconnecting from lsldb...\xd" << std::flush;
-  PQfinish(C);
-  std::cout << "[INFO] Disconnected from lsldb.       " << std::endl;
   
 }
 
@@ -195,7 +196,7 @@ int main(int argc, char* argv[])
   	  if(strm_info[i].name().compare( streams_to_get[j] ) == 0 )
 	    {//launch a thread
 	      rec_on = true;
-	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on, uid, j));
+	      strm_thread.push_back(std::thread(store_stream, strm_info[i], &rec_on, uid, i));
 	      std::cout << "[INFO] Start to record: " <<  streams_to_get[j] << std::endl;
 	    }
 
