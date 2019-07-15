@@ -90,7 +90,7 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
   lsl::stream_inlet inlet(strm_info, 360, 0, false);
   std::string spacer ="";
   for(int i =0;i<n;i++)
-    spacer+="\t\t\t";
+    spacer+="\t\t\t\t\t";
 
   try {
 
@@ -112,16 +112,8 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
 	timestamps.clear();
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    // begin = clock();
-	    // //insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
-	    // end = clock();
-	    // elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	    // rate = elapsed_secs;
-	    // //if(t++%100)
-	    // std::cout << spacer << "insert 1:" << elapsed_secs  << " " << timestamps.size() << "\t\t"<< std::flush;;
-	    
 	    begin = clock();
-	    insert_data_db_3(C, strm_info.name(), chunk, timestamps, uid, &t);
+	    copy_data_db(C, strm_info.name(), chunk, timestamps, uid, &t);
 	    end = clock();
 	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC*1000000;
 	    if(t%100==0)

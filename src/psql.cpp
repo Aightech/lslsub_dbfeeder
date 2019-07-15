@@ -148,86 +148,46 @@ double reverseValue(const char *data)
     return result;
 }
 
-void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
-{
-  std::string sql="";
-   PGresult *res=NULL;
-  for(int j = 0; j < chunk.size(); j++)
-    {
-      sql += "2000-01-01;" +  std::to_string(timestamps[j]) +";{" + std::to_string(chunk[j][0]);
-      for(int i =1; i < chunk[j].size(); i++)
-  	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}; " + uid + "\n" ;
-    }
-
-  res = PQexec(C, ("COPY "+name+" FROM STDIN with (delimiter ';');").c_str());
-  if (PQresultStatus(res) != PGRES_COPY_IN)
-    {
-      fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
-  	      __FILE__, __LINE__);
-      PQclear(res);
-    }
-  else
-    {
-      PQclear(res);
-      if (PQputCopyData(C, sql.c_str(), sql.size()) == 1)
-  	{
-  	  if (PQputCopyEnd(C, NULL) == 1)
-  	    {
-  	      res = PQgetResult(C);
-  	      if (PQresultStatus(res) == PGRES_COMMAND_OK)
-  		{
-  		  //printf("Copy %s\n", PQcmdTuples(res));
-  		}
-  	      else
-  		{
-  		  fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n", __FILE__, __LINE__, PQresultErrorMessage(res));
-  		}
-  	      //printPGresult(res);
-  	      PQclear(res);
-  	    }
-  	  else
-  	    {
-  	      fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",  __FILE__, __LINE__, PQerrorMessage(C));
-  	    }
-  	}
-      else
-  	{
-  	  fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",	  __FILE__, __LINE__, PQerrorMessage(C));
-  	}
-    }
-
-}
-
-void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid)
-{
-  std::string sql="";
-  for(int j = 0; j < chunk.size(); j++)
-    {
-      //std::cout << timestamps[j] << std::endl; // only showing the time stamps here //+ std::to_string(timestamps[j]) + //std::to_string(timestamps[j])
-      sql += "INSERT INTO " + name + " (time,t, data, uid) "+ \
-	"VALUES ( TIMESTAMP '2000-01-01 " + std::to_string(timestamps[j]+100000) +"'" + \
-	" ," +  std::to_string(timestamps[j]) +",'{" + std::to_string(chunk[j][0]);
-      for(int i =1; i < chunk[j].size(); i++)
-	sql += "," + std::to_string(chunk[j][i]);
-      sql += "}', '" + uid + "'); " ;
-      //sql += "}'); " ;
-      //std::cout << sql << std::endl;
-    }
-	    
-  // Execute SQL query
-  PGresult *res = PQexec(C, sql.c_str());
-  if (PQresultStatus(res) != PGRES_COMMAND_OK) 
-    error(PQerrorMessage(C));
-  PQclear(res);
-}
 
 #define PGCOPY_HEADER  "PGCOPY\n\377\r\n\0\0\0\0\0\0\0\0\0"
 #define SIZE_MAX_ARR 100000
-void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
+void copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
 {
    PGresult *res=NULL;
-   
+   /*
+     Start of the buffer
+
+     +--------------------+---------+-----------+
+     |       HEADER       |  FLAG   | EXTENTION |
+     |--------------------|---------|-----------|
+     |      11 bytes      | 4 bytes |  4 bytes  |
+     | PGCOPY\n\377\r\n\0 |   0000  |    0000   |
+     +--------------------+---------+-----------+
+
+     for each rows in the chunk:
+     
+     +------------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------------+
+     |            |                                           |                                                         DATA CHUNK                                               |                 |
+     |  COLUMNS   |               INDEX & TIME                +------------------------------------------------------------------------------------------------------------------+     UID NAME    |
+     |            |                                           |                            ARRAY HEADER                          |                      ARRAY                    |                 |
+     |------------+---------------------+---------------------+---------+-----------+---------+------------+-----------+---------+---------------------+---+---------------------+-----------------+
+     | NB COLUMNS |  SIZE   |    DATA   |  SIZE   |    DATA   |  SIZE   |   ndim    | hasnull |  elem_type | dimension | lbound  |   size  |   data 1  |   |   size  |   data n  |   size  |  uid  |
+     |------------+---------+-----------+---------+-----------+---------+-----------+---------+------------+-----------+---------+---------+-----------+---+---------+-----------+---------+-------+
+     |   2 bytes  | 4 bytes |  8 bytes  | 4 bytes |  8 bytes  | 4 bytes |  4 bytes  | 4 bytes |  4 bytes   |  4 bytes  | 4 bytes | 4 bytes |  8 bytes  |...|   size  |  8 bytes  |   size  |   m   |
+     |      4     |    8    |    index  |    8    | timestamp |    n    |     1     |    0    | 701-double |     408   |    1    |    8    | sample[0] |   |   size  | sample[n] |   size  | uid[] |
+     +------------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------+-----------------+
+
+     End of the buffer:
+
+     +---------+
+     |   END   |
+     |---------|
+     | 2 bytes |
+     |   -1    |
+     +---------+
+
+
+    */
    
    char buffer[SIZE_MAX_ARR];
    int inc;
