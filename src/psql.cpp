@@ -92,7 +92,7 @@ void create_stream_table_db(PGconn *C, std::string name)
 {
   std::string sql=
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
-    "time timestamp NOT NULL,"			\
+    "time BIGINT NOT NULL,"			\
     "t DOUBLE PRECISION NOT NULL,"		\
     "data DOUBLE PRECISION[]  NOT NULL,"	\
     "uid TEXT  NULL)";
@@ -199,7 +199,7 @@ void insert_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>
 
 }
 
-void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
+void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid)
 {
   std::string sql="";
   for(int j = 0; j < chunk.size(); j++)
@@ -223,12 +223,20 @@ void insert_data_db_2(PGconn *C, std::string name, std::vector<std::vector<float
 }
 
 #define PGCOPY_HEADER  "PGCOPY\n\377\r\n\0\0\0\0\0\0\0\0\0"
-void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid  )
+#define SIZE_MAX_ARR 100000
+void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
 {
    PGresult *res=NULL;
    
    
-   char buffer[(long)100000];
+   char buffer[SIZE_MAX_ARR];
+   int inc;
+   
+   if(21+(54+12*chunk[0].size()+uid.size())*chunk.size()<SIZE_MAX_ARR)
+     inc =1;
+   else
+     inc = chunk.size()/(int)((SIZE_MAX_ARR - 21)/(54+12*chunk[0].size()+uid.size()))+1;
+      
    char *b=buffer;
 
    memcpy(b, PGCOPY_HEADER, 19);   b+=19;;
@@ -236,35 +244,40 @@ void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float
    uint16_t nb_col = htobe16(4);
    uint32_t size;
    double timestamp;
+   uint64_t ind;
    uint32_t ndim = htobe32(1);
    uint32_t hasnull = htobe32(0);
    uint32_t elem_type = htobe32(701);
    uint32_t dim = htobe32(chunk[0].size());
    uint32_t lbound = htobe32(1);
 
-   for(int j = 0; j < chunk.size(); j+=1)
+   char array_header[24];
+   size = htobe32(20+12*chunk[0].size());
+   memcpy(array_header,    (char*)(&size),      4);
+   memcpy(array_header+4,  (char*)(&ndim),      4); 
+   memcpy(array_header+8,  (char*)(&hasnull),   4); 
+   memcpy(array_header+12, (char*)(&elem_type), 4); 
+   memcpy(array_header+16, (char*)(&dim),       4); 
+   memcpy(array_header+20, (char*)(&lbound),    4); 
+
+
+   for(int j = 0; j < chunk.size(); j+=inc)
      {
        //number of columns
        memcpy(b, (char*)(&nb_col) , 2); b+=2;
-       //std::cout <<j  << std::endl;
+       //std::cout << j  << std::endl;
 
-       //date and time stamps ==> the date is annoying so we don't care of the format and use the times stamps format
+       //index and time stamps
        size = htobe32(8);
+       ind = htobe64((*index)++);
        timestamp = reverseValue((char*)&timestamps[j]);
        memcpy(b, (char*)(&size), 4); b+=4;
-       memcpy(b, (char*)(&timestamp), 8); b+=8;
+       memcpy(b, (char*)(&ind), 8); b+=8;
        memcpy(b, (char*)(&size), 4); b+=4;
        memcpy(b, (char*)(&timestamp), 8); b+=8;
 
        //data array
-       size = htobe32(20+12*chunk[j].size());
-       memcpy(b, (char*)(&size), 4); b+=4;
-       
-       memcpy(b, (char*)(&ndim),      4); b+=4;
-       memcpy(b, (char*)(&hasnull),   4); b+=4;
-       memcpy(b, (char*)(&elem_type), 4); b+=4;
-       memcpy(b, (char*)(&dim),       4); b+=4;
-       memcpy(b, (char*)(&lbound),    4); b+=4;
+       memcpy(b, array_header, 24); b+=24;
 
        size = htobe32(8);
        for(int i =0; i < chunk[j].size(); i++)
@@ -276,59 +289,43 @@ void insert_data_db_3(PGconn *C, std::string name, std::vector<std::vector<float
 
        size = htobe32(uid.size());
        memcpy(b, (char*)(&size), 4); b+=4;
-       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();
-       //std::cout << b-buffer << std::endl;
+       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();;
 
      }
       
    uint16_t negative = htobe16(-1);
    memcpy(b, (char*)(&negative) , 2); b+=2;
+   if(*index%100==0)
+     std::cout << "[" << name << "] " << (int)chunk.size()/inc+1 << "/" << chunk.size()+1 << "    \t";
 
    
 
    res = PQexec(C, ("COPY "+name+" FROM STDIN (FORMAT binary);").c_str());
    if (PQresultStatus(res) != PGRES_COPY_IN)
      {
-       fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n",
-	       __FILE__, __LINE__);
+       fprintf(stderr, "%s[%d]: Not in COPY_IN mode\n", __FILE__, __LINE__);
        PQclear(res);
      }
    else
      {
        PQclear(res);
-       //printf("Enter binary COPY_IN mode\n");
        int copyRes = PQputCopyData(C, buffer,  b-buffer);
        if (copyRes == 1)
 	 {
 	   if (PQputCopyEnd(C, NULL) == 1)
 	     {
 	       res = PQgetResult(C);
-	       if (PQresultStatus(res) == PGRES_COMMAND_OK)
-		 {
-		   //printf("Inserted a record successfully\n");
-		 }
-	       else
-		 {
-		   fprintf(stderr, "%s[%d]: PQresultStatus failed: %s\n",
-			   __FILE__, __LINE__, PQresultErrorMessage(res));
-		 }
+	       if (PQresultStatus(res) != PGRES_COMMAND_OK)
+		 fprintf(stderr, "[%d]: PQresultStatus failed: %s\n", __LINE__, PQresultErrorMessage(res));
 	       PQclear(res);
 	     }
 	   else
-	     {
-	       fprintf(stderr, "%s[%d]: PQputCopyEnd failed: %s\n",
-		       __FILE__, __LINE__, PQresultErrorMessage(res));
-	     }
+	     fprintf(stderr, "[%d]: PQputCopyEnd failed: %s\n", __LINE__, PQresultErrorMessage(res));
 	 }
        else if (copyRes == 0)
-	 {
-	   printf("Send no data, connection is in nonblocking mode\n");
-	 }
+	 printf("Send no data, connection is in nonblocking mode\n");
        else if (copyRes == -1)
-	 {
-	   fprintf(stderr, "%s[%d]: PQputCopyData failed: %s\n",
-		   __FILE__, __LINE__, PQresultErrorMessage(res));
-	 }
+	 fprintf(stderr, "[%d]: PQputCopyData failed: %s\n", __LINE__, PQresultErrorMessage(res));
      }
    
 }

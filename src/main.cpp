@@ -71,24 +71,6 @@ void scanStream(std::vector<lsl::stream_info>& to, bool verbose=true)
 
 }
 
-void printPGresult(PGresult *res)
-{
-  int i, j;
-  printf("printPGresult: %d tuples, %d fields\n", PQntuples(res), PQnfields(res));
-
-  /* print column name */
-  for (i = 0; i < PQnfields(res); i++)
-    printf("%s\t", PQfname(res, i));
-
-  printf("\n");
-
-  /* print column values */
-  for (i = 0; i < PQntuples(res); i++) {
-    for (j = 0; j < PQnfields(res); j++) 
-      printf("%s\t", PQgetvalue(res, i, j));
-    printf("\n");
-  }
-}
 
 /**
  * @brief store_stream Connect to the database and start storing the incoming stream..
@@ -117,7 +99,7 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
     std::vector<std::vector<float>> chunk;
     std::vector<double> timestamps;
 
-    int t=0;
+    unsigned long int t=0;
     clock_t begin;
     clock_t end;
     double elapsed_secs;
@@ -130,22 +112,20 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
 	timestamps.clear();
 	if (inlet.pull_chunk(chunk, timestamps))
 	  {
-	    begin = clock();
-	    insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
-	    end = clock();
-	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	    rate = elapsed_secs;
-	    //if(t++%100)
-	    std::cout << spacer << "insert 1:" << elapsed_secs  << " " << timestamps.size() << "\t\t"<< std::flush;;
+	    // begin = clock();
+	    // //insert_data_db(C, strm_info.name(), chunk, timestamps, uid);
+	    // end = clock();
+	    // elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+	    // rate = elapsed_secs;
+	    // //if(t++%100)
+	    // std::cout << spacer << "insert 1:" << elapsed_secs  << " " << timestamps.size() << "\t\t"<< std::flush;;
 	    
 	    begin = clock();
-	    insert_data_db_3(C, strm_info.name(), chunk, timestamps, uid);
+	    insert_data_db_3(C, strm_info.name(), chunk, timestamps, uid, &t);
 	    end = clock();
-	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-	    rate = 0;//elapsed_secs/rate;
-	    //if(t++%100)
-	    std::cout << spacer << "insert 2:"<< elapsed_secs  <<"    "<< t  << std::endl;
-	    t+=timestamps.size();
+	    elapsed_secs = double(end - begin) / CLOCKS_PER_SEC*1000000;
+	    if(t%100==0)
+	      std::cout << spacer << "t:"<< elapsed_secs <<"   \xd" << std::flush;
 	  }
     }
 
