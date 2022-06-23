@@ -18,3 +18,4 @@
 !gnuplot_script
 !/config
 !/config/*
+!psql2mat.py
