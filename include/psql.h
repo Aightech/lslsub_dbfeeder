@@ -13,5 +13,5 @@ bool add_stream_metadata(PGconn *C, lsl::stream_info& info);
 
 void create_stream_table_db(PGconn *C, std::string name);
 
-int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index );
+int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, unsigned long int* index );
 #endif

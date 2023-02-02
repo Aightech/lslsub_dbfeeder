@@ -92,10 +92,9 @@ void create_stream_table_db(PGconn *C, std::string name)
 {
   std::string sql=
     "CREATE TABLE IF NOT EXISTS " + name + " ( "\
-    "time BIGINT NOT NULL,"			\
-    "t DOUBLE PRECISION NOT NULL,"		\
-    "data DOUBLE PRECISION[]  NOT NULL,"	\
-    "uid TEXT  NULL)";
+    "index BIGINT NOT NULL,"			\
+    "time DOUBLE PRECISION NOT NULL,"		\
+    "data DOUBLE PRECISION[]  NOT NULL)";
 
   // Execute SQL query  
   PGresult *res = PQexec(C, sql.c_str());
@@ -151,7 +150,7 @@ double reverseValue(const char *data)
 
 #define PGCOPY_HEADER  "PGCOPY\n\377\r\n\0\0\0\0\0\0\0\0\0"
 #define SIZE_MAX_ARR 200000
-int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, std::string uid, unsigned long int* index )
+int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& chunk, std::vector<double>& timestamps, unsigned long int* index )
 {
    PGresult *res=NULL;
    /*
@@ -192,16 +191,16 @@ int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& c
    char buffer[SIZE_MAX_ARR];
    float inc;
    
-   if(21+(54+12*chunk[0].size()+uid.size())*chunk.size()<SIZE_MAX_ARR)
+   if(21+(54+12*chunk[0].size())*chunk.size()<SIZE_MAX_ARR)
      inc =1;
    else
-     inc = chunk.size()/(float)((SIZE_MAX_ARR - 2000)/(float)(54+12*chunk[0].size()+uid.size()));
+     inc = chunk.size()/(float)((SIZE_MAX_ARR - 2000)/(float)(54+12*chunk[0].size()));
       
    char *b=buffer;
 
    memcpy(b, PGCOPY_HEADER, 19);   b+=19;;
 
-   uint16_t nb_col = htobe16(4);
+   uint16_t nb_col = htobe16(3);
    uint32_t size;
    double timestamp;
    uint64_t ind;
@@ -251,9 +250,9 @@ int copy_data_db(PGconn *C, std::string name, std::vector<std::vector<float>>& c
 	   memcpy(b, (char*)(&data)  , 8); b+=8;
 	 }
 
-       size = htobe32(uid.size());
-       memcpy(b, (char*)(&size), 4); b+=4;
-       memcpy(b, uid.c_str(),uid.size()); b+=uid.size();
+       // size = htobe32(uid.size());
+       // memcpy(b, (char*)(&size), 4); b+=4;
+       // memcpy(b, uid.c_str(),uid.size()); b+=uid.size();
 
      }
       
