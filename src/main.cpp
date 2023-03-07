@@ -92,6 +92,8 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
   for(int i =0;i<n;i++)
     spacer+="\t\t\t\t\t";
 
+  
+  unsigned long int t=0;
   try {
 
     // and retrieve the chunks (note: this can of course also be done with pure std::vectors
@@ -99,7 +101,6 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
     std::vector<std::vector<float>> chunk;
     std::vector<double> timestamps;
 
-    unsigned long int t=0;
     clock_t begin;
     clock_t end;
     double elapsed_secs;
@@ -121,16 +122,17 @@ void store_stream(lsl::stream_info strm_info, bool *rec_on, std::string uid, int
 	  }
     }
     
-    std::cout << "[" << strm_info.name() <<"] Disconnecting from lsldb...\xd" << std::flush;
-    PQfinish(C);
-    std::cout << "[" << strm_info.name() <<"] Disconnected from lsldb." <<  std::endl;
-    std::cout << "[" << strm_info.name() <<"] Nb sample: " << t << std::endl;
+   
   }
   catch (std::exception& e)
     {
       std::cerr << "[EXEPTION] Got an exception: " << e.what() << std::endl;
+      *rec_on=false;
     }
-  
+  std::cout << "[" << strm_info.name() <<"] Disconnecting from lsldb...\xd" << std::flush;
+  PQfinish(C);
+  std::cout << "[" << strm_info.name() <<"] Disconnected from lsldb." <<  std::endl;
+  std::cout << "[" << strm_info.name() <<"] Nb sample: " << t << std::endl;
 	
   
 }
