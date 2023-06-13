@@ -8,7 +8,7 @@ try:
     # Connect to an existing database
     connection = psycopg2.connect(user="lsldb_user",
                                   password="azerty",
-                                  host="129.31.155.142",
+                                  host="localhost",
                                   port="5432",
                                   database="lsldb")
 
@@ -16,22 +16,21 @@ try:
     cursor = connection.cursor()
     
     table_name = sys.argv[1]
-    uid = sys.argv[2]
-    filename = "data_"+table_name+"_"+uid;
+    filename = "data_"+table_name;
     
     # Executing a SQL query
-    cursor.execute("select time from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select index from "+table_name)
     ind = cursor.fetchall();
-    cursor.execute("select t from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select time from "+table_name)
     time = cursor.fetchall();
-    cursor.execute("select data from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select data from "+table_name)
     values = cursor.fetchall();
     val = np.asarray(values)
     
     
-    data = {'counter':ind,
+    data = {'index':ind,
             'time':time,
-            'values':val[:,0]}
+            'data':val[:,0]}
     savemat(filename+'.mat', data)
     
 
