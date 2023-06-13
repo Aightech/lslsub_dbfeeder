@@ -16,19 +16,14 @@ try:
     cursor = connection.cursor()
     
     table_name = sys.argv[1]
-    uid = sys.argv[2]
-    filename = "data_"+table_name+"_"+uid;
-
-    print("Table name: ", table_name)
-    print("UID: ", uid)
-    print("Filename: ", filename)
+    filename = "data_"+table_name;
     
     # Executing a SQL query
-    cursor.execute("select time from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select index from "+table_name)
     ind = cursor.fetchall();
-    cursor.execute("select t from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select time from "+table_name)
     time = cursor.fetchall();
-    cursor.execute("select data from "+table_name+" where uid='"+uid+"'")
+    cursor.execute("select data from "+table_name)
     values = cursor.fetchall();
 
     # Fetch result
@@ -38,9 +33,9 @@ try:
     print("Saving to mat file")
     
     
-    data = {'counter':ind,
+    data = {'index':ind,
             'time':time,
-            'values':val[:,0]}
+            'data':val[:,0]}
     savemat(filename+'.mat', data)
     
 
