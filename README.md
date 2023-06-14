@@ -1,5 +1,16 @@
 # lslsub_dbfeeder
 
+**lslsub_dbfeeder**  records specific data streams and stores the data in a PostgreSQL database. It utilizes the Lab Streaming Layer (LSL) library to acquire real-time streaming data. The streams that are to be recorded are specified in a configuration file.
+
+## Overview of Functionality
+
+- **Scanning**: Scan of all available LSL streams.
+- **Configuration**: Reads a configuration file that includes the names of the data streams to be recorded.
+- **Stream Recording**: Check if the specified streams are available. If they are, a new recorder is initiated for each specified stream.
+- **Input Control**: The recording of the streams can be controlled based on two mechanism:
+    - When in **trigger** mode, the program listens for a trigger stream. The recording is then started, paused, or stopped based on the commands received from the trigger stream.
+    - The **default** mode is to start recording as soon as the program is started. The recording is stopped when the program the user presses any key.
+
 ## Requierements
 ### Linux
 - [PostreSQL 10](https://www.postgresql.org/download)
