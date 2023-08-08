@@ -118,7 +118,6 @@ void Database::prepare_buffer(int size_sample)
 
 
        */
-      logln("Preparing buffer for " + std::to_string(size_sample) + " samples", true);
     m_sample_size = size_sample;
     char *b = m_buffer + 19;
     uint16_t nb_col = htobe16(3);
@@ -168,6 +167,7 @@ void Database::prepare_buffer(int size_sample)
         }
     }
     m_max_samples = j;
+    logln("Prepared buffer for " + std::to_string(m_max_samples) + "*[" + std::to_string(size_sample) + "] samples", true);
 
     uint16_t negative = htobe16(-1);
     memcpy(b, (char *)(&negative), 2);
@@ -188,6 +188,7 @@ int Database::store_data(std::string table,
     double data;
     double timestamp;
     uint64_t ind;
+    uint16_t nb_col = htobe16(3);
     for(int j = 0, k = 0; j < chunk.size(); k++)
     { //in case the chunk is too big to fit in the buffer, iterate over the chunk
         char *b = m_buffer + 19;
@@ -205,18 +206,20 @@ int Database::store_data(std::string table,
        +------------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------+
       */
 
-        for(; j < chunk.size() - k * m_max_samples; j++)
+        for(; j < (k+1)*m_max_samples && j<chunk.size(); j++)
         {
-            b += 6;//skip the number of columns and the size of index
+            //number of columns in case it was replaced by the end of the buffer
+            memcpy(b, (char *)(&nb_col), 2);
+            b += 6; //skip the number of columns and the size of index
             ind = htobe64(index++);
             memcpy(b, (char *)(&ind), 8);
-            b += 12;//skip index and the size of timestamp
+            b += 12; //skip index and the size of timestamp
             *(uint64_t *)&timestamp = htobe64(*(uint64_t *)&(timestamps[j]));
             memcpy(b, (char *)(&timestamp), 8);
-            b += 32;//skip the timestamp and the array header
+            b += 32; //skip the timestamp and the array header
             for(int i = 0; i < m_sample_size; i++)
             {
-                b += 4;//skip the size of the sample's element
+                b += 4; //skip the size of the sample's element
                 *(uint64_t *)&data = htobe64(*(uint64_t *)&(chunk[j][i]));
                 memcpy(b, (char *)(&data), 8);
                 b += 8;
@@ -225,7 +228,7 @@ int Database::store_data(std::string table,
         uint16_t negative = htobe16(-1);
         memcpy(b, (char *)(&negative), 2);
         b += 2;
-
+        //log size chunk
         res = PQexec(
             m_conn, ("COPY " + table + " FROM STDIN (FORMAT binary);").c_str());
         if(PQresultStatus(res) != PGRES_COPY_IN)

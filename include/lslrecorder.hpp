@@ -63,6 +63,10 @@ class Recorder : public virtual ESC::CLI
                 timestamps.clear();
                 if(inlet.pull_chunk(chunk, timestamps))
                 {
+                    //print first timestamp
+                    // logln("[" + m_strm_info.name() + "] " +
+                    //           std::to_string(timestamps[0]),
+                    //       true);
                     if(m_status == 1)
                         m_sample_index = m_db.store_data(
                             m_table_name, chunk, timestamps, m_sample_index);

@@ -80,3 +80,5 @@ mkdir build && cd build && cmake .. -G "MinGW Makefiles" && mingw32-make
 **Warning:** You might encouter an issue of compilation related to thread libraries. To solve this issue modify the file that get the error and add ".p" at the and of the "__x._M_thread" like variable. ("__x._M_thread.p" and "__y._M_thread.p").
 
 **Rq:** *The exe file is called lslsub_dbfeeder. This file has also been copied in the bin floder of the git repository root.*
+
+**Rq:** psql -U lsldb_user -d lsldb -h localhost

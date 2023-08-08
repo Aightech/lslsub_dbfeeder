@@ -1,0 +1,739 @@
+adev@hman:~/dev/fingerHAV_rec/prgm/lslsub_dbfeeder/build$ ./lslsub_dbfeeder -c conf.cfg -v -t
+[INFO] Streams to be recorded:
+	- Kistler
+	- FT_sensor
+	- positions
+[INFO] Available Streams:
+-  FT_sensor [ 2bd70828-b714-4877-ac1a-92026bf9c61c ]
+-  positions [ 8a0b3ff2-9adb-444f-8419-0d6f5b5fd18a ]
+-  Kistler [ e23e8bb1-42db-494d-8c19-8b432ee38ed2 ]
+[psqlDB] Connecting to lsldb....
+[psqlDB] Connection to lsldb successful
+[lslrec][lslrec_FT_sensor] Recording thread [FT_sensor]
+[psqlDB] Connecting to lsldb....
+[psqlDB] Connection to lsldb successful
+[lslrec][lslrec_positions] Recording thread [positions]
+[psqlDB] Connecting to lsldb....
+[psqlDB] Connection to lsldb successful
+[INFO] Searching for a trigger stream...
+[lslrec_Kistler] Recording thread [Kistler]
+[INFO] Trigger found.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_39t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_39t_std_0]
+[psqlDB] Prepared buffer for 1639*[6] samples
+[psqlDB] Creating hypertable positions_alexis_39t_std_0...
+[lslrec_positions] Start recording [positions_alexis_39t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_39t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_39t_std_0]
+[psqlDB] Prepared buffer for 1369*[8] samples
+[psqlDB] Prepared buffer for 2040*[4] samples
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_39t_std_0]
+[lslrec_FT_sensor] Stored 621948 samples.
+[lslrec_positions] Pause recording [positions_alexis_39t_std_0]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_39t_std_0]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_39t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_39t_std_1]
+[psqlDB] Creating hypertable positions_alexis_39t_std_1...
+[lslrec_positions] Start recording [positions_alexis_39t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_39t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_39t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_39t_std_1]
+[lslrec_FT_sensor] Stored 750323 samples.
+[lslrec_positions] Pause recording [positions_alexis_39t_std_1]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_39t_std_1]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_59t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_59t_std_0]
+[psqlDB] Creating hypertable positions_alexis_59t_std_0...
+[lslrec_positions] Start recording [positions_alexis_59t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_59t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_59t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_59t_std_0]
+[lslrec_FT_sensor] Stored 607943 samples.
+[lslrec_positions] Pause recording [positions_alexis_59t_std_0]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_59t_std_0]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_83t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_83t_std_0]
+[psqlDB] Creating hypertable positions_alexis_83t_std_0...
+[lslrec_positions] Start recording [positions_alexis_83t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_83t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_83t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_83t_std_0]
+[lslrec_FT_sensor] Stored 750234 samples.
+[lslrec_positions] Pause recording [positions_alexis_83t_std_0]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_83t_std_0]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_54t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_54t_std_0]
+[psqlDB] Creating hypertable positions_alexis_54t_std_0...
+[lslrec_positions] Start recording [positions_alexis_54t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_54t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_54t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_54t_std_0]
+[lslrec_FT_sensor] Stored 714439 samples.
+[lslrec_positions] Pause recording [positions_alexis_54t_std_0]
+[lslrec_positions] Stored 1809 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_54t_std_0]
+[lslrec_Kistler] Stored 745472 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_39t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_39t_std_2]
+[psqlDB] Creating hypertable positions_alexis_39t_std_2...
+[lslrec_positions] Start recording [positions_alexis_39t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_39t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_39t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_39t_std_2]
+[lslrec_FT_sensor] Stored 739449 samples.
+[lslrec_positions] Pause recording [positions_alexis_39t_std_2]
+[lslrec_positions] Stored 1801 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_39t_std_2]
+[lslrec_Kistler] Stored 751616 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_54t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_54t_std_1]
+[psqlDB] Creating hypertable positions_alexis_54t_std_1...
+[lslrec_positions] Start recording [positions_alexis_54t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_54t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_54t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_54t_std_1]
+[lslrec_FT_sensor] Stored 749823 samples.
+[lslrec_positions] Pause recording [positions_alexis_54t_std_1]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_54t_std_1]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_59t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_59t_std_1]
+[psqlDB] Creating hypertable positions_alexis_59t_std_1...
+[lslrec_positions] Start recording [positions_alexis_59t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_59t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_59t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_59t_std_1]
+[lslrec_FT_sensor] Stored 635890 samples.
+[lslrec_positions] Pause recording [positions_alexis_59t_std_1]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_59t_std_1]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_18t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_18t_std_0]
+[psqlDB] Creating hypertable positions_alexis_18t_std_0...
+[lslrec_positions] Start recording [positions_alexis_18t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_18t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_18t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_18t_std_0]
+[lslrec_FT_sensor] Stored 750321 samples.
+[lslrec_positions] Pause recording [positions_alexis_18t_std_0]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_18t_std_0]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_120t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_120t_std_0]
+[psqlDB] Creating hypertable positions_alexis_120t_std_0...
+[lslrec_positions] Start recording [positions_alexis_120t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_120t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_120t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_120t_std_0]
+[lslrec_FT_sensor] Stored 749688 samples.
+[lslrec_positions] Pause recording [positions_alexis_120t_std_0]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_120t_std_0]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_10t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_10t_std_0]
+[psqlDB] Creating hypertable positions_alexis_10t_std_0...
+[lslrec_positions] Start recording [positions_alexis_10t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_10t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_10t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_10t_std_0]
+[lslrec_FT_sensor] Stored 591504 samples.
+[lslrec_positions] Pause recording [positions_alexis_10t_std_0]
+[lslrec_positions] Stored 1801 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_10t_std_0]
+[lslrec_Kistler] Stored 582656 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_18t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_18t_std_1]
+[psqlDB] Creating hypertable positions_alexis_18t_std_1...
+[lslrec_positions] Start recording [positions_alexis_18t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_18t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_18t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_18t_std_1]
+[lslrec_FT_sensor] Stored 750398 samples.
+[lslrec_positions] Pause recording [positions_alexis_18t_std_1]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_18t_std_1]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_83t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_83t_std_1]
+[psqlDB] Creating hypertable positions_alexis_83t_std_1...
+[lslrec_positions] Start recording [positions_alexis_83t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_83t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_83t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_83t_std_1]
+[lslrec_FT_sensor] Stored 587970 samples.
+[lslrec_positions] Pause recording [positions_alexis_83t_std_1]
+[lslrec_positions] Stored 1753 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_83t_std_1]
+[lslrec_Kistler] Stored 676864 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_7t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_7t_std_0]
+[psqlDB] Creating hypertable positions_alexis_7t_std_0...
+[lslrec_positions] Start recording [positions_alexis_7t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_7t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_7t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_7t_std_0]
+[lslrec_FT_sensor] Stored 749506 samples.
+[lslrec_positions] Pause recording [positions_alexis_7t_std_0]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_7t_std_0]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_120t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_120t_std_1]
+[psqlDB] Creating hypertable positions_alexis_120t_std_1...
+[lslrec_positions] Start recording [positions_alexis_120t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_120t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_120t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_120t_std_1]
+[lslrec_FT_sensor] Stored 744464 samples.
+[lslrec_positions] Pause recording [positions_alexis_120t_std_1]
+[lslrec_positions] Stored 1823 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_120t_std_1]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_39t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_39t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_39t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_39t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_39t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_39t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_39t_cte_force_3]
+[lslrec_FT_sensor] Stored 600914 samples.
+[lslrec_positions] Pause recording [positions_alexis_39t_cte_force_3]
+[lslrec_positions] Stored 1462 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_39t_cte_force_3]
+[lslrec_Kistler] Stored 609280 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_59t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_59t_std_2]
+[psqlDB] Creating hypertable positions_alexis_59t_std_2...
+[lslrec_positions] Start recording [positions_alexis_59t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_59t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_59t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_59t_std_2]
+[lslrec_FT_sensor] Stored 748217 samples.
+[lslrec_positions] Pause recording [positions_alexis_59t_std_2]
+[lslrec_positions] Stored 1823 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_59t_std_2]
+[lslrec_Kistler] Stored 1357824 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_7t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_7t_std_1]
+[psqlDB] Creating hypertable positions_alexis_7t_std_1...
+[lslrec_positions] Start recording [positions_alexis_7t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_7t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_7t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_7t_std_1]
+[lslrec_FT_sensor] Stored 750311 samples.
+[lslrec_positions] Pause recording [positions_alexis_7t_std_1]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_7t_std_1]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_59t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_59t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_59t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_59t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_59t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_59t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_59t_cte_force_3]
+[lslrec_FT_sensor] Stored 333062 samples.
+[lslrec_positions] Pause recording [positions_alexis_59t_cte_force_3]
+[lslrec_positions] Stored 1556 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_59t_cte_force_3]
+[lslrec_Kistler] Stored 350208 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_18t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_18t_std_2]
+[psqlDB] Creating hypertable positions_alexis_18t_std_2...
+[lslrec_positions] Start recording [positions_alexis_18t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_18t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_18t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_18t_std_2]
+[lslrec_FT_sensor] Stored 749465 samples.
+[lslrec_positions] Pause recording [positions_alexis_18t_std_2]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_18t_std_2]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_59t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_59t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_59t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_59t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_59t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_59t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_59t_cte_speed_4]
+[lslrec_FT_sensor] Stored 749981 samples.
+[lslrec_positions] Pause recording [positions_alexis_59t_cte_speed_4]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_59t_cte_speed_4]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_10t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_10t_std_1]
+[psqlDB] Creating hypertable positions_alexis_10t_std_1...
+[lslrec_positions] Start recording [positions_alexis_10t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_10t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_10t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_10t_std_1]
+[lslrec_FT_sensor] Stored 749216 samples.
+[lslrec_positions] Pause recording [positions_alexis_10t_std_1]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_10t_std_1]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_108t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_108t_std_0]
+[psqlDB] Creating hypertable positions_alexis_108t_std_0...
+[lslrec_positions] Start recording [positions_alexis_108t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_108t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_108t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_108t_std_0]
+[lslrec_FT_sensor] Stored 436821 samples.
+[lslrec_positions] Pause recording [positions_alexis_108t_std_0]
+[lslrec_positions] Stored 1051 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_108t_std_0]
+[lslrec_Kistler] Stored 438272 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_83t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_83t_std_2]
+[psqlDB] Creating hypertable positions_alexis_83t_std_2...
+[lslrec_positions] Start recording [positions_alexis_83t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_83t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_83t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_83t_std_2]
+[lslrec_FT_sensor] Stored 750325 samples.
+[lslrec_positions] Pause recording [positions_alexis_83t_std_2]
+[lslrec_positions] Stored 1828 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_83t_std_2]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_120t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_120t_std_2]
+[psqlDB] Creating hypertable positions_alexis_120t_std_2...
+[lslrec_positions] Start recording [positions_alexis_120t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_120t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_120t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_120t_std_2]
+[lslrec_FT_sensor] Stored 747233 samples.
+[lslrec_positions] Pause recording [positions_alexis_120t_std_2]
+[lslrec_positions] Stored 1819 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_120t_std_2]
+[lslrec_Kistler] Stored 756736 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_18t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_18t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_18t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_18t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_18t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_18t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_18t_cte_force_3]
+[lslrec_FT_sensor] Stored 648858 samples.
+[lslrec_positions] Pause recording [positions_alexis_18t_cte_force_3]
+[lslrec_positions] Stored 1821 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_18t_cte_force_3]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_7t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_7t_std_2]
+[psqlDB] Creating hypertable positions_alexis_7t_std_2...
+[lslrec_positions] Start recording [positions_alexis_7t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_7t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_7t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_7t_std_2]
+[lslrec_FT_sensor] Stored 749753 samples.
+[lslrec_positions] Pause recording [positions_alexis_7t_std_2]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_7t_std_2]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_18t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_18t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_18t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_18t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_18t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_18t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_18t_cte_speed_4]
+[lslrec_FT_sensor] Stored 749904 samples.
+[lslrec_positions] Pause recording [positions_alexis_18t_cte_speed_4]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_18t_cte_speed_4]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_39t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_39t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_39t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_39t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_39t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_39t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_39t_cte_speed_4]
+[lslrec_FT_sensor] Stored 750437 samples.
+[lslrec_positions] Pause recording [positions_alexis_39t_cte_speed_4]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_39t_cte_speed_4]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_83t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_83t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_83t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_83t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_83t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_83t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_83t_cte_force_3]
+[lslrec_FT_sensor] Stored 750366 samples.
+[lslrec_positions] Pause recording [positions_alexis_83t_cte_force_3]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_83t_cte_force_3]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_54t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_54t_std_2]
+[psqlDB] Creating hypertable positions_alexis_54t_std_2...
+[lslrec_positions] Start recording [positions_alexis_54t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_54t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_54t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_54t_std_2]
+[lslrec_FT_sensor] Stored 749524 samples.
+[lslrec_positions] Pause recording [positions_alexis_54t_std_2]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_54t_std_2]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_120t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_120t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_120t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_120t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_120t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_120t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_120t_cte_force_3]
+[lslrec_FT_sensor] Stored 750161 samples.
+[lslrec_positions] Pause recording [positions_alexis_120t_cte_force_3]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_120t_cte_force_3]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_108t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_108t_std_1]
+[psqlDB] Creating hypertable positions_alexis_108t_std_1...
+[lslrec_positions] Start recording [positions_alexis_108t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_108t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_108t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_108t_std_1]
+[lslrec_FT_sensor] Stored 749734 samples.
+[lslrec_positions] Pause recording [positions_alexis_108t_std_1]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_108t_std_1]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_120t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_120t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_120t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_120t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_120t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_120t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_120t_cte_speed_4]
+[lslrec_FT_sensor] Stored 750132 samples.
+[lslrec_positions] Pause recording [positions_alexis_120t_cte_speed_4]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_120t_cte_speed_4]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_83t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_83t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_83t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_83t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_83t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_83t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_83t_cte_speed_4]
+[lslrec_FT_sensor] Stored 749457 samples.
+[lslrec_positions] Pause recording [positions_alexis_83t_cte_speed_4]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_83t_cte_speed_4]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_10t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_10t_std_2]
+[psqlDB] Creating hypertable positions_alexis_10t_std_2...
+[lslrec_positions] Start recording [positions_alexis_10t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_10t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_10t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_10t_std_2]
+[lslrec_FT_sensor] Stored 684166 samples.
+[lslrec_positions] Pause recording [positions_alexis_10t_std_2]
+[lslrec_positions] Stored 1828 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_10t_std_2]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_10t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_10t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_10t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_10t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_10t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_10t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_10t_cte_force_3]
+[lslrec_FT_sensor] Stored 748788 samples.
+[lslrec_positions] Pause recording [positions_alexis_10t_cte_force_3]
+[lslrec_positions] Stored 1822 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_10t_cte_force_3]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_44t_std_0...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_44t_std_0]
+[psqlDB] Creating hypertable positions_alexis_44t_std_0...
+[lslrec_positions] Start recording [positions_alexis_44t_std_0]
+[psqlDB] Creating hypertable Kistler_alexis_44t_std_0...
+[lslrec_Kistler] Start recording [Kistler_alexis_44t_std_0]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_44t_std_0]
+[lslrec_FT_sensor] Stored 266289 samples.
+[lslrec_positions] Pause recording [positions_alexis_44t_std_0]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_44t_std_0]
+[lslrec_Kistler] Stored 206848 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_108t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_108t_std_2]
+[psqlDB] Creating hypertable positions_alexis_108t_std_2...
+[lslrec_positions] Start recording [positions_alexis_108t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_108t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_108t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_108t_std_2]
+[lslrec_FT_sensor] Stored 749139 samples.
+[lslrec_positions] Pause recording [positions_alexis_108t_std_2]
+[lslrec_positions] Stored 1822 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_108t_std_2]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_44t_std_1...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_44t_std_1]
+[psqlDB] Creating hypertable positions_alexis_44t_std_1...
+[lslrec_positions] Start recording [positions_alexis_44t_std_1]
+[psqlDB] Creating hypertable Kistler_alexis_44t_std_1...
+[lslrec_Kistler] Start recording [Kistler_alexis_44t_std_1]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_44t_std_1]
+[lslrec_FT_sensor] Stored 301843 samples.
+[lslrec_positions] Pause recording [positions_alexis_44t_std_1]
+[lslrec_positions] Stored 1068 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_44t_std_1]
+[lslrec_Kistler] Stored 307200 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_54t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_54t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_54t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_54t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_54t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_54t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_54t_cte_force_3]
+[lslrec_FT_sensor] Stored 749818 samples.
+[lslrec_positions] Pause recording [positions_alexis_54t_cte_force_3]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_54t_cte_force_3]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_7t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_7t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_7t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_7t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_7t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_7t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_7t_cte_force_3]
+[lslrec_FT_sensor] Stored 689752 samples.
+[lslrec_positions] Pause recording [positions_alexis_7t_cte_force_3]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_7t_cte_force_3]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_10t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_10t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_10t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_10t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_10t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_10t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_10t_cte_speed_4]
+[lslrec_FT_sensor] Stored 750330 samples.
+[lslrec_positions] Pause recording [positions_alexis_10t_cte_speed_4]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_10t_cte_speed_4]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_7t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_7t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_7t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_7t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_7t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_7t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_7t_cte_speed_4]
+[lslrec_FT_sensor] Stored 749509 samples.
+[lslrec_positions] Pause recording [positions_alexis_7t_cte_speed_4]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_7t_cte_speed_4]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_54t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_54t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_54t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_54t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_54t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_54t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_54t_cte_speed_4]
+[lslrec_FT_sensor] Stored 749472 samples.
+[lslrec_positions] Pause recording [positions_alexis_54t_cte_speed_4]
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_54t_cte_speed_4]
+[lslrec_Kistler] Stored 759808 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_44t_std_2...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_44t_std_2]
+[psqlDB] Creating hypertable positions_alexis_44t_std_2...
+[lslrec_positions] Start recording [positions_alexis_44t_std_2]
+[psqlDB] Creating hypertable Kistler_alexis_44t_std_2...
+[lslrec_Kistler] Start recording [Kistler_alexis_44t_std_2]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_44t_std_2]
+[lslrec_FT_sensor] Stored 749191 samples.
+[lslrec_positions] Pause recording [positions_alexis_44t_std_2]
+[lslrec_positions] Stored 1824 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_44t_std_2]
+[lslrec_Kistler] Stored 758784 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_44t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_44t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_44t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_44t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_44t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_44t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_44t_cte_force_3]
+[lslrec_FT_sensor] Stored 750427 samples.
+[lslrec_positions] Pause recording [positions_alexis_44t_cte_force_3]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_44t_cte_force_3]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_44t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_44t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_44t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_44t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_44t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_44t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_44t_cte_speed_4]
+[lslrec_FT_sensor] Stored 750505 samples.
+[lslrec_positions] Pause recording [positions_alexis_44t_cte_speed_4]
+[lslrec_positions] Stored 1827 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_44t_cte_speed_4]
+[lslrec_Kistler] Stored 761856 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_108t_cte_force_3...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_108t_cte_force_3]
+[psqlDB] Creating hypertable positions_alexis_108t_cte_force_3...
+[lslrec_positions] Start recording [positions_alexis_108t_cte_force_3]
+[psqlDB] Creating hypertable Kistler_alexis_108t_cte_force_3...
+[lslrec_Kistler] Start recording [Kistler_alexis_108t_cte_force_3]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_108t_cte_force_3]
+[lslrec_FT_sensor] Stored 749991 samples.
+[lslrec_positions] Pause recording [positions_alexis_108t_cte_force_3]
+[lslrec_positions] Stored 1826 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_108t_cte_force_3]
+[lslrec_Kistler] Stored 760832 samples.
+[INFO] Trigger received: start recording.
+[psqlDB] Creating hypertable FT_sensor_alexis_108t_cte_speed_4...
+[lslrec_FT_sensor] Start recording [FT_sensor_alexis_108t_cte_speed_4]
+[psqlDB] Creating hypertable positions_alexis_108t_cte_speed_4...
+[lslrec_positions] Start recording [positions_alexis_108t_cte_speed_4]
+[psqlDB] Creating hypertable Kistler_alexis_108t_cte_speed_4...
+[lslrec_Kistler] Start recording [Kistler_alexis_108t_cte_speed_4]
+[INFO] Trigger received: pause recording.
+[lslrec_FT_sensor] Pause recording [FT_sensor_alexis_108t_cte_speed_4]
+[lslrec_FT_sensor] Stored 719055 samples.
+[lslrec_positions] Pause recording [positions_alexis_108t_cte_speed_4]
+[lslrec_positions] Stored 1809 samples.
+[lslrec_Kistler] Pause recording [Kistler_alexis_108t_cte_speed_4]
+[lslrec_Kistler] Stored 727040 samples.
+[INFO] Trigger received: stop recording.
+[lslrec_FT_sensor] Stop recording [FT_sensor_alexis_108t_cte_speed_4]
+Stream transmission broke off (Input stream error.); re-connecting...
+[lslrec_FT_sensor] Recording thread [FT_sensor] stopped.
+[psqlDB] Disconnecting from lsldb...
+[lslrec_FT_sensor] Stored 736872 samples.
+[lslrec_positions] Stop recording [positions_alexis_108t_cte_speed_4]
+[lslrec_positions] Recording thread [positions] stopped.
+[psqlDB] Disconnecting from lsldb...
+[lslrec_positions] Stored 1825 samples.
+[lslrec_Kistler] Stop recording [Kistler_alexis_108t_cte_speed_4]
+[lslrec_Kistler] Recording thread [Kistler] stopped.
+[psqlDB] Disconnecting from lsldb...
+[lslrec_Kistler] Stored 737280 samples.
+adev@hman:~/dev/fingerHAV_rec/prgm/lslsub_dbfeeder/build$ 
+
