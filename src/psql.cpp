@@ -122,8 +122,8 @@ void Database::prepare_buffer(int size_sample)
     char *b = m_buffer + 19;
     uint16_t nb_col = htobe16(3);
     uint32_t size;
-    double timestamp;
-    uint64_t ind;
+    // double timestamp;
+    // uint64_t ind;
     uint32_t ndim = htobe32(1);
     uint32_t hasnull = htobe32(0);
     uint32_t elem_type = htobe32(701);
@@ -182,14 +182,14 @@ int Database::store_data(std::string table,
     PGresult *res = NULL;
     if(chunk.size() == 0)
         return index;
-    if(chunk[0].size() != m_sample_size)
+    if((int)chunk[0].size() != m_sample_size)
         prepare_buffer(chunk[0].size());
 
     double data;
     double timestamp;
     uint64_t ind;
     uint16_t nb_col = htobe16(3);
-    for(int j = 0, k = 0; j < chunk.size(); k++)
+    for(int j = 0, k = 0; j < (int)chunk.size(); k++)
     { //in case the chunk is too big to fit in the buffer, iterate over the chunk
         char *b = m_buffer + 19;
         /*
@@ -206,7 +206,7 @@ int Database::store_data(std::string table,
        +------------+-------------------------------------------+------------------------------------------------------------------------------------------------------------------+
       */
 
-        for(; j < (k+1)*m_max_samples && j<chunk.size(); j++)
+        for(; j < (k+1)*m_max_samples && j<(int)chunk.size(); j++)
         {
             //number of columns in case it was replaced by the end of the buffer
             memcpy(b, (char *)(&nb_col), 2);

@@ -13,8 +13,12 @@
 
 ## Requierements
 ### Linux
-- [PostreSQL 10](https://www.postgresql.org/download)
-- [Timescaledb](https://docs.timescale.com/v0.9/getting-started/installation/linux/installation-apt-ubuntu)
+- [PostreSQL](https://www.postgresql.org/download)
+```bash
+sudo apt install postgresql libpq-dev
+```
+
+- [Timescaledb](https://docs.timescale.com/self-hosted/latest/install/installation-linux/)
 
 You can also run :
 ```bash
@@ -40,9 +44,9 @@ setup.bat
 - **Note**: /
 - **Compatibility**:
 
-| Ubuntu           | Window10         | MacOS            |
-|:----------------:|:----------------:|:----------------:|
-|:heavy_check_mark:|:heavy_check_mark:|:grey_question:   |
+|       Ubuntu       |      Window10      |      MacOS      |
+| :----------------: | :----------------: | :-------------: |
+| :heavy_check_mark: | :heavy_check_mark: | :grey_question: |
 
 
 ## Building
