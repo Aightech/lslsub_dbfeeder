@@ -11,6 +11,12 @@
     - When in **trigger** mode, the program listens for a trigger stream. The recording is then started, paused, or stopped based on the commands received from the trigger stream.
     - The **default** mode is to start recording as soon as the program is started. The recording is stopped when the program the user presses any key.
 
+### Submodules dependencies
+#### libraries
+- [built_lsl](lib/built_lsl/README.md)
+- [strANSIseq](lib/strANSIseq/README.md)
+
+
 ## Requierements
 ### Linux
 - [PostreSQL](https://www.postgresql.org/download)
@@ -86,3 +92,6 @@ mkdir build && cd build && cmake .. -G "MinGW Makefiles" && mingw32-make
 **Rq:** *The exe file is called lslsub_dbfeeder. This file has also been copied in the bin floder of the git repository root.*
 
 **Rq:** psql -U lsldb_user -d lsldb -h localhost
+
+# Contributing
+See [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
